@@ -1,0 +1,25 @@
+{
+  "metadata": {
+    "title": "Sidorovich HR",
+    "description": "Sit Sidorovich’s job interview and find out which faction of the Zone you belong to."
+  },
+  "common": {
+    "speaker": "Sidorovich",
+    "languageLabel": "Language",
+    "disclaimer": "Unofficial fan project, not affiliated with GSC Game World. S.T.A.L.K.E.R. is a trademark of GSC Game World.",
+    "notice": "Just for fun — not a psychological assessment.",
+    "sourceCode": "Source code"
+  },
+  "home": {
+    "kicker": "Recruitment office · Cordon",
+    "tagline": "24 questions. 12 factions. One verdict.",
+    "intro": "Come in, come in. And shut the door, there’s a draught. So you want to work in the Zone? Fine. I won’t send you just anywhere. Twenty-four questions. Answer honestly: I can smell a lie ten kilometres away.",
+    "cta": "Start the interview",
+    "ctaSoon": "The office opens soon."
+  },
+  "notFound": {
+    "title": "Careful, anomaly ahead…",
+    "body": "This page doesn’t exist. Or it got sucked in.",
+    "back": "Back to the bunker"
+  }
+}

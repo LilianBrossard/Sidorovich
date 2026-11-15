@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens, première version [V-01].
+ * Palette : béton du bunker, papier jauni du dossier, rouille, kaki, ambre du PDA.
+ * La charte complète arrive en phase 5.
+ */
+@theme {
+  --color-bunker-950: #0d0d0b;
+  --color-bunker-900: #16150f;
+  --color-bunker-800: #23211a;
+  --color-bunker-700: #34312a;
+  --color-paper-100: #efe6cf;
+  --color-paper-300: #d9c9a3;
+  --color-paper-500: #a8987a;
+  --color-ink-900: #1d1a14;
+  --color-rust-500: #a4502a;
+  --color-khaki-500: #6b6b3e;
+  --color-amber-400: #f2b544;
+}
+
+@theme inline {
+  --font-sans: var(--font-pt-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-typewriter: var(--font-pt-mono), ui-monospace, monospace;
+  --font-terminal: var(--font-plex-mono), ui-monospace, monospace;
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--color-bunker-950);
+  color: var(--color-paper-100);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-amber-400);
+  outline-offset: 3px;
+}

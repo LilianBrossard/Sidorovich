@@ -1,0 +1,43 @@
+{
+  "name": "sidorovich",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Test de personnalité S.T.A.L.K.E.R. : quelle faction de la Zone est faite pour toi ? Projet de fan non officiel.",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "typecheck": "next typegen && tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "balance": "node docs/prototype/sim.mjs",
+    "docs:questionnaire": "node docs/prototype/gen-doc.mjs",
+    "check": "npm run lint && npm run format:check && npm run typecheck && npm test && npm run balance"
+  },
+  "dependencies": {
+    "next": "16.4.6",
+    "next-intl": "^4.15.1",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/turbopack": "4.3.3",
+    "@types/node": "^22.20.5",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.4.6",
+    "prettier": "^3.10.1",
+    "prettier-plugin-tailwindcss": "^0.8.1",
+    "tailwindcss": "4.3.3",
+    "typescript": "^5",
+    "vitest": "^5.1.0"
+  }
+}

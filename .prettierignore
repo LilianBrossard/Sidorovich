@@ -1,0 +1,10 @@
+# Généré ou géré par des outils
+.next/
+node_modules/
+coverage/
+package-lock.json
+next-env.d.ts
+AGENTS.md
+
+# Documentation : mise en forme manuelle, et 02-questionnaire.md est généré
+docs/

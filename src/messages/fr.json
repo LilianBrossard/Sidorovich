@@ -1,0 +1,25 @@
+{
+  "metadata": {
+    "title": "Sidorovich RH",
+    "description": "Passe l’entretien d’embauche de Sidorovich et découvre quelle faction de la Zone est faite pour toi."
+  },
+  "common": {
+    "speaker": "Sidorovich",
+    "languageLabel": "Langue",
+    "disclaimer": "Projet de fan non officiel, non affilié à GSC Game World. S.T.A.L.K.E.R. est une marque de GSC Game World.",
+    "notice": "Un test pour s’amuser, pas une évaluation psychologique.",
+    "sourceCode": "Code source"
+  },
+  "home": {
+    "kicker": "Bureau de recrutement · Cordon",
+    "tagline": "24 questions. 12 factions. Un seul verdict.",
+    "intro": "Entre, entre. Et ferme la porte, ça fait des courants d’air. Alors comme ça, tu veux travailler dans la Zone ? Bien. Je ne vais pas t’envoyer n’importe où. Vingt-quatre questions. Réponds honnêtement : les mensonges, je les sens à dix kilomètres.",
+    "cta": "Commencer l’entretien",
+    "ctaSoon": "Le bureau ouvre bientôt."
+  },
+  "notFound": {
+    "title": "Attention, anomalie…",
+    "body": "Cette page n’existe pas. Ou alors, elle a été aspirée.",
+    "back": "Retour au bunker"
+  }
+}

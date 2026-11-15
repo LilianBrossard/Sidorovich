@@ -1,0 +1,50 @@
+# Intégration continue [T-10] : chaque PR et chaque push sur main.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NEXT_TELEMETRY_DISABLED: 1
+
+jobs:
+  verify:
+    name: Lint, types, tests, équilibrage, build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Format
+        run: npm run format:check
+
+      - name: Types
+        run: npm run typecheck
+
+      - name: Tests unitaires
+        run: npm test
+
+      - name: Équilibrage du questionnaire (C1 à C6)
+        run: npm run balance
+
+      - name: Build
+        run: npm run build
