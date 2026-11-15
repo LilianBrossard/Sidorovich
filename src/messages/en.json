@@ -10,12 +10,163 @@
     "notice": "Just for fun — not a psychological assessment.",
     "sourceCode": "Source code"
   },
+  "nav": {
+    "label": "Main navigation",
+    "skip": "Skip to content",
+    "quiz": "The interview",
+    "factions": "Factions",
+    "howItWorks": "How it works",
+    "about": "About"
+  },
   "home": {
     "kicker": "Recruitment office · Cordon",
     "tagline": "24 questions. 12 factions. One verdict.",
-    "intro": "Come in, come in. And shut the door, there’s a draught. So you want to work in the Zone? Fine. I won’t send you just anywhere. Twenty-four questions. Answer honestly: I can smell a lie ten kilometres away.",
     "cta": "Start the interview",
-    "ctaSoon": "The office opens soon."
+    "facts": {
+      "duration": "24 questions, about 5 minutes.",
+      "noRightAnswer": "No right answers: only yours.",
+      "privacy": "No account, no data collected."
+    }
+  },
+  "quiz": {
+    "metaTitle": "The interview",
+    "title": "Job interview",
+    "loading": "Sidorovich is looking for your file…",
+    "rules": "Questions: {total}, one per screen. There are no right answers, and you can go back at any time. Your progress stays in your browser.",
+    "start": "Take a seat",
+    "skip": "Show all",
+    "progress": "Question {current} of {total}",
+    "progressLabel": "Interview progress",
+    "progressValue": "Answers: {answered} of {total}",
+    "navigationLabel": "Question navigation",
+    "back": "Previous",
+    "next": "Next",
+    "restart": "Start over",
+    "restartConfirm": "Erase all your answers?",
+    "restartYes": "Yes, erase",
+    "restartNo": "No, keep going",
+    "keyboardHint": "Keyboard: keys 1 to {count} to answer, ← and → to change question, ↑ and ↓ to browse the answers.",
+    "doneTitle": "File complete",
+    "seeVerdict": "See my verdict",
+    "review": "Review my answers",
+    "storageWarning": "Your browser blocks saving: if you close the tab, your progress will be lost."
+  },
+  "resume": {
+    "inProgress": "Interview in progress: you’re on question {current} of {total}.",
+    "lastVerdict": "See my last verdict"
+  },
+  "share": {
+    "share": "Share",
+    "copy": "Copy link",
+    "copied": "Link copied.",
+    "copyFailed": "Couldn’t copy: copy the address from your browser’s address bar."
+  },
+  "result": {
+    "metaTitle": "Verdict: {faction} ({percent})",
+    "kicker": "File no. <id>{code}</id>",
+    "verdictLabel": "Recommended faction",
+    "compatibility": "{percent} compatibility",
+    "radarTitle": "Your profile on the 7 axes",
+    "radarHelp": "The further a point is from the centre, the more it leans towards the pole written at the tip of the branch; near the centre, towards the opposite pole. The dotted circle marks balance.",
+    "radarTable": "Position on each axis, from +100 (first pole) to −100 (second pole)",
+    "axis": "Axis",
+    "you": "You",
+    "profileTitle": "What your file says about you",
+    "rankingTitle": "All {count} factions, from most to least compatible",
+    "shareTitle": "Share my verdict",
+    "shareText": "Sidorovich’s verdict: {faction}, {percent} compatibility. Which faction of the Zone are you?",
+    "retake": "Take the interview",
+    "allFactions": "Discover the 12 factions",
+    "invalidKicker": "File rejected",
+    "invalidTitle": "Unreadable file",
+    "invalidBody": "This code doesn’t match any file. Maybe it was copied wrong… or forged. And Sidorovich doesn’t like fake papers.",
+    "outdatedTitle": "Expired file",
+    "outdatedBody": "This file comes from an old version of the interview. Take it again to get an up-to-date verdict."
+  },
+  "factionsPage": {
+    "metaTitle": "Factions",
+    "title": "The 12 factions of the Zone",
+    "intro": "Each faction has its signature: its average position on the 7 value axes, computed from thousands of simulated candidates. These are what Sidorovich compares your file against.",
+    "games": "Appears in: {games}",
+    "signature": "Signature on the axes",
+    "axisValue": "{plus} / {minus}: {value}",
+    "archetype": "See the typical file: {faction}"
+  },
+  "games": {
+    "soc": "Shadow of Chernobyl",
+    "cs": "Clear Sky",
+    "cop": "Call of Pripyat",
+    "s2": "Heart of Chornobyl"
+  },
+  "howItWorks": {
+    "metaTitle": "How it works",
+    "title": "How Sidorovich reaches his verdict",
+    "intro": "Behind the trader sits a small scoring engine: it turns your 24 answers into a profile, then looks for the faction that resembles you most. Everything happens in your browser; no answer is sent to a server.",
+    "diagram": {
+      "answers": "24 answers",
+      "answersDetail": "Dilemmas, situations, statements",
+      "profile": "Profile on 7 axes",
+      "profileDetail": "Each value between −1 and +1",
+      "distance": "Distance to 12 factions",
+      "distanceDetail": "Compared with calibrated centres",
+      "verdict": "Verdict",
+      "verdictDetail": "The closest faction, in %",
+      "caption": "The journey of a file, from your answers to the verdict."
+    },
+    "axes": {
+      "title": "Seven value axes",
+      "body": "The questions don’t talk about factions: they measure values. Each answer moves your profile along one or more of these seven axes, by −2 to +2 points."
+    },
+    "profile": {
+      "title": "A profile, not a label",
+      "body": "The points from your 24 answers are added up, axis by axis. Each total is then brought back between −1 and +1, based on the maximum reachable on each side: a pole touched by fewer questions stays as reachable as the other. On the agreement scale, “somewhat” counts for half and “no opinion” doesn’t count."
+    },
+    "distance": {
+      "title": "The closest faction",
+      "body": "Your profile is a point in a 7-dimensional space, and so is each faction. The engine measures the distance between you and each of them, then turns it into compatibility: 100% at zero distance, 0% at √7, the distance from the centre to a corner of the space. If the top two factions are less than 3 points apart, Sidorovich hesitates… then decides."
+    },
+    "calibration": {
+      "title": "Centres calibrated by simulation",
+      "body": "Where should each faction sit? A hand-written profile isn’t enough: depending on the questions, some positions are easier to reach than others. So the engine simulates 3,000 candidates per faction, who answer with a little hesitation, like real people. The average position of their profiles becomes the faction’s centre."
+    },
+    "balance": {
+      "title": "Balance checked on every change",
+      "body": "Automated tests run on every change: every faction must be reachable, a simulated candidate must find their own faction at least 65 times out of 100, no faction may exceed 25% of results, and every axis must be measured by at least 8 questions. If a single criterion fails, the project check fails."
+    },
+    "codeLink": "Read the engine’s code on GitHub"
+  },
+  "about": {
+    "metaTitle": "About",
+    "title": "About",
+    "project": {
+      "title": "The project",
+      "body": "Sidorovich HR is a fan project, built as a portfolio piece: a personality test in the form of a job interview with Sidorovich, the trader of the Cordon. It isn’t a psychological assessment, just a game."
+    },
+    "legal": {
+      "title": "Legal notice",
+      "publisher": "Publisher: Lilian Brossard, as a personal, non-commercial project.",
+      "contact": "Contact: through the project’s GitHub repository (Issues tab).",
+      "host": "Host: Vercel Inc., 440 N Barranca Avenue #4133, Covina, CA 91723, United States."
+    },
+    "privacy": {
+      "title": "Personal data",
+      "body": "This site collects no personal data and uses no analytics cookies. Your browser only keeps your interview progress (local storage) and your language (NEXT_LOCALE cookie). Your result is recomputed from the code in the page address: it isn’t stored in any database."
+    },
+    "credits": {
+      "title": "Credits",
+      "fonts": "Fonts: PT Sans and PT Mono (ParaType), IBM Plex Mono (IBM), under the SIL Open Font License 1.1.",
+      "code": "Built with Next.js, React, next-intl, Tailwind CSS and Zod, under the MIT licence.",
+      "images": "Illustrations and emblems: original work. No official graphics or sounds are used."
+    },
+    "fan": {
+      "title": "Disclaimer",
+      "body": "The names of factions and places belong to the S.T.A.L.K.E.R. universe. They are used in a non-commercial setting, by a fan, for fans."
+    },
+    "license": {
+      "title": "Licence",
+      "body": "The site’s code and original content are released under the MIT licence: you may reuse, modify and redistribute them, provided you keep the copyright notice.",
+      "link": "Read the licence"
+    }
   },
   "notFound": {
     "title": "Careful, anomaly ahead…",
@@ -23,6 +174,8 @@
     "back": "Back to the bunker"
   },
   "sidorovich": {
+    "intro": "Come in, come in. And shut the door, there’s a draught. So you want to work in the Zone? Fine. I won’t send you just anywhere. Twenty-four questions. Answer honestly: I can smell a lie ten kilometres away.",
+    "welcome": "Sit down. I ask the questions, you answer them. And at the end, I’ll tell you where you’ll be most useful… to me.",
     "halfway": "Halfway there. Holding up? Here, have a shot of vodka. Nothing beats it against radiation.",
     "computing": "Let’s have a look at this file…",
     "hybrid": "Hm. {first} or {second}? I’m torn too. Fine, {first} it is: they pay better.",

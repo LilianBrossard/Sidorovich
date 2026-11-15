@@ -382,7 +382,8 @@ table(
   ["Moment", "Réplique"],
   ["---", "---"],
   [
-    ["Accueil", `« ${fr.home.intro} »`],
+    ["Accueil", `« ${fr.sidorovich.intro} »`],
+    ["Début de l’entretien", `« ${fr.sidorovich.welcome} »`],
     ["Mi-parcours (après Q12)", `« ${fr.sidorovich.halfway} »`],
     ["Calcul du résultat", `« ${fr.sidorovich.computing} »`],
     ["Résultat hybride", `« ${fr.sidorovich.hybrid} »`],

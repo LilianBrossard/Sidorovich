@@ -9,6 +9,12 @@ export const QUESTIONNAIRES = [questionnaireV1] as const;
 export type VersionedQuestionnaire = (typeof QUESTIONNAIRES)[number];
 export type VersionId = VersionedQuestionnaire["version"];
 
+/**
+ * Caractères de version des questionnaires retirés : leurs liens affichent un message
+ * qui invite à repasser l'entretien, plutôt qu'une erreur [F-26]. Aucun pour l'instant.
+ */
+export const RETIRED_CODE_CHARS: readonly string[] = [];
+
 /** Version proposée aux nouveaux candidats. */
 export const CURRENT_QUESTIONNAIRE = questionnaireV1;
 

@@ -630,6 +630,7 @@ Première version du ton : bourru, sarcastique, mercantile, jamais insultant. Pa
 | Moment | Réplique |
 |---|---|
 | Accueil | « Entre, entre. Et ferme la porte, ça fait des courants d’air. Alors comme ça, tu veux travailler dans la Zone ? Bien. Je ne vais pas t’envoyer n’importe où. Vingt-quatre questions. Réponds honnêtement : les mensonges, je les sens à dix kilomètres. » |
+| Début de l’entretien | « Assieds-toi. Je pose les questions, tu réponds. Et à la fin, je te dirai où tu seras le plus utile… à moi. » |
 | Mi-parcours (après Q12) | « À mi-chemin. Tu tiens le coup ? Tiens, un coup de vodka. Contre les radiations, il n’y a pas mieux. » |
 | Calcul du résultat | « Voyons voir ce dossier… » |
 | Résultat hybride | « Hm. {first} ou {second} ? J’hésite moi aussi. Allez, ce sera {first} : ils paient mieux. » |

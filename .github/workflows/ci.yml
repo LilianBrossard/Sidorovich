@@ -20,7 +20,7 @@ jobs:
   verify:
     name: Lint, types, tests, équilibrage, build
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v5
 
@@ -52,3 +52,17 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      - name: Navigateur des tests de bout en bout
+        run: npx playwright install --with-deps chromium
+
+      - name: Tests de bout en bout (4 langues, ordinateur et mobile)
+        run: npm run test:e2e
+
+      - name: Traces Playwright en cas d’échec
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-traces
+          path: test-results/
+          retention-days: 7
