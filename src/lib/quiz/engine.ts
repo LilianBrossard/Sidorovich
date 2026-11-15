@@ -1,7 +1,15 @@
 // Moteur de score : fonctions pures, sans DOM, réseau ni horloge [S-01].
 // Réponses → deltas par axe → profil normalisé dans [-1, 1]^7
 // → distance euclidienne au centre de chaque faction → classement et compatibilité.
-import { AXIS_KEYS, FACTION_KEYS, HYBRID_THRESHOLD, SCALE_FACTORS } from "./domain";
+import {
+  AXIS_KEYS,
+  FACTION_KEYS,
+  HYBRID_THRESHOLD,
+  SCALE_FACTORS,
+  TENDENCY_LEAN,
+  TENDENCY_STRONG,
+  type Tendency,
+} from "./domain";
 import type {
   Answers,
   Centers,
@@ -108,6 +116,15 @@ export function rankFactions(profile: Vector, centers: Centers): RankedFaction[]
     (x, y) =>
       x.distance - y.distance || FACTION_KEYS.indexOf(x.faction) - FACTION_KEYS.indexOf(y.faction),
   );
+}
+
+/** Tendance d'une valeur de profil, de « nettement vers le pôle − » à « nettement vers le pôle + ». */
+export function axisTendency(value: number): Tendency {
+  if (value >= TENDENCY_STRONG) return "strongPlus";
+  if (value >= TENDENCY_LEAN) return "leanPlus";
+  if (value <= -TENDENCY_STRONG) return "strongMinus";
+  if (value <= -TENDENCY_LEAN) return "leanMinus";
+  return "balanced";
 }
 
 /** Résultat complet d'une partie. */

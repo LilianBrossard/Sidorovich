@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import { questionnaireV1 } from "@/data/questionnaire.v1";
 import { FACTION_KEYS, HYBRID_THRESHOLD } from "@/lib/quiz/domain";
 import {
+  axisTendency,
   compatibility,
   compile,
   computeProfile,
@@ -124,5 +125,22 @@ describe("evaluate", () => {
       answers,
     );
     expect(clear.isHybrid).toBe(false);
+  });
+});
+
+describe("axisTendency [F-23]", () => {
+  it.each([
+    [1, "strongPlus"],
+    [0.5, "strongPlus"],
+    [0.49, "leanPlus"],
+    [0.2, "leanPlus"],
+    [0.19, "balanced"],
+    [0, "balanced"],
+    [-0.19, "balanced"],
+    [-0.2, "leanMinus"],
+    [-0.5, "strongMinus"],
+    [-1, "strongMinus"],
+  ] as const)("%s → %s", (value, tendency) => {
+    expect(axisTendency(value)).toBe(tendency);
   });
 });

@@ -207,7 +207,7 @@ Ils sont exécutés en intégration continue. **Un échec bloque la fusion.** Le
 | I-07 | Les traductions UK et RU sont relues par un locuteur natif avant le lancement. | Nom du relecteur dans les crédits. À défaut, la page « À propos » mentionne une traduction assistée. | Important |
 | I-08 | Le sélecteur affiche chaque langue dans sa propre langue : Français, English, Українська, Русский. | Conforme. | Indispensable |
 
-**Glossaire des noms propres** (à valider contre les localisations officielles des jeux, phase 3) :
+**Glossaire des noms propres** (vérifié en phase 3 ; à confirmer contre les localisations officielles lors de la relecture native) :
 
 | FR | EN | UK | RU |
 |---|---|---|---|
@@ -220,7 +220,7 @@ Ils sont exécutés en intégration continue. **Un échec bloque la fusion.** Le
 | Écologistes | Ecologists | Екологи | Экологи |
 | Militaires | Military | Військові | Военные |
 | Clear Sky | Clear Sky | Чисте Небо | Чистое Небо |
-| Ward | Ward | Варта | Варта |
+| Ward (« la Garde » dans la VF de S2, d'après une seule source) | Ward | Варта | Варта |
 | Spark | Spark | Іскра | Искра |
 | Noon | Noon | Полудень | Полдень |
 | Sidorovich | Sidorovich | Сидорович | Сидорович |

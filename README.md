@@ -2,7 +2,7 @@
 
 > Entretien d'embauche dans la Zone : réponds aux 24 questions de Sidorovich et découvre laquelle des 12 factions de l'univers _S.T.A.L.K.E.R._ est faite pour toi.
 
-**Statut :** phase 2 du [plan de développement](docs/03-plan-de-developpement.md) (moteur de score). Le questionnaire jouable arrive en phase 4.
+**Statut :** phase 3 du [plan de développement](docs/03-plan-de-developpement.md) (contenu et traductions). Le questionnaire jouable arrive en phase 4.
 
 Site en 4 langues : français, English, українська, русский.
 

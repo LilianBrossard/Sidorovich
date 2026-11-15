@@ -1,6 +1,12 @@
 // Contrôle de cohérence de toutes les données du questionnaire [S-02].
 // Utilisé par `npm run validate` (avant chaque build) et par les tests.
-import { AXIS_KEYS, FACTION_KEYS, QUESTION_KINDS, SCALE_LEVELS } from "@/lib/quiz/domain";
+import {
+  AXIS_KEYS,
+  FACTION_KEYS,
+  QUESTION_KINDS,
+  SCALE_LEVELS,
+  TENDENCY_LEVELS,
+} from "@/lib/quiz/domain";
 import {
   centersFileSchema,
   factionsSchema,
@@ -72,9 +78,12 @@ export function checkData(messages: Messages = fr): string[] {
     for (const field of ["plus", "minus", "plusDescription", "minusDescription"]) {
       requireText(`axes.${axis}.${field}`);
     }
+    for (const level of TENDENCY_LEVELS) requireText(`axes.${axis}.tendencies.${level}`);
   }
   for (const faction of FACTION_KEYS) {
-    for (const field of ["name", "pitch", "verdict"]) requireText(`factions.${faction}.${field}`);
+    for (const field of ["name", "pitch", "description", "verdict"]) {
+      requireText(`factions.${faction}.${field}`);
+    }
   }
   for (const kind of QUESTION_KINDS) requireText(`questionKinds.${kind}`);
   for (const level of SCALE_LEVELS) requireText(`scale.${level}`);

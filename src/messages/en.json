@@ -21,5 +21,429 @@
     "title": "Careful, anomaly ahead…",
     "body": "This page doesn’t exist. Or it got sucked in.",
     "back": "Back to the bunker"
+  },
+  "sidorovich": {
+    "halfway": "Halfway there. Holding up? Here, have a shot of vodka. Nothing beats it against radiation.",
+    "computing": "Let’s have a look at this file…",
+    "hybrid": "Hm. {first} or {second}? I’m torn too. Fine, {first} it is: they pay better.",
+    "restart": "Again? Think you can fool me? Fine. From the top."
+  },
+  "axes": {
+    "ORD": {
+      "plus": "Order",
+      "minus": "Freedom",
+      "plusDescription": "Order, hierarchy, discipline, respect for rules",
+      "minusDescription": "Freedom, rejection of authority, autonomy",
+      "tendencies": {
+        "strongMinus": "Nobody tells you what to do: your freedom comes first.",
+        "leanMinus": "You’d rather have your freedom than follow orders.",
+        "balanced": "You respect the rules… when they make sense.",
+        "leanPlus": "You tend to trust rules and authority.",
+        "strongPlus": "You firmly believe in order, hierarchy and rules."
+      }
+    },
+    "ALT": {
+      "plus": "Altruism",
+      "minus": "Self-interest",
+      "plusDescription": "Common good, mutual aid, self-sacrifice",
+      "minusDescription": "Profit, personal survival, opportunism",
+      "tendencies": {
+        "strongMinus": "Your interests first, everything else later. If there’s anything left.",
+        "leanMinus": "You look out for yourself first.",
+        "balanced": "You help others, without forgetting to look after yourself.",
+        "leanPlus": "You’re happy to help others.",
+        "strongPlus": "The common good comes before your own interests, even at your own expense."
+      }
+    },
+    "COL": {
+      "plus": "Collective",
+      "minus": "Independence",
+      "plusDescription": "Belonging, loyalty to the group, brotherhood",
+      "minusDescription": "Lone wolf, no obligations to anyone",
+      "tendencies": {
+        "strongMinus": "Lone wolf: no debts, no obligations.",
+        "leanMinus": "You’d rather rely on yourself.",
+        "balanced": "You can work in a team, but you keep your independence.",
+        "leanPlus": "You need a group you can count on.",
+        "strongPlus": "The group comes first: loyalty, brotherhood, belonging."
+      }
+    },
+    "FOI": {
+      "plus": "Faith",
+      "minus": "Reason",
+      "plusDescription": "Belief, mysticism, intuition, the sacred",
+      "minusDescription": "Science, evidence, scepticism",
+      "tendencies": {
+        "strongMinus": "Only facts matter: what can’t be proven doesn’t exist.",
+        "leanMinus": "You trust evidence more than beliefs.",
+        "balanced": "You believe in science, without shutting the door on mystery.",
+        "leanPlus": "You leave room for intuition and mystery.",
+        "strongPlus": "You believe in forces beyond reason."
+      }
+    },
+    "FOR": {
+      "plus": "Force",
+      "minus": "Non-violence",
+      "plusDescription": "Force is a legitimate tool",
+      "minusDescription": "Rejection of violence, dialogue, caution",
+      "tendencies": {
+        "strongMinus": "You reject violence, almost at any cost.",
+        "leanMinus": "You prefer dialogue to confrontation.",
+        "balanced": "Force? Only as a last resort.",
+        "leanPlus": "You don’t hesitate to get tough when needed.",
+        "strongPlus": "To you, force is a tool like any other."
+      }
+    },
+    "ZON": {
+      "plus": "Respect",
+      "minus": "Mastery of the unknown",
+      "plusDescription": "Preserve, coexist, let the unknown live",
+      "minusDescription": "Control, exploit or destroy the unknown",
+      "tendencies": {
+        "strongMinus": "The unknown is a threat: it must be mastered, or eliminated.",
+        "leanMinus": "What we don’t understand is better kept under control.",
+        "balanced": "Neither destroy nor worship: you watch the unknown with caution.",
+        "leanPlus": "You’d rather understand and let live than control.",
+        "strongPlus": "The unknown deserves to be preserved, even if it’s beyond us."
+      }
+    },
+    "IDE": {
+      "plus": "Idealism",
+      "minus": "Pragmatism",
+      "plusDescription": "Principles before results",
+      "minusDescription": "Results before principles, compromise",
+      "tendencies": {
+        "strongMinus": "Only results matter. Grand principles are for other people.",
+        "leanMinus": "You judge by results rather than principles.",
+        "balanced": "You have principles, but you know how to compromise.",
+        "leanPlus": "You stick to your principles, even when it costs you.",
+        "strongPlus": "Your principles are not up for negotiation."
+      }
+    }
+  },
+  "factions": {
+    "SOL": {
+      "name": "Loners",
+      "pitch": "Independent and resourceful. They help each other out now and then, but follow no leader and no flag.",
+      "description": "The silent majority of the Zone: artifact hunters who swear allegiance to no one. They help each other around a campfire, share a tip, then go their separate ways. Their only rule: survive, without owing too much to anyone.",
+      "verdict": "You belong to nobody. Off you go, stalker. And bring me back some artifacts."
+    },
+    "DEV": {
+      "name": "Duty",
+      "pitch": "Paramilitaries with iron discipline. The Zone is a threat that must be wiped out to protect humanity.",
+      "description": "A paramilitary organisation that sees the Zone as a wound to be closed before it spreads to the rest of the world. Strict hierarchy, training, a sense of sacrifice: in Duty, you serve a mission bigger than yourself. Their sworn enemy: Freedom.",
+      "verdict": "Discipline, principles, itchy trigger finger… Duty will love you. Best not mention me to them."
+    },
+    "LIB": {
+      "name": "Freedom",
+      "pitch": "Anarchists. The Zone should be open to everyone and knowledge should flow freely. No authority, ever.",
+      "description": "Anarchists convinced the Zone belongs to everyone and that no one — no state, no army — should lock away its access or its secrets. No leaders, no uniforms: they share what they find and defend their ideas with guns if they have to. Their historic rival: Duty.",
+      "verdict": "You don’t like orders, or uniforms. Freedom is waiting for you. Over there they share everything, even what they don’t have."
+    },
+    "BAN": {
+      "name": "Bandits",
+      "pitch": "Criminal gangs. Profit through force, the law of the strongest.",
+      "description": "Gangs of thugs who came to the Zone to get rich without bothering with honest work. Racketeering, ambushes, smuggling: might makes right. Among themselves, they stick together… as long as it pays.",
+      "verdict": "You’ve got a head for business… just not for manners. The Bandits have a spot for you. Far from my counter."
+    },
+    "MER": {
+      "name": "Mercenaries",
+      "pitch": "Professionals under contract. Discipline, efficiency, and loyalty to whoever pays.",
+      "description": "Well-equipped professionals who sell their services to the highest bidder. Military discipline, efficiency, discretion: they ask no questions and take no sides. A contract is a contract, no matter who signs it.",
+      "verdict": "Efficient, no questions, no chit-chat. The Mercenaries pay well. I pay less."
+    },
+    "MON": {
+      "name": "Monolith",
+      "pitch": "Fanatics devoted to the Monolith. Absolute faith, total devotion, sacrifice.",
+      "description": "An armed cult devoted to a mysterious monolith said to stand at the heart of the Zone. Its members obey without hesitation and sacrifice themselves without fear to protect what they hold sacred. Nobody really knows what they think — or whether they still think at all.",
+      "verdict": "Glory to the Monol… Hm. No. I don’t want to see you around here again."
+    },
+    "ECO": {
+      "name": "Ecologists",
+      "pitch": "Researchers. Understanding the Zone through science, with caution and without violence.",
+      "description": "The Zone’s scientists. From their labs they measure, analyse and catalogue anomalies and artifacts, and they pay well for help. They prefer data to bullets, though they know to hire escorts when they need to.",
+      "verdict": "Questions, always questions. Go see the scientists: they love it when someone brings them samples."
+    },
+    "MIL": {
+      "name": "Military",
+      "pitch": "The regular army. Order, obedience, and a perimeter to hold at all costs.",
+      "description": "The regular army, tasked with sealing the perimeter and keeping the Zone away from the rest of the country. Orders are orders: they check, they patrol, they shoot if needed. To them, a stalker is first and foremost a trespasser.",
+      "verdict": "You like orders. So does the army. At least you’ll know where you’re sleeping."
+    },
+    "CS": {
+      "name": "Clear Sky",
+      "pitch": "Idealistic researcher-fighters. Understand the Zone to stabilise it and protect the world.",
+      "description": "A discreet group of researchers and fighters who want to understand the Zone in order to stabilise it. Idealistic and methodical, they believe science can protect the world from what happens here. What became of them after the events of Clear Sky remains a mystery.",
+      "verdict": "Idealism and a steady aim. Clear Sky… if there’s anyone left."
+    },
+    "WAR": {
+      "name": "Ward",
+      "pitch": "The Zone’s official force. Protect the society outside, control the Zone, even if it means destroying it.",
+      "description": "The official forces tasked with taking back control of the Zone. For them, the safety of the outside world comes first — even if it means exploiting the Zone, or destroying it. Methodical and pragmatic, they embody reason of state.",
+      "verdict": "Protecting the people outside, controlling what goes in and what comes out… The Ward needs people like you. I need them a bit less."
+    },
+    "SPA": {
+      "name": "Spark",
+      "pitch": "Scar’s group. They believe in a “Shining Zone” that must thrive, and fight any attempt to control it.",
+      "description": "The movement founded by Scar, the former mercenary from Clear Sky. Its members dream of a “shining” Zone to be protected and allowed to flourish rather than controlled. Idealistic, almost mystical, they stand squarely against the Ward.",
+      "verdict": "You think the Zone has a soul. Spark will welcome you with open arms. I sell suits, if you need one."
+    },
+    "NOO": {
+      "name": "Noon",
+      "pitch": "Former Monolith fanatics freed from its grip. A close-knit, discreet brotherhood seeking the truth.",
+      "description": "Former Monolith fanatics, awakened from their indoctrination. Bound by a past they have to live with, they form a close-knit, discreet brotherhood convinced that everyone deserves a second chance. They seek the truth about what happened to them — and will never again let anyone think for them.",
+      "verdict": "You look like someone who’s been through a lot. Noon will know what to do with you."
+    }
+  },
+  "questionKinds": {
+    "dilemma": "Dilemma",
+    "situation": "Situation",
+    "society": "Society",
+    "statement": "Statement",
+    "preference": "Preference",
+    "values": "Values"
+  },
+  "scale": {
+    "stronglyDisagree": "Strongly disagree",
+    "disagree": "Somewhat disagree",
+    "neutral": "No opinion",
+    "agree": "Somewhat agree",
+    "stronglyAgree": "Strongly agree"
+  },
+  "questionnaire": {
+    "Q01": {
+      "title": "The runaway cart",
+      "prompt": "An ore cart is hurtling down the slope, straight at five workers. You’re at the switch: pull it and the cart veers onto the track where only one worker is. You’ve got three seconds.",
+      "answers": {
+        "a": "I pull it. Five lives are worth more than one.",
+        "b": "I don’t touch anything. It’s not up to me to choose who dies.",
+        "c": "I yell to warn them, without touching the lever.",
+        "d": "First I check who those five are."
+      },
+      "quips": {
+        "d": "You inspect the goods before buying. I like that."
+      }
+    },
+    "Q02": {
+      "title": "The stupid order",
+      "prompt": "Your team leader gives you a completely idiotic order. Not dangerous, just idiotic.",
+      "answers": {
+        "a": "I obey. A team without discipline is a dead team.",
+        "b": "I obey, and tell them what I think once the job’s done.",
+        "c": "I do it my way. As long as the result’s there, nobody will notice.",
+        "d": "I refuse. Nobody thinks for me."
+      }
+    },
+    "Q03": {
+      "title": "The wallet",
+      "prompt": "You find a wallet on the ground: a fat wad of cash and the owner’s papers. Nobody saw you.",
+      "answers": {
+        "a": "I return it as is.",
+        "b": "I return it, but I wouldn’t say no to a small reward.",
+        "c": "I keep the cash and send the papers back. Let’s not overdo it.",
+        "d": "I keep it all. Luck is there to be grabbed."
+      },
+      "quips": {
+        "a": "Honest… You won’t make a fortune here, but fine."
+      }
+    },
+    "Q04": {
+      "title": "A stranger in the emission",
+      "prompt": "An emission is coming and the sky is turning red. Someone is pounding on the door of your shelter: an injured stranger. You only have supplies for yourself.",
+      "answers": {
+        "a": "I open up and share everything. We’ll see tomorrow.",
+        "b": "I open up, but keep my weapon within reach.",
+        "c": "I slip them something to get by and close the door.",
+        "d": "I don’t open. My survival comes first."
+      }
+    },
+    "Q05": {
+      "title": "The unknown energy",
+      "prompt": "Researchers have discovered an unknown form of energy. It could change everything… or wipe everything out.",
+      "answers": {
+        "a": "We study it, carefully. Knowledge is never a crime.",
+        "b": "We destroy it before it destroys us.",
+        "c": "We control it and put it at the country’s service.",
+        "d": "We leave it alone. Some things are beyond us."
+      }
+    },
+    "Q06": {
+      "title": "Invisible forces",
+      "prompt": "There are forces beyond us that science will never explain."
+    },
+    "Q07": {
+      "title": "A promise is a promise",
+      "prompt": "You’ve agreed to do a job for a client. The day before, someone else offers you double to do the exact opposite.",
+      "answers": {
+        "a": "I keep my word, period. A commitment is sacred.",
+        "b": "I keep my word: a pro who betrays clients never works again.",
+        "c": "I take the double. The first one should have paid more.",
+        "d": "I warn the first client and let them outbid."
+      },
+      "quips": {
+        "d": "That one’s my favourite."
+      }
+    },
+    "Q08": {
+      "title": "The common fund",
+      "prompt": "Your best friend is dipping into the group’s common fund. You’re the only one who knows.",
+      "answers": {
+        "a": "I report them. The rules apply to everyone.",
+        "b": "I talk to them in private: they pay it back and we never speak of it again.",
+        "c": "I keep quiet. You don’t betray a friend.",
+        "d": "I ask for my cut to keep quiet."
+      }
+    },
+    "Q09": {
+      "title": "The golden contract",
+      "prompt": "You’re offered a fortune for a job that looks clean. The only problem: the client is someone you despise.",
+      "answers": {
+        "a": "I accept. Money doesn’t smell.",
+        "b": "I accept, and give part of it to a good cause.",
+        "c": "I refuse. Some things can’t be bought.",
+        "d": "I accept… the better to sabotage them from the inside."
+      },
+      "quips": {
+        "a": "Now that’s what I like."
+      }
+    },
+    "Q10": {
+      "title": "Force",
+      "prompt": "Some problems can only be solved by force."
+    },
+    "Q11": {
+      "title": "Surviving with whom?",
+      "prompt": "The world has become harsh. To hold on, you’d rather surround yourself with…",
+      "answers": {
+        "a": "A tight-knit team, with a leader and rules.",
+        "b": "A band of friends where everyone stays free.",
+        "c": "A few reliable contacts, but my choices are my own business.",
+        "d": "Nobody. You can only count on yourself."
+      }
+    },
+    "Q12": {
+      "title": "The forest and the road",
+      "prompt": "An ancient forest stands in the way of a road that would revive the economy of an entire region.",
+      "answers": {
+        "a": "We build. People come first.",
+        "b": "We build, and replant elsewhere.",
+        "c": "We look for another route, even if it costs much more.",
+        "d": "We don’t touch the forest. It was here before us."
+      }
+    },
+    "Q13": {
+      "title": "The secret",
+      "prompt": "You discover a secret that would cause panic if it got out. And yet, people would have a right to know.",
+      "answers": {
+        "a": "I reveal everything. The truth belongs to everyone.",
+        "b": "I alert the authorities and let them handle it.",
+        "c": "I keep the secret. Some truths do more harm than good.",
+        "d": "I sell it to the highest bidder."
+      },
+      "quips": {
+        "d": "Finally, someone reasonable."
+      }
+    },
+    "Q14": {
+      "title": "The cause",
+      "prompt": "How far would you go for a cause you believe in with all your being?",
+      "answers": {
+        "a": "All the way. Giving my life, or taking others’.",
+        "b": "Very far, as long as I don’t hurt anyone.",
+        "c": "I don’t trust causes: they always end up devouring their faithful.",
+        "d": "Nowhere. No cause is worth my skin."
+      },
+      "quips": {
+        "a": "Hm. I’ll be keeping an eye on you."
+      }
+    },
+    "Q15": {
+      "title": "The cure",
+      "prompt": "A scientist wants to test a miracle cure on volunteers. One chance in ten of dying. Without a trial, thousands of patients will die.",
+      "answers": {
+        "a": "We test right away. Progress has always come at a price.",
+        "b": "We test, but only after years of precautions.",
+        "c": "I volunteer.",
+        "d": "No. You don’t gamble with life."
+      }
+    },
+    "Q16": {
+      "title": "The iron fist",
+      "prompt": "The world would be better off ruled with an iron fist."
+    },
+    "Q17": {
+      "title": "The loot",
+      "prompt": "Your group gets its hands on a big haul. How do we split it?",
+      "answers": {
+        "a": "Equal shares, leader included.",
+        "b": "The leader decides. That’s their job.",
+        "c": "According to what each one risked. A contract is a contract.",
+        "d": "I help myself first, before someone else does."
+      }
+    },
+    "Q18": {
+      "title": "The creature",
+      "prompt": "An unknown creature is prowling near the village. It hasn’t attacked anyone yet.",
+      "answers": {
+        "a": "We shoot it before it does.",
+        "b": "We capture it to study it.",
+        "c": "We watch it from afar and let it live.",
+        "d": "I approach it. Maybe it’s trying to tell us something."
+      },
+      "quips": {
+        "d": "If it answers, ask it where it hides its artifacts."
+      }
+    },
+    "Q19": {
+      "title": "The cameras",
+      "prompt": "To put an end to crime, the authorities propose filming every street and every home, day and night.",
+      "answers": {
+        "a": "I accept. If you’ve got nothing to hide, you’ve got nothing to fear.",
+        "b": "The streets, yes. Homes, no.",
+        "c": "I refuse. Freedom is worth a few risks.",
+        "d": "I refuse, and I smash the cameras."
+      }
+    },
+    "Q20": {
+      "title": "The next step",
+      "prompt": "What frightens us today could be humanity’s next step."
+    },
+    "Q21": {
+      "title": "The repentant",
+      "prompt": "A former member of a violent cult asks to join your group. Under their guru’s influence, they did terrible things. Today, they say their eyes have been opened.",
+      "answers": {
+        "a": "I accept them. Everyone deserves a second chance.",
+        "b": "I accept them, but they’ll have to prove themselves in the field.",
+        "c": "I refuse. People never really change.",
+        "d": "I hand them over to justice. They must pay."
+      }
+    },
+    "Q22": {
+      "title": "The camp thief",
+      "prompt": "Someone has been caught looting the camp’s supplies.",
+      "answers": {
+        "a": "A harsh punishment, in front of everyone. To set an example.",
+        "b": "We judge them by the camp’s rules, no more, no less.",
+        "c": "We find out why they stole. If it was hunger, we help.",
+        "d": "We let them go. Who are we to judge?"
+      }
+    },
+    "Q23": {
+      "title": "Proof",
+      "prompt": "What cannot be proven does not exist."
+    },
+    "Q24": {
+      "title": "The wish",
+      "prompt": "Last question. They say that at the heart of the Zone, a machine grants a wish. Just one. What do you ask for?",
+      "answers": {
+        "a": "Peace and freedom for everyone.",
+        "b": "That the Zone disappears forever.",
+        "c": "To understand. To understand everything.",
+        "d": "To be rich. Immensely rich."
+      },
+      "quips": {
+        "d": "You’ll go far… or not very far at all."
+      }
+    }
   }
 }

@@ -27,7 +27,7 @@
 - Ces symboles sont **calculés**, pas estimés à la main (voir [4.4](#44-indice-dattraction-des-tableaux-dimpact)).
 - Les lettres A à D servent de repère dans ce document. **Sur le site, l’ordre des réponses est mélangé** à chaque partie pour éviter les biais de position.
 - Questions de type *Affirmation* : échelle à 5 niveaux (« Pas du tout d’accord », « Plutôt pas d’accord », « Sans avis », « Plutôt d’accord », « Tout à fait d’accord »). Les niveaux intermédiaires valent la moitié des extrêmes, « Sans avis » vaut 0.
-- Les textes sont rédigés en **français**, langue source. Ils sont formulés à l’épicène autant que possible : le candidat peut être une candidate. Les traductions EN, UK et RU sont produites en phase 3 du plan de développement.
+- Les textes sont rédigés en **français**, langue source. Ils sont formulés à l’épicène autant que possible : le candidat peut être une candidate. Les traductions EN, UK et RU (premières versions, relecture par des locuteurs natifs à prévoir) sont dans `src/messages/`.
 
 ## 2. Les 7 axes de valeurs
 
@@ -57,7 +57,7 @@ Le **profil déclaré** exprime l’intention de conception : où se situe chaqu
 | `MON` | **Monolithe** | Trilogie, S2 | Fanatiques voués au Monolithe. Foi absolue, dévotion totale, sacrifice. | Collectif (fort), Foi (fort), Force (fort), Idéalisme (fort), Ordre, Respect |
 | `ECO` | **Écologistes** | Trilogie, S2 | Chercheurs. Comprendre la Zone par la science, avec prudence et sans violence. | Raison (fort), Non-violence (fort) |
 | `MIL` | **Militaires** | Trilogie | Armée régulière. Ordre, obéissance, et un périmètre à tenir coûte que coûte. | Ordre (fort), Force (fort), Collectif, Maîtrise de l’inconnu |
-| `CS` | **Clear Sky** | Clear Sky | Chercheurs-combattants idéalistes. Comprendre la Zone pour la stabiliser et protéger le monde. | Altruisme, Idéalisme, Collectif |
+| `CS` | **Clear Sky** | Clear Sky | Chercheurs-combattants idéalistes. Comprendre la Zone pour la stabiliser et protéger le monde. | Altruisme, Collectif, Idéalisme, Raison |
 | `WAR` | **Ward** | S2 | Force officielle de la Zone. Protéger la société extérieure, contrôler la Zone, quitte à la détruire. | Maîtrise de l’inconnu (fort), Ordre, Raison |
 | `SPA` | **Spark** | S2 | Le groupe de Scar. Croit en une « Zone rayonnante » qui doit prospérer, et combat toute tentative de la contrôler. | Respect (fort), Idéalisme, Altruisme, Foi |
 | `NOO` | **Noon** | S2 | Anciens fanatiques du Monolithe libérés de son emprise. Fraternité soudée et discrète, en quête de vérité. | Collectif (fort), Force |
@@ -74,10 +74,10 @@ Le **profil déclaré** exprime l’intention de conception : où se situe chaqu
 | Monolithe | 0,8 | −0,3 | 1,0 | 1,0 | 0,9 | 0,8 | 0,9 |
 | Écologistes | 0,2 | 0,5 | 0,0 | −1,0 | −0,9 | 0,3 | 0,2 |
 | Militaires | 1,0 | −0,2 | 0,8 | −0,2 | 0,9 | −0,7 | −0,5 |
-| Clear Sky | 0,0 | 0,8 | 0,6 | −0,4 | 0,2 | 0,4 | 0,7 |
-| Ward | 0,7 | 0,5 | 0,4 | −0,7 | 0,4 | −1,0 | −0,2 |
+| Clear Sky | 0,1 | 0,8 | 0,7 | −0,6 | 0,2 | 0,4 | 0,7 |
+| Ward | 0,7 | 0,5 | 0,4 | −0,7 | 0,4 | −1,0 | −0,5 |
 | Spark | −0,3 | 0,6 | 0,5 | 0,6 | 0,3 | 1,0 | 0,8 |
-| Noon | 0,3 | 0,0 | 0,9 | 0,3 | 0,8 | −0,3 | 0,5 |
+| Noon | 0,0 | 0,2 | 0,9 | 0,4 | 0,8 | −0,3 | 0,5 |
 
 > Ward, Spark et Noon viennent de *S.T.A.L.K.E.R. 2* (2024). Leur idéologie a été vérifiée dans des guides publiés après la sortie du jeu, mais la relecture « lore » de la phase 3 doit la confirmer, ainsi que leurs noms officiels en français.
 
@@ -124,17 +124,17 @@ Le moteur utilise donc des **centres calibrés**. Pour chaque faction, on simule
 | Monolithe | 0,68 | 0,04 | 0,67 | 0,82 | 0,41 | 0,80 | 0,55 |
 | Écologistes | 0,15 | 0,51 | 0,16 | −0,62 | −0,66 | 0,04 | 0,21 |
 | Militaires | 0,74 | −0,02 | 0,44 | −0,31 | 0,61 | −0,77 | −0,38 |
-| Clear Sky | 0,07 | 0,62 | 0,60 | −0,10 | −0,00 | 0,23 | 0,59 |
-| Ward | 0,70 | 0,38 | 0,40 | −0,53 | 0,40 | −0,83 | −0,19 |
+| Clear Sky | 0,19 | 0,61 | 0,66 | −0,25 | −0,01 | 0,17 | 0,56 |
+| Ward | 0,69 | 0,33 | 0,27 | −0,55 | 0,41 | −0,85 | −0,38 |
 | Spark | −0,26 | 0,48 | 0,44 | 0,75 | 0,06 | 0,77 | 0,71 |
-| Noon | 0,45 | 0,21 | 0,71 | 0,18 | 0,59 | −0,25 | 0,39 |
+| Noon | 0,19 | 0,31 | 0,67 | 0,23 | 0,57 | −0,21 | 0,43 |
 
 Un grand écart entre profil déclaré et centre calibré signale qu’**aucune question ne permet d’exprimer** cette facette de la faction. C’est un signal pour retravailler le questionnaire.
 
 ### 4.4 Indice d’attraction (des tableaux d’impact)
 
 Pour une réponse et une faction : indice = produit scalaire entre la contribution normalisée de la réponse et le centre de la faction, **moins la moyenne de cet indice sur toutes les réponses de la même question**. Un indice positif rapproche le candidat de la faction par rapport à une réponse « moyenne ».
-Seuils : `++` pour les 15 % d’effets les plus forts (|indice| ≥ 0,112), `+` pour les 30 % suivants (≥ 0,057).
+Seuils : `++` pour les 15 % d’effets les plus forts (|indice| ≥ 0,111), `+` pour les 30 % suivants (≥ 0,056).
 
 ### 4.5 Exemple
 
@@ -144,7 +144,21 @@ Un candidat qui répond systématiquement « comme le Devoir » obtient le profi
 |---|---:|---:|---:|---:|---:|---:|---:|
 | u | 0,85 | 0,47 | 0,82 | −0,42 | 0,73 | −0,92 | 0,32 |
 
-Classement : 1. Devoir 86 % · 2. Ward 71 % · 3. Militaires 64 % · 4. Noon 61 % … Spark 6 %.
+Classement : 1. Devoir 86 % · 2. Militaires 64 % · 3. Ward 63 % · 4. Noon 54 % … Spark 6 %.
+
+### 4.6 Explications par axe
+
+Sur la page résultat, une phrase décrit la position du candidat sur chaque axe [F-23]. Seuils : |valeur| ≥ 0,5 pour une tendance nette, ≥ 0,2 pour un penchant, sinon équilibre.
+
+| Axe | ≤ −0,5 | ≤ −0,2 | entre les deux | ≥ 0,2 | ≥ 0,5 |
+|---|---|---|---|---|---|
+| `ORD` | Personne ne te dit quoi faire : ta liberté passe avant tout. | Tu préfères ta liberté aux ordres. | Tu respectes les règles… quand elles ont du sens. | Tu fais plutôt confiance aux règles et à l’autorité. | Tu crois fermement à l’ordre, à la hiérarchie et aux règles. |
+| `ALT` | Ton intérêt d’abord, le reste ensuite. S’il reste quelque chose. | Tu penses d’abord à ton intérêt. | Tu aides les autres, sans oublier de veiller sur toi. | Tu aides volontiers les autres. | Le bien commun passe avant ton intérêt, quitte à te sacrifier. |
+| `COL` | Loup solitaire : tu ne dois rien à personne. | Tu préfères compter sur toi-même. | Tu sais travailler en équipe, mais tu gardes ton indépendance. | Tu as besoin d’un groupe sur lequel compter. | Le groupe passe avant tout : loyauté, fraternité, appartenance. |
+| `FOI` | Seuls les faits comptent : ce qui ne se prouve pas n’existe pas. | Tu fais davantage confiance aux preuves qu’aux croyances. | Tu crois à la science, sans fermer la porte au mystère. | Tu laisses de la place à l’intuition et au mystère. | Tu crois à des forces qui dépassent la raison. |
+| `FOR` | Tu refuses la violence, presque à tout prix. | Tu préfères le dialogue à la confrontation. | La force ? En dernier recours, seulement. | Tu n’hésites pas à employer la manière forte quand il le faut. | Pour toi, la force est un outil comme un autre. |
+| `ZON` | L’inconnu est une menace : il faut le maîtriser, ou l’éliminer. | Ce qu’on ne comprend pas, mieux vaut le contrôler. | Ni détruire ni vénérer : tu observes l’inconnu avec prudence. | Tu préfères comprendre et laisser vivre plutôt que contrôler. | L’inconnu mérite d’être préservé, même s’il nous dépasse. |
+| `IDE` | Seul le résultat compte. Les grands principes, c’est pour les autres. | Tu juges sur les résultats plutôt que sur les principes. | Tu as des principes, mais tu sais faire des compromis. | Tu tiens à tes principes, même quand ça coûte. | Tes principes ne se négocient pas. |
 
 ## 5. Les 24 questions
 
@@ -166,7 +180,7 @@ Classement : 1. Devoir 86 % · 2. Ward 71 % · 3. Militaires 64 % · 4. Noon 61 
 | **A** | · | · | · | + | ++ | · | − | + | · | + | · | · |
 | **B** | · | · | · | · | − | + | · | − | · | − | + | · |
 | **C** | · | − | · | − | − | − | ++ | − | · | · | · | − |
-| **D** | · | · | · | + | + | · | − | + | · | · | · | + |
+| **D** | · | · | · | + | + | · | − | + | · | · | · | · |
 
 *Réplique de Sidorovich après la réponse D :* « Tu vérifies la marchandise avant d’acheter. J’aime ça. »
 
@@ -185,14 +199,14 @@ Classement : 1. Devoir 86 % · 2. Ward 71 % · 3. Militaires 64 % · 4. Noon 61 
 
 | Impact | SOL | DEV | LIB | BAN | MER | MON | ECO | MIL | CS | WAR | SPA | NOO |
 |---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **A** | − | ++ | − | − | · | ++ | · | ++ | + | + | · | ++ |
-| **B** | · | + | · | · | · | + | · | + | · | + | · | + |
-| **C** | + | −− | · | + | · | −− | · | − | − | − | · | − |
-| **D** | · | −− | + | · | · | − | · | −− | · | −− | · | − |
+| **A** | − | ++ | − | − | · | ++ | · | ++ | + | + | · | + |
+| **B** | · | + | − | · | · | + | · | + | · | + | · | · |
+| **C** | + | −− | · | + | · | −− | · | − | − | · | · | − |
+| **D** | · | −− | + | · | · | − | · | −− | · | −− | · | · |
 
 ### Q03 · Le portefeuille
 
-*Situation* · Départage surtout : Bandits, Devoir, Ward
+*Situation* · Départage surtout : Bandits, Devoir, Clear Sky
 
 > **Sidorovich :** « Tu trouves un portefeuille par terre : une belle liasse de billets et les papiers de son propriétaire. Personne ne t’a vu. »
 
@@ -205,7 +219,7 @@ Classement : 1. Devoir 86 % · 2. Ward 71 % · 3. Militaires 64 % · 4. Noon 61 
 
 | Impact | SOL | DEV | LIB | BAN | MER | MON | ECO | MIL | CS | WAR | SPA | NOO |
 |---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **A** | · | + | · | −− | − | · | + | · | + | + | · | · |
+| **A** | · | + | · | −− | − | · | + | · | + | + | + | · |
 | **B** | · | · | · | · | · | · | · | · | · | · | · | · |
 | **C** | · | · | · | · | · | · | · | · | · | · | · | · |
 | **D** | · | − | · | + | · | · | − | · | − | − | · | · |
@@ -229,7 +243,7 @@ Classement : 1. Devoir 86 % · 2. Ward 71 % · 3. Militaires 64 % · 4. Noon 61 
 |---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | **A** | − | + | + | −− | −− | + | + | · | ++ | · | + | + |
 | **B** | · | + | · | · | · | · | · | + | · | + | · | · |
-| **C** | · | − | · | · | · | · | · | · | · | · | · | − |
+| **C** | · | − | · | · | · | · | · | · | − | · | · | − |
 | **D** | · | − | · | + | + | · | − | · | − | − | − | − |
 
 ### Q05 · L’énergie inconnue
@@ -248,8 +262,8 @@ Classement : 1. Devoir 86 % · 2. Ward 71 % · 3. Militaires 64 % · 4. Noon 61 
 | Impact | SOL | DEV | LIB | BAN | MER | MON | ECO | MIL | CS | WAR | SPA | NOO |
 |---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | **A** | · | − | + | − | · | − | ++ | − | · | · | · | −− |
-| **B** | · | ++ | · | + | + | · | − | ++ | · | ++ | · | + |
-| **C** | · | + | − | + | ++ | − | · | ++ | − | ++ | −− | · |
+| **B** | · | ++ | · | + | + | · | − | ++ | · | + | · | + |
+| **C** | · | + | − | + | ++ | − | · | ++ | · | ++ | −− | · |
 | **D** | · | −− | · | − | −− | ++ | − | −− | · | −− | ++ | · |
 
 ### Q06 · Les forces invisibles
@@ -282,7 +296,7 @@ Classement : 1. Devoir 86 % · 2. Ward 71 % · 3. Militaires 64 % · 4. Noon 61 
 |---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | **A** | − | ++ | · | −− | −− | ++ | · | · | ++ | · | ++ | + |
 | **B** | · | · | · | · | + | · | · | · | · | · | − | · |
-| **C** | · | − | · | + | · | · | · | · | · | − | · | · |
+| **C** | · | − | · | + | · | · | · | · | · | · | · | · |
 | **D** | · | · | · | · | · | − | · | · | · | · | · | · |
 
 *Réplique de Sidorovich après la réponse D :* « Celle-là, c’est ma préférée. »
@@ -302,10 +316,10 @@ Classement : 1. Devoir 86 % · 2. Ward 71 % · 3. Militaires 64 % · 4. Noon 61 
 
 | Impact | SOL | DEV | LIB | BAN | MER | MON | ECO | MIL | CS | WAR | SPA | NOO |
 |---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **A** | − | ++ | · | − | · | ++ | · | + | + | + | · | ++ |
+| **A** | − | ++ | · | − | · | ++ | · | + | + | + | · | + |
 | **B** | · | · | · | · | · | − | · | · | · | · | · | · |
 | **C** | · | · | + | · | · | · | · | · | · | · | · | · |
-| **D** | + | −− | · | ++ | + | − | − | · | − | − | − | − |
+| **D** | + | −− | · | ++ | + | − | − | · | −− | · | − | − |
 
 ### Q09 · Le contrat doré
 
@@ -322,7 +336,7 @@ Classement : 1. Devoir 86 % · 2. Ward 71 % · 3. Militaires 64 % · 4. Noon 61 
 
 | Impact | SOL | DEV | LIB | BAN | MER | MON | ECO | MIL | CS | WAR | SPA | NOO |
 |---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **A** | · | − | − | + | + | · | · | · | − | · | − | · |
+| **A** | · | − | − | + | + | · | · | · | − | · | − | − |
 | **B** | · | · | · | · | · | · | · | · | · | · | · | · |
 | **C** | · | · | · | − | − | · | · | · | + | · | + | · |
 | **D** | · | · | · | · | · | · | · | · | · | · | · | · |
@@ -344,7 +358,7 @@ Classement : 1. Devoir 86 % · 2. Ward 71 % · 3. Militaires 64 % · 4. Noon 61 
 
 ### Q11 · Survivre avec qui ?
 
-*Préférence* · Départage surtout : Devoir, Noon, Monolithe
+*Préférence* · Départage surtout : Devoir, Clear Sky, Monolithe
 
 > **Sidorovich :** « Le monde est devenu dur. Pour tenir, tu préfères t’entourer… »
 
@@ -364,7 +378,7 @@ Classement : 1. Devoir 86 % · 2. Ward 71 % · 3. Militaires 64 % · 4. Noon 61 
 
 ### Q12 · La forêt et la route
 
-*Société* · Départage surtout : Monolithe, Spark, Mercenaires
+*Société* · Départage surtout : Monolithe, Spark, Ward
 
 > **Sidorovich :** « Une forêt très ancienne bloque le tracé d’une route qui relancerait l’économie de toute une région. »
 
@@ -378,7 +392,7 @@ Classement : 1. Devoir 86 % · 2. Ward 71 % · 3. Militaires 64 % · 4. Noon 61 
 | Impact | SOL | DEV | LIB | BAN | MER | MON | ECO | MIL | CS | WAR | SPA | NOO |
 |---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | **A** | · | + | − | ++ | ++ | −− | · | ++ | − | ++ | −− | · |
-| **B** | · | + | · | · | · | − | · | + | · | + | − | · |
+| **B** | · | + | · | · | + | − | · | + | · | + | − | · |
 | **C** | · | · | · | · | − | + | · | − | · | − | + | · |
 | **D** | · | −− | · | − | −− | ++ | · | −− | · | −− | ++ | · |
 
@@ -397,7 +411,7 @@ Classement : 1. Devoir 86 % · 2. Ward 71 % · 3. Militaires 64 % · 4. Noon 61 
 
 | Impact | SOL | DEV | LIB | BAN | MER | MON | ECO | MIL | CS | WAR | SPA | NOO |
 |---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **A** | · | − | ++ | · | − | − | · | −− | · | −− | + | − |
+| **A** | · | − | ++ | · | − | − | · | −− | · | −− | + | · |
 | **B** | − | ++ | − | − | · | ++ | · | + | + | + | · | + |
 | **C** | · | · | · | · | · | · | · | · | · | + | · | · |
 | **D** | · | − | − | ++ | ++ | · | − | · | − | · | − | − |
@@ -406,7 +420,7 @@ Classement : 1. Devoir 86 % · 2. Ward 71 % · 3. Militaires 64 % · 4. Noon 61 
 
 ### Q14 · La cause
 
-*Valeurs* · Départage surtout : Monolithe, Devoir, Noon
+*Valeurs* · Départage surtout : Monolithe, Noon, Devoir
 
 > **Sidorovich :** « Jusqu’où irais-tu pour une cause en laquelle tu crois de tout ton être ? »
 
@@ -421,7 +435,7 @@ Classement : 1. Devoir 86 % · 2. Ward 71 % · 3. Militaires 64 % · 4. Noon 61 
 |---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | **A** | −− | ++ | · | − | −− | ++ | · | + | ++ | · | ++ | ++ |
 | **B** | · | · | · | − | − | · | + | − | · | · | · | · |
-| **C** | + | · | · | · | + | −− | · | · | · | · | −− | − |
+| **C** | + | · | · | · | + | −− | · | · | · | + | −− | − |
 | **D** | ++ | −− | − | ++ | ++ | −− | − | · | −− | · | −− | −− |
 
 *Réplique de Sidorovich après la réponse A :* « Hm. Toi, je vais te garder à l’œil. »
@@ -461,7 +475,7 @@ Classement : 1. Devoir 86 % · 2. Ward 71 % · 3. Militaires 64 % · 4. Noon 61 
 
 ### Q17 · Le butin
 
-*Situation* · Départage surtout : Mercenaires, Clear Sky, Spark
+*Situation* · Départage surtout : Mercenaires, Spark, Clear Sky
 
 > **Sidorovich :** « Ton groupe met la main sur un gros butin. Comment on partage ? »
 
@@ -474,10 +488,10 @@ Classement : 1. Devoir 86 % · 2. Ward 71 % · 3. Militaires 64 % · 4. Noon 61 
 
 | Impact | SOL | DEV | LIB | BAN | MER | MON | ECO | MIL | CS | WAR | SPA | NOO |
 |---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **A** | · | + | + | − | −− | · | + | · | + | · | + | · |
+| **A** | · | + | + | − | −− | · | + | · | + | · | + | + |
 | **B** | · | + | · | − | · | + | · | · | · | + | · | · |
 | **C** | + | − | · | · | + | · | · | · | − | · | − | − |
-| **D** | · | − | · | + | · | · | − | · | · | − | · | · |
+| **D** | · | − | · | + | · | · | − | · | − | · | · | · |
 
 ### Q18 · La créature
 
@@ -494,8 +508,8 @@ Classement : 1. Devoir 86 % · 2. Ward 71 % · 3. Militaires 64 % · 4. Noon 61 
 
 | Impact | SOL | DEV | LIB | BAN | MER | MON | ECO | MIL | CS | WAR | SPA | NOO |
 |---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **A** | · | ++ | − | ++ | ++ | − | − | ++ | · | ++ | −− | ++ |
-| **B** | · | + | · | + | ++ | −− | + | + | · | ++ | −− | · |
+| **A** | · | ++ | − | ++ | ++ | − | − | ++ | · | ++ | −− | + |
+| **B** | · | + | · | + | ++ | −− | + | ++ | · | ++ | −− | · |
 | **C** | · | −− | + | −− | −− | + | + | −− | · | −− | ++ | − |
 | **D** | · | − | · | − | −− | ++ | − | −− | · | −− | ++ | · |
 
@@ -518,12 +532,12 @@ Classement : 1. Devoir 86 % · 2. Ward 71 % · 3. Militaires 64 % · 4. Noon 61 
 |---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | **A** | · | + | − | · | · | + | · | + | · | + | · | · |
 | **B** | · | + | · | · | · | · | · | · | · | · | · | · |
-| **C** | · | − | + | · | · | − | · | −− | · | − | · | − |
+| **C** | · | − | + | · | · | − | · | −− | · | − | · | · |
 | **D** | · | · | · | · | · | · | · | · | · | · | · | · |
 
 ### Q20 · L’étape suivante
 
-*Affirmation* · Départage surtout : Monolithe, Spark, Mercenaires
+*Affirmation* · Départage surtout : Monolithe, Spark, Ward
 
 > **Sidorovich :** « Ce qui nous effraie aujourd’hui pourrait être la prochaine étape de l’humanité. »
 
@@ -531,12 +545,12 @@ Classement : 1. Devoir 86 % · 2. Ward 71 % · 3. Militaires 64 % · 4. Noon 61 
 
 | Impact | SOL | DEV | LIB | BAN | MER | MON | ECO | MIL | CS | WAR | SPA | NOO |
 |---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| Tout à fait d’accord | · | −− | + | −− | −− | ++ | · | −− | + | −− | ++ | · |
+| Tout à fait d’accord | · | −− | + | −− | −− | ++ | · | −− | · | −− | ++ | · |
 | Pas du tout d’accord | · | ++ | · | ++ | ++ | −− | · | ++ | · | ++ | −− | · |
 
 ### Q21 · Le repenti
 
-*Dilemme* · Départage surtout : Devoir, Clear Sky, Noon
+*Dilemme* · Départage surtout : Devoir, Clear Sky, Mercenaires
 
 > **Sidorovich :** « Un ancien membre d’une secte violente demande à rejoindre ton groupe. Sous l’emprise de son gourou, il a fait des choses terribles. Aujourd’hui, il dit avoir ouvert les yeux. »
 
@@ -551,12 +565,12 @@ Classement : 1. Devoir 86 % · 2. Ward 71 % · 3. Militaires 64 % · 4. Noon 61 
 |---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | **A** | − | · | + | − | −− | · | + | · | + | · | + | · |
 | **B** | · | + | · | · | · | + | · | + | · | · | · | + |
-| **C** | + | −− | · | + | + | −− | · | − | − | − | − | −− |
+| **C** | + | −− | · | + | + | −− | · | − | −− | − | − | −− |
 | **D** | · | · | · | · | · | · | · | + | · | · | · | · |
 
 ### Q22 · Le voleur du camp
 
-*Situation* · Départage surtout : Militaires, Devoir, Noon
+*Situation* · Départage surtout : Militaires, Devoir, Écologistes
 
 > **Sidorovich :** « On a surpris quelqu’un en train de piller les réserves du camp. »
 
@@ -569,10 +583,10 @@ Classement : 1. Devoir 86 % · 2. Ward 71 % · 3. Militaires 64 % · 4. Noon 61 
 
 | Impact | SOL | DEV | LIB | BAN | MER | MON | ECO | MIL | CS | WAR | SPA | NOO |
 |---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **A** | · | + | − | + | + | + | − | ++ | · | + | · | + |
+| **A** | · | + | − | + | + | + | −− | ++ | · | + | · | + |
 | **B** | · | + | − | · | · | + | · | + | · | + | · | · |
 | **C** | · | · | · | − | − | · | + | − | · | · | · | · |
-| **D** | · | −− | + | · | − | −− | · | −− | · | −− | · | −− |
+| **D** | · | −− | + | · | − | −− | · | −− | · | −− | · | − |
 
 ### Q23 · La preuve
 
@@ -604,8 +618,8 @@ Classement : 1. Devoir 86 % · 2. Ward 71 % · 3. Militaires 64 % · 4. Noon 61 
 |---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | **A** | · | · | + | − | −− | · | · | − | + | · | ++ | · |
 | **B** | · | ++ | · | · | · | · | · | + | · | ++ | · | + |
-| **C** | · | · | · | · | − | + | · | · | · | · | · | · |
-| **D** | + | −− | − | ++ | ++ | − | − | · | −− | − | −− | − |
+| **C** | · | · | · | · | − | + | · | · | + | · | · | · |
+| **D** | + | −− | − | ++ | ++ | − | − | · | −− | · | −− | −− |
 
 *Réplique de Sidorovich après la réponse D :* « Tu iras loin… ou pas très loin. »
 
@@ -618,7 +632,7 @@ Première version du ton : bourru, sarcastique, mercantile, jamais insultant. Pa
 | Accueil | « Entre, entre. Et ferme la porte, ça fait des courants d’air. Alors comme ça, tu veux travailler dans la Zone ? Bien. Je ne vais pas t’envoyer n’importe où. Vingt-quatre questions. Réponds honnêtement : les mensonges, je les sens à dix kilomètres. » |
 | Mi-parcours (après Q12) | « À mi-chemin. Tu tiens le coup ? Tiens, un coup de vodka. Contre les radiations, il n’y a pas mieux. » |
 | Calcul du résultat | « Voyons voir ce dossier… » |
-| Résultat hybride | « Hm. Tu hésites entre {first} et {second}. Moi aussi. Je t’envoie chez {first}… ils paient mieux. » |
+| Résultat hybride | « Hm. {first} ou {second} ? J’hésite moi aussi. Allez, ce sera {first} : ils paient mieux. » |
 | Recommencer | « Encore ? Tu crois que tu vas me rouler ? Bon. On reprend depuis le début. » |
 
 **Verdicts par faction :**
@@ -680,8 +694,8 @@ Ces critères sont repris dans le cahier des charges (section 5.3). Ils sont vé
 |---|---|---|
 | C1 · Archétypes reconnus | 12/12 | ✅ |
 | C2 · Atteignabilité (score ≥ 80 % et 1er) | min 94 % | ✅ |
-| C3 · Reconnaissance (≥ 65 % chacune, ≥ 80 % en moyenne) | min 65,5 %, moyenne 83,2 % | ✅ |
-| C4 · Répartition (entre 2 % et 25 %) | de 2,8 % à 21,7 % | ✅ |
+| C3 · Reconnaissance (≥ 65 % chacune, ≥ 80 % en moyenne) | min 70,2 %, moyenne 84,9 % | ✅ |
+| C4 · Répartition (entre 2 % et 25 %) | de 3,6 % à 21,5 % | ✅ |
 | C5 · Couverture (≥ 8 questions par axe) | min 8 | ✅ |
 | C6 · Aucune réponse sans effet (hors « Sans avis ») | 24 questions | ✅ |
 
@@ -696,27 +710,26 @@ Définitions :
 
 | Faction | Archétype | Reconnaissance | Confusions principales | Part (personas uniformes) | Part (clics au hasard) |
 |---|---|---:|---|---:|---:|
-| Solitaires | ✅ 72 % | 79,5 % | Mercenaires 10,1 %, Bandits 4,7 % | 21,7 % | 54,0 % |
-| Devoir | ✅ 86 % | 92,0 % | Noon 5,6 %, Ward 2,0 % | 2,8 % | 0,0 % |
-| Liberté | ✅ 79 % | 84,7 % | Spark 7,8 %, Solitaires 2,6 % | 14,4 % | 10,6 % |
-| Bandits | ✅ 77 % | 87,5 % | Mercenaires 8,9 %, Solitaires 2,9 % | 8,5 % | 2,1 % |
-| Mercenaires | ✅ 85 % | 92,5 % | Bandits 5,3 %, Militaires 1,6 % | 7,3 % | 0,7 % |
-| Monolithe | ✅ 89 % | 98,2 % | Noon 1,1 %, Spark 0,7 % | 6,8 % | 0,4 % |
-| Écologistes | ✅ 74 % | 92,0 % | Liberté 3,5 %, Clear Sky 2,0 % | 8,6 % | 7,8 % |
-| Militaires | ✅ 85 % | 78,0 % | Ward 9,8 %, Mercenaires 6,1 % | 4,2 % | 2,6 % |
-| Clear Sky | ✅ 79 % | 65,5 % | Spark 9,1 %, Liberté 7,8 % | 5,4 % | 7,5 % |
-| Ward | ✅ 83 % | 72,5 % | Devoir 16,3 %, Militaires 9,2 % | 6,3 % | 3,1 % |
-| Spark | ✅ 85 % | 89,5 % | Monolithe 7,9 %, Clear Sky 1,9 % | 7,5 % | 0,9 % |
-| Noon | ✅ 81 % | 66,5 % | Devoir 17,9 %, Monolithe 7,3 % | 6,6 % | 10,3 % |
+| Solitaires | ✅ 72 % | 79,4 % | Mercenaires 9,7 %, Bandits 4,7 % | 21,5 % | 53,2 % |
+| Devoir | ✅ 86 % | 95,6 % | Noon 2,9 %, Ward 0,7 % | 3,6 % | 0,1 % |
+| Liberté | ✅ 79 % | 85,1 % | Spark 8,0 %, Solitaires 2,6 % | 14,2 % | 10,7 % |
+| Bandits | ✅ 77 % | 87,5 % | Mercenaires 8,9 %, Solitaires 2,9 % | 8,4 % | 2,1 % |
+| Mercenaires | ✅ 85 % | 92,2 % | Bandits 5,3 %, Militaires 1,1 % | 7,0 % | 0,7 % |
+| Monolithe | ✅ 89 % | 98,5 % | Noon 0,8 %, Spark 0,7 % | 7,0 % | 0,5 % |
+| Écologistes | ✅ 74 % | 91,0 % | Liberté 3,5 %, Clear Sky 3,1 % | 8,4 % | 7,8 % |
+| Militaires | ✅ 85 % | 77,9 % | Ward 9,5 %, Mercenaires 6,0 % | 4,0 % | 2,5 % |
+| Clear Sky | ✅ 79 % | 71,0 % | Devoir 6,2 %, Écologistes 5,7 % | 4,9 % | 5,1 % |
+| Ward | ✅ 85 % | 81,1 % | Militaires 8,8 %, Devoir 7,2 % | 6,4 % | 3,3 % |
+| Spark | ✅ 85 % | 89,8 % | Monolithe 7,8 %, Clear Sky 1,1 % | 7,7 % | 0,9 % |
+| Noon | ✅ 79 % | 70,2 % | Devoir 14,1 %, Monolithe 5,3 % | 6,9 % | 13,2 % |
 
-Résultats « hybrides » (écart < 3 points entre la 1re et la 2e faction) : **25,6 %** des personas uniformes. C’est voulu : Sidorovich « hésite » dans environ un cas sur quatre, ce qui rend le résultat plus vivant.
+Résultats « hybrides » (écart < 3 points entre la 1re et la 2e faction) : **24,8 %** des personas uniformes. C’est voulu : Sidorovich « hésite » dans environ un cas sur quatre, ce qui rend le résultat plus vivant.
 
 Quelqu’un qui clique au hasard obtient le plus souvent **Solitaires** : un profil sans conviction marquée reste proche du centre. C’est un comportement acceptable.
 
-### 7.4 Points faibles connus (à traiter en phase 3)
+### 7.4 Points faibles connus (à confronter au playtest de la phase 4)
 
-- **Clear Sky** : reconnaissance 65,5 %, souvent confondue avec Spark et Liberté. Piste : ajouter ou ajuster une question qui oppose directement ces factions.
-- **Noon** : reconnaissance 66,5 %, souvent confondue avec Devoir et Monolithe. Piste : ajouter ou ajuster une question qui oppose directement ces factions.
-- **Ward** : reconnaissance 72,5 %, souvent confondue avec Devoir et Militaires. Piste : ajouter ou ajuster une question qui oppose directement ces factions.
-- **Devoir** reste rare chez les personas uniformes (2,8 %) : son profil combine cinq axes très marqués, une zone étroite de l’espace. Les joueurs qui « visent » le Devoir l’obtiennent sans difficulté (archétype 86 %).
+- **Noon** : reconnaissance 70,2 %, souvent confondue avec Devoir et Monolithe. Piste : ajouter ou ajuster une question qui oppose directement ces factions.
+- **Clear Sky** : reconnaissance 71,0 %, souvent confondue avec Devoir et Écologistes. Piste : ajouter ou ajuster une question qui oppose directement ces factions.
+- **Devoir** reste rare chez les personas uniformes (3,6 %) : son profil combine cinq axes très marqués, une zone étroite de l’espace. Les joueurs qui « visent » le Devoir l’obtiennent sans difficulté (archétype 86 %).
 - Les personas simulées ne remplacent pas de vrais répondants. Un test avec 10 à 20 personnes est prévu en phase 4 pour confronter le modèle à la réalité.
