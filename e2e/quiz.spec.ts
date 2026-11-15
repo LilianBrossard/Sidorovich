@@ -3,6 +3,7 @@ import {
   answerButtons,
   answerRange,
   byTestId,
+  openMenu,
   HYBRID_CODE,
   LOCALES,
   RESULT_URL,
@@ -24,7 +25,7 @@ test.describe("parcours complet", () => {
       await expect(page).toHaveURL(RESULT_URL);
       expect(page.url()).toContain(`/${locale}/r/`);
       await expect(title(page)).not.toBeEmpty();
-      await expect(page.locator("svg[role=img]")).toBeVisible();
+      await expect(page.locator('svg[role=img][viewBox="0 0 400 400"]')).toBeVisible();
       await expect(ranking(page)).toHaveCount(12);
       await expect(byTestId(page, "profile").locator("li")).toHaveCount(7);
     });
@@ -104,6 +105,7 @@ test("reprise après rechargement, puis « Recommencer » [F-14]", async ({ page
 test("changer de langue en plein questionnaire garde la progression [F-02]", async ({ page }) => {
   await startQuiz(page, "fr");
   await answerRange(page, 0, 3);
+  await openMenu(page);
   await page.getByRole("link", { name: "English" }).click();
   await expect(page).toHaveURL(/\/en\/quiz$/);
   await waitForQuestion(page, 3);

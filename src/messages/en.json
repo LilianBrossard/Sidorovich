@@ -16,17 +16,21 @@
     "quiz": "The interview",
     "factions": "Factions",
     "howItWorks": "How it works",
-    "about": "About"
+    "about": "About",
+    "menu": "Menu"
   },
   "home": {
     "kicker": "Recruitment office · Cordon",
     "tagline": "24 questions. 12 factions. One verdict.",
     "cta": "Start the interview",
     "facts": {
-      "duration": "24 questions, about 5 minutes.",
-      "noRightAnswer": "No right answers: only yours.",
-      "privacy": "No account, no data collected."
-    }
+      "duration": "24 questions · 5 min",
+      "noRightAnswer": "No right answers",
+      "privacy": "No data collected"
+    },
+    "howLink": "How does it work?",
+    "videoPause": "Pause the video",
+    "videoPlay": "Play the video"
   },
   "quiz": {
     "metaTitle": "The interview",
@@ -35,21 +39,26 @@
     "rules": "Questions: {total}, one per screen. There are no right answers, and you can go back at any time. Your progress stays in your browser.",
     "start": "Take a seat",
     "skip": "Show all",
-    "progress": "Question {current} of {total}",
+    "progress": "Sheet {current} of {total}",
     "progressLabel": "Interview progress",
     "progressValue": "Answers: {answered} of {total}",
     "navigationLabel": "Question navigation",
-    "back": "Previous",
-    "next": "Next",
+    "back": "Previous sheet",
+    "next": "Next sheet",
     "restart": "Start over",
     "restartConfirm": "Erase all your answers?",
     "restartYes": "Yes, erase",
     "restartNo": "No, keep going",
-    "keyboardHint": "Keyboard: keys 1 to {count} to answer, ← and → to change question, ↑ and ↓ to browse the answers.",
+    "keyboardHint": "Keys 1 to {count} to answer, ← and → to change sheet, ↑ and ↓ to browse the answers.",
     "doneTitle": "File complete",
     "seeVerdict": "See my verdict",
     "review": "Review my answers",
-    "storageWarning": "Your browser blocks saving: if you close the tab, your progress will be lost."
+    "storageWarning": "Your browser blocks saving: if you close the tab, your progress will be lost.",
+    "fileTitle": "Application file",
+    "keyboardTitle": "Keyboard",
+    "confidential": "Confidential",
+    "backShort": "Previous",
+    "nextShort": "Next"
   },
   "resume": {
     "inProgress": "Interview in progress: you’re on question {current} of {total}.",
@@ -63,7 +72,7 @@
   },
   "result": {
     "metaTitle": "Verdict: {faction} ({percent})",
-    "kicker": "File no. <id>{code}</id>",
+    "kicker": "File no. <id>{code}</id> · analysis complete",
     "verdictLabel": "Recommended faction",
     "compatibility": "{percent} compatibility",
     "radarTitle": "Your profile on the 7 axes",
@@ -81,7 +90,10 @@
     "invalidTitle": "Unreadable file",
     "invalidBody": "This code doesn’t match any file. Maybe it was copied wrong… or forged. And Sidorovich doesn’t like fake papers.",
     "outdatedTitle": "Expired file",
-    "outdatedBody": "This file comes from an old version of the interview. Take it again to get an up-to-date verdict."
+    "outdatedBody": "This file comes from an old version of the interview. Take it again to get an up-to-date verdict.",
+    "messageTitle": "Message received · Sidorovich",
+    "runnerUp": "{faction} at {percent}",
+    "deviceLabel": "PDA-7 · Zone network"
   },
   "factionsPage": {
     "metaTitle": "Factions",

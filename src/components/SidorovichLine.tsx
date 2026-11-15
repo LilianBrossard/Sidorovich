@@ -1,17 +1,10 @@
 "use client";
 
-import { useEffect, useState, useSyncExternalStore } from "react";
+import { useEffect, useState } from "react";
+import { usePrefersReducedMotion } from "@/lib/motion";
 
-const REDUCED_MOTION = "(prefers-reduced-motion: reduce)";
 const CHARS_PER_TICK = 2;
 const TICK_MS = 30;
-
-function subscribeMotion(onChange: () => void): () => void {
-  const query = window.matchMedia(REDUCED_MOTION);
-  query.addEventListener("change", onChange);
-  return () => query.removeEventListener("change", onChange);
-}
-const prefersReducedMotion = () => window.matchMedia(REDUCED_MOTION).matches;
 
 interface Props {
   readonly text: string;
@@ -21,8 +14,8 @@ interface Props {
 }
 
 /**
- * Réplique de Sidorovich, tapée à la machine [F-16]. Un clic affiche tout le texte ;
- * avec prefers-reduced-motion, le texte s'affiche directement [V-06].
+ * Réplique de Sidorovich sur une note trombonée, tapée à la machine [F-16]. Un clic
+ * affiche tout le texte ; avec prefers-reduced-motion, le texte s'affiche directement [V-06].
  * Les lecteurs d'écran reçoivent la phrase entière, une seule fois.
  */
 export function SidorovichLine(props: Props) {
@@ -31,7 +24,7 @@ export function SidorovichLine(props: Props) {
 }
 
 function Typewriter({ text, speaker, skipLabel }: Props) {
-  const reduced = useSyncExternalStore(subscribeMotion, prefersReducedMotion, () => false);
+  const reduced = usePrefersReducedMotion(false);
   const [shown, setShown] = useState(0);
   const [skipped, setSkipped] = useState(false);
   const done = reduced || skipped || shown >= text.length;
@@ -43,8 +36,23 @@ function Typewriter({ text, speaker, skipLabel }: Props) {
   }, [done]);
 
   return (
-    <figure className="border-l-2 border-rust-500 pl-4">
-      <blockquote className="relative font-typewriter leading-relaxed text-paper-300">
+    <figure className="surface-paper relative m-0 -rotate-[1.5deg] bg-paper-300 px-5 pt-7 pb-4 text-ink-900 shadow-[0_10px_24px_rgb(0_0_0/0.45)] motion-safe:animate-fade-in lg:-rotate-2">
+      <svg
+        aria-hidden="true"
+        width="24"
+        height="58"
+        viewBox="0 0 26 62"
+        className="absolute -top-5 left-5"
+      >
+        <path
+          d="M8 40 V10 a5 5 0 0 1 10 0 V48 a8 8 0 0 1 -16 0 V16"
+          fill="none"
+          stroke="#6b6b3e"
+          strokeWidth="2.4"
+          strokeLinecap="round"
+        />
+      </svg>
+      <blockquote className="relative font-typewriter text-[15px] leading-relaxed sm:text-base">
         <p className="sr-only">{text}</p>
         {/* Le texte complet, invisible, réserve la place : rien ne bouge pendant la frappe. */}
         <p aria-hidden="true" className="invisible">
@@ -52,16 +60,16 @@ function Typewriter({ text, speaker, skipLabel }: Props) {
         </p>
         <p aria-hidden="true" className="absolute inset-0">
           {done ? text : text.slice(0, shown)}
-          {!done && <span className="animate-pulse text-amber-400">▌</span>}
+          {!done && <span className="animate-pulse">▌</span>}
         </p>
       </blockquote>
-      <figcaption className="mt-2 flex items-center gap-3 font-terminal text-xs text-paper-500">
+      <figcaption className="mt-3 flex items-center gap-3 font-terminal text-xs text-ink-600">
         <span>— {speaker}</span>
         {!done && (
           <button
             type="button"
             onClick={() => setSkipped(true)}
-            className="underline underline-offset-4 hover:text-paper-100"
+            className="underline underline-offset-4 hover:text-ink-900"
           >
             {skipLabel}
           </button>

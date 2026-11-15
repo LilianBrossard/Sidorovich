@@ -44,3 +44,11 @@ export async function answerRange(
     await buttons.nth(pick(i, count) % count).click();
   }
 }
+
+/** Sur mobile, les liens et les langues sont dans le menu : on l’ouvre s’il est fermé. */
+export async function openMenu(page: Page) {
+  const toggle = byTestId(page, "menu-toggle");
+  if ((await toggle.count()) > 0 && (await toggle.getAttribute("aria-expanded")) === "false") {
+    await toggle.click();
+  }
+}

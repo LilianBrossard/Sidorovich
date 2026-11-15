@@ -1,8 +1,9 @@
 import { useTranslations } from "next-intl";
+import { BunkerScene } from "@/components/bunker/BunkerScene";
 import { ResumeHint } from "@/components/quiz/ResumeHint";
 import { Link } from "@/i18n/navigation";
 
-/** Accueil : le concept et le bouton « Commencer », visible sans défilement [F-01]. */
+/** Accueil, dans le bunker : le bouton « Commencer » est visible sans défilement [F-01]. */
 export default function HomePage() {
   const t = useTranslations("home");
   const common = useTranslations("common");
@@ -10,43 +11,53 @@ export default function HomePage() {
   const sidorovich = useTranslations("sidorovich");
 
   return (
-    <div className="flex flex-col gap-8 sm:py-6">
-      <section>
-        <p className="font-terminal text-xs tracking-[0.25em] text-amber-400 uppercase">
-          {t("kicker")}
-        </p>
-        <h1 className="mt-3 font-typewriter text-4xl text-paper-100 sm:text-6xl">
-          {meta("title")}
-        </h1>
-        <p className="mt-3 text-lg text-paper-300">{t("tagline")}</p>
-      </section>
+    <div className="flex flex-1 flex-col bg-concrete">
+      <div className="mx-auto grid w-full max-w-6xl flex-1 items-center gap-10 px-4 py-8 sm:px-8 md:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] md:gap-12 md:py-16">
+        <section className="flex flex-col gap-6">
+          <p className="font-terminal text-xs tracking-[0.25em] text-amber-400 uppercase">
+            {t("kicker")}
+          </p>
+          <h1 className="font-typewriter text-[40px] leading-none text-paper-100 sm:text-7xl lg:text-[80px]">
+            {meta("title")}
+          </h1>
+          <p className="text-lg text-paper-300 sm:text-xl">{t("tagline")}</p>
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+            <Link
+              href="/quiz"
+              className="inline-flex min-h-13 w-full items-center justify-center gap-3 rounded-sm bg-amber-400 px-6 font-terminal text-sm font-semibold tracking-[0.12em] text-ink-900 uppercase shadow-[0_8px_24px_rgb(242_181_68/0.18)] hover:bg-amber-400/85 sm:w-auto"
+            >
+              {t("cta")}
+              <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M5 12h14M13 6l6 6-6 6"
+                  stroke="currentColor"
+                  strokeWidth="2.2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </Link>
+            <Link href="/how-it-works" className="text-paper-300 underline underline-offset-4">
+              {t("howLink")}
+            </Link>
+          </div>
+          <ResumeHint />
+          <ul className="flex flex-wrap gap-2 font-terminal text-[11px] tracking-wider text-paper-300 uppercase sm:text-xs">
+            {(["duration", "noRightAnswer", "privacy"] as const).map((key) => (
+              <li key={key} className="rounded-sm border border-bunker-700 bg-bunker-950 px-3 py-2">
+                {t(`facts.${key}`)}
+              </li>
+            ))}
+          </ul>
+        </section>
 
-      <div className="flex flex-wrap items-center gap-x-5 gap-y-3">
-        <Link
-          href="/quiz"
-          className="rounded-sm border border-amber-400 bg-amber-400 px-5 py-3 font-terminal text-sm tracking-wider text-ink-900 uppercase hover:bg-amber-400/85"
-        >
-          {t("cta")}
-        </Link>
-        <ResumeHint />
+        <BunkerScene
+          line={sidorovich("intro")}
+          speaker={common("speaker")}
+          pauseLabel={t("videoPause")}
+          playLabel={t("videoPlay")}
+        />
       </div>
-
-      <figure className="border-l-2 border-rust-500 pl-4">
-        <blockquote className="font-typewriter leading-relaxed text-paper-300">
-          <p>{sidorovich("intro")}</p>
-        </blockquote>
-        <figcaption className="mt-2 font-terminal text-xs text-paper-500">
-          — {common("speaker")}
-        </figcaption>
-      </figure>
-
-      <ul className="grid gap-3 text-sm text-paper-300 sm:grid-cols-3">
-        {(["duration", "noRightAnswer", "privacy"] as const).map((key) => (
-          <li key={key} className="rounded-sm border border-bunker-700 bg-bunker-900 px-4 py-3">
-            {t(`facts.${key}`)}
-          </li>
-        ))}
-      </ul>
     </div>
   );
 }

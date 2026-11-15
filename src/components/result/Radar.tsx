@@ -3,6 +3,7 @@ import type { Vector } from "@/lib/quiz/types";
 // Radar à 7 branches [F-21], dessiné en SVG côté serveur : aucun JavaScript envoyé.
 // Chaque branche va du pôle « − » (au centre) au pôle « + » (au bord) ;
 // le cercle pointillé du milieu correspond à l'équilibre (valeur 0).
+// Sur l'écran du PDA : traits au phosphore, le profil du candidat se dessine au démarrage.
 
 const SIZE = 400;
 const CENTER = SIZE / 2;
@@ -38,11 +39,6 @@ const polygon = (radii: readonly number[]) =>
     .map(([x, y]) => `${x.toFixed(1)},${y.toFixed(1)}`)
     .join(" ");
 
-const TONES = {
-  candidate: { fill: "fill-amber-400/25", stroke: "stroke-amber-400", dash: undefined },
-  faction: { fill: "fill-paper-300/10", stroke: "stroke-paper-300", dash: "6 4" },
-} as const;
-
 export function Radar({ axes, series, title, description }: Props) {
   const n = axes.length;
   const rings = [0.25, 0.5, 0.75, 1].map((k) => k * RADIUS);
@@ -52,18 +48,18 @@ export function Radar({ axes, series, title, description }: Props) {
       viewBox={`0 0 ${SIZE} ${SIZE}`}
       role="img"
       aria-label={title}
-      className="mx-auto block h-auto w-full max-w-md font-sans"
+      className="block h-auto w-full max-w-md"
     >
       <title>{title}</title>
       <desc>{description}</desc>
 
-      <g className="fill-none stroke-bunker-700">
+      <g className="fill-none stroke-amber-400/20">
         {rings.map((r) => (
           <polygon
             key={r}
             points={polygon(axes.map(() => r))}
             strokeDasharray={r === RADIUS / 2 ? "3 4" : undefined}
-            className={r === RADIUS / 2 ? "stroke-paper-500/60" : undefined}
+            className={r === RADIUS / 2 ? "stroke-amber-400/40" : undefined}
           />
         ))}
         {axes.map((_, i) => {
@@ -72,25 +68,33 @@ export function Radar({ axes, series, title, description }: Props) {
         })}
       </g>
 
-      {series.map(({ label, values, tone }) => {
-        const style = TONES[tone];
-        return (
+      {series.map(({ label, values, tone }) =>
+        tone === "faction" ? (
+          <polygon
+            key={label}
+            points={polygon(values.map(radiusOf))}
+            strokeWidth={2}
+            strokeDasharray="6 4"
+            strokeLinejoin="round"
+            className="fill-none stroke-amber-400/75"
+          />
+        ) : (
           <g key={label}>
             <polygon
               points={polygon(values.map(radiusOf))}
-              strokeWidth={2}
-              strokeDasharray={style.dash}
+              pathLength={1}
+              strokeDasharray={1}
+              strokeWidth={2.5}
               strokeLinejoin="round"
-              className={`${style.fill} ${style.stroke}`}
+              className="animate-draw fill-amber-400/25 stroke-amber-400 motion-reduce:animate-none"
             />
-            {tone === "candidate" &&
-              values.map((v, i) => {
-                const [x, y] = point(i, n, radiusOf(v));
-                return <circle key={i} cx={x} cy={y} r={3.5} className="fill-amber-400" />;
-              })}
+            {values.map((v, i) => {
+              const [x, y] = point(i, n, radiusOf(v));
+              return <circle key={i} cx={x} cy={y} r={3.5} className="fill-amber-400" />;
+            })}
           </g>
-        );
-      })}
+        ),
+      )}
 
       {axes.map((label, i) => {
         const [x, y] = point(i, n, LABEL_RADIUS);
@@ -105,7 +109,7 @@ export function Radar({ axes, series, title, description }: Props) {
             y={y}
             dy={dy}
             textAnchor={anchor}
-            className="fill-paper-300 text-[14px]"
+            className="fill-amber-400 font-terminal text-[13px] uppercase"
           >
             {label}
           </text>
