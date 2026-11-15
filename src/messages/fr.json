@@ -10,12 +10,163 @@
     "notice": "Un test pour s’amuser, pas une évaluation psychologique.",
     "sourceCode": "Code source"
   },
+  "nav": {
+    "label": "Navigation principale",
+    "skip": "Aller au contenu",
+    "quiz": "L’entretien",
+    "factions": "Les factions",
+    "howItWorks": "Comment ça marche",
+    "about": "À propos"
+  },
   "home": {
     "kicker": "Bureau de recrutement · Cordon",
     "tagline": "24 questions. 12 factions. Un seul verdict.",
-    "intro": "Entre, entre. Et ferme la porte, ça fait des courants d’air. Alors comme ça, tu veux travailler dans la Zone ? Bien. Je ne vais pas t’envoyer n’importe où. Vingt-quatre questions. Réponds honnêtement : les mensonges, je les sens à dix kilomètres.",
     "cta": "Commencer l’entretien",
-    "ctaSoon": "Le bureau ouvre bientôt."
+    "facts": {
+      "duration": "24 questions, environ 5 minutes.",
+      "noRightAnswer": "Pas de bonne réponse : seulement la tienne.",
+      "privacy": "Aucun compte, aucune donnée collectée."
+    }
+  },
+  "quiz": {
+    "metaTitle": "L’entretien",
+    "title": "Entretien d’embauche",
+    "loading": "Sidorovich cherche ton dossier…",
+    "rules": "Questions : {total}, une par écran. Il n’y a pas de bonne réponse, et tu peux revenir en arrière à tout moment. Ta progression reste dans ton navigateur.",
+    "start": "Je m’assois",
+    "skip": "Tout afficher",
+    "progress": "Question {current} sur {total}",
+    "progressLabel": "Progression de l’entretien",
+    "progressValue": "Réponses : {answered} sur {total}",
+    "navigationLabel": "Navigation entre les questions",
+    "back": "Précédente",
+    "next": "Suivante",
+    "restart": "Recommencer",
+    "restartConfirm": "Effacer toutes tes réponses ?",
+    "restartYes": "Oui, effacer",
+    "restartNo": "Non, continuer",
+    "keyboardHint": "Au clavier : touches 1 à {count} pour répondre, ← et → pour changer de question, ↑ et ↓ pour parcourir les réponses.",
+    "doneTitle": "Dossier complet",
+    "seeVerdict": "Voir mon verdict",
+    "review": "Revoir mes réponses",
+    "storageWarning": "Ton navigateur bloque la sauvegarde : si tu fermes l’onglet, ta progression sera perdue."
+  },
+  "resume": {
+    "inProgress": "Entretien en cours : tu en es à la question {current} sur {total}.",
+    "lastVerdict": "Revoir mon dernier verdict"
+  },
+  "share": {
+    "share": "Partager",
+    "copy": "Copier le lien",
+    "copied": "Lien copié.",
+    "copyFailed": "Copie impossible : copie l’adresse depuis la barre du navigateur."
+  },
+  "result": {
+    "metaTitle": "Verdict : {faction} ({percent})",
+    "kicker": "Dossier n° <id>{code}</id>",
+    "verdictLabel": "Faction recommandée",
+    "compatibility": "{percent} de compatibilité",
+    "radarTitle": "Ton profil sur les 7 axes",
+    "radarHelp": "Plus un point s’éloigne du centre, plus il penche vers le pôle écrit au bout de la branche ; près du centre, vers le pôle opposé. Le cercle pointillé marque l’équilibre.",
+    "radarTable": "Position sur chaque axe, de +100 (premier pôle) à −100 (second pôle)",
+    "axis": "Axe",
+    "you": "Toi",
+    "profileTitle": "Ce que ton dossier dit de toi",
+    "rankingTitle": "Les {count} factions, de la plus à la moins compatible",
+    "shareTitle": "Partager mon verdict",
+    "shareText": "Verdict de Sidorovich : {faction}, {percent} de compatibilité. Et toi, quelle faction de la Zone ?",
+    "retake": "Passer l’entretien",
+    "allFactions": "Découvrir les 12 factions",
+    "invalidKicker": "Dossier refusé",
+    "invalidTitle": "Dossier illisible",
+    "invalidBody": "Ce code ne correspond à aucun dossier. Il a peut-être été mal copié… ou falsifié. Et Sidorovich n’aime pas les faux papiers.",
+    "outdatedTitle": "Dossier périmé",
+    "outdatedBody": "Ce dossier date d’une ancienne version de l’entretien. Repasse-le pour obtenir un verdict à jour."
+  },
+  "factionsPage": {
+    "metaTitle": "Les factions",
+    "title": "Les 12 factions de la Zone",
+    "intro": "Chaque faction a sa signature : sa position moyenne sur les 7 axes de valeurs, calculée à partir de milliers de candidats simulés. C’est à elles que Sidorovich compare ton dossier.",
+    "games": "Présente dans : {games}",
+    "signature": "Signature sur les axes",
+    "axisValue": "{plus} / {minus} : {value}",
+    "archetype": "Voir le dossier type : {faction}"
+  },
+  "games": {
+    "soc": "Shadow of Chernobyl",
+    "cs": "Clear Sky",
+    "cop": "Call of Pripyat",
+    "s2": "Heart of Chornobyl"
+  },
+  "howItWorks": {
+    "metaTitle": "Comment ça marche",
+    "title": "Comment Sidorovich rend son verdict",
+    "intro": "Derrière le marchand, un petit moteur de calcul : il transforme tes 24 réponses en profil, puis cherche la faction qui te ressemble le plus. Tout se passe dans ton navigateur ; aucune réponse n’est envoyée à un serveur.",
+    "diagram": {
+      "answers": "24 réponses",
+      "answersDetail": "Dilemmes, situations, affirmations",
+      "profile": "Profil sur 7 axes",
+      "profileDetail": "Chaque valeur entre −1 et +1",
+      "distance": "Distance aux 12 factions",
+      "distanceDetail": "Comparée à des centres calibrés",
+      "verdict": "Verdict",
+      "verdictDetail": "La faction la plus proche, en %",
+      "caption": "Le trajet d’un dossier, de tes réponses au verdict."
+    },
+    "axes": {
+      "title": "Sept axes de valeurs",
+      "body": "Les questions ne parlent pas de factions : elles mesurent des valeurs. Chaque réponse déplace ton profil sur un ou plusieurs de ces sept axes, de −2 à +2 points."
+    },
+    "profile": {
+      "title": "Un profil, pas une étiquette",
+      "body": "On additionne les points de tes 24 réponses, axe par axe. Chaque total est ensuite ramené entre −1 et +1, selon le maximum atteignable de chaque côté : un pôle évoqué par moins de questions reste aussi accessible que l’autre. Sur l’échelle d’accord, « plutôt » compte pour moitié et « sans avis » ne compte pas."
+    },
+    "distance": {
+      "title": "La faction la plus proche",
+      "body": "Ton profil est un point dans un espace à 7 dimensions, et chaque faction aussi. Le moteur mesure la distance entre toi et chacune d’elles, puis la convertit en compatibilité : 100 % à distance nulle, 0 % à √7, la distance du centre à un coin de l’espace. Si les deux premières factions sont à moins de 3 points d’écart, Sidorovich hésite… puis tranche."
+    },
+    "calibration": {
+      "title": "Des centres calibrés par simulation",
+      "body": "Où placer chaque faction ? Un profil écrit à la main ne suffit pas : selon les questions, certaines positions sont plus faciles à atteindre que d’autres. Le moteur simule donc 3 000 candidats par faction, qui répondent avec un peu d’hésitation, comme de vrais humains. La position moyenne de leurs profils devient le centre de la faction."
+    },
+    "balance": {
+      "title": "Un équilibre vérifié à chaque modification",
+      "body": "Des tests automatiques tournent à chaque changement : chaque faction doit pouvoir être obtenue, un candidat simulé doit retrouver sa propre faction au moins 65 fois sur 100, aucune faction ne doit dépasser 25 % des résultats, et chaque axe doit être mesuré par au moins 8 questions. Si un seul critère échoue, la vérification du projet échoue."
+    },
+    "codeLink": "Lire le code du moteur sur GitHub"
+  },
+  "about": {
+    "metaTitle": "À propos",
+    "title": "À propos",
+    "project": {
+      "title": "Le projet",
+      "body": "Sidorovich RH est un projet de fan, conçu comme pièce de portfolio : un test de personnalité qui prend la forme d’un entretien d’embauche avec Sidorovich, le marchand du Cordon. Ce n’est pas une évaluation psychologique, juste un jeu."
+    },
+    "legal": {
+      "title": "Mentions légales",
+      "publisher": "Éditeur : Lilian Brossard, à titre personnel et non commercial.",
+      "contact": "Contact : par le dépôt GitHub du projet (onglet Issues).",
+      "host": "Hébergeur : Vercel Inc., 440 N Barranca Avenue #4133, Covina, CA 91723, États-Unis."
+    },
+    "privacy": {
+      "title": "Données personnelles",
+      "body": "Le site ne collecte aucune donnée personnelle et n’utilise aucun cookie de mesure d’audience. Ton navigateur garde seulement ta progression dans l’entretien (stockage local) et ta langue (cookie NEXT_LOCALE). Ton résultat est recalculé à partir du code contenu dans l’adresse de la page : il n’est enregistré dans aucune base de données."
+    },
+    "credits": {
+      "title": "Crédits",
+      "fonts": "Polices : PT Sans et PT Mono (ParaType), IBM Plex Mono (IBM), sous licence SIL Open Font License 1.1.",
+      "code": "Construit avec Next.js, React, next-intl, Tailwind CSS et Zod, sous licence MIT.",
+      "images": "Illustrations et emblèmes : créations originales. Aucun élément graphique ou sonore officiel n’est utilisé."
+    },
+    "fan": {
+      "title": "Avertissement",
+      "body": "Les noms des factions et des lieux appartiennent à l’univers de S.T.A.L.K.E.R. Ils sont cités dans un cadre non commercial, par un fan, pour des fans."
+    },
+    "license": {
+      "title": "Licence",
+      "body": "Le code et les contenus originaux du site sont publiés sous licence MIT : tu peux les réutiliser, les modifier et les redistribuer, à condition de conserver la mention de copyright.",
+      "link": "Lire la licence"
+    }
   },
   "notFound": {
     "title": "Attention, anomalie…",
@@ -23,6 +174,8 @@
     "back": "Retour au bunker"
   },
   "sidorovich": {
+    "intro": "Entre, entre. Et ferme la porte, ça fait des courants d’air. Alors comme ça, tu veux travailler dans la Zone ? Bien. Je ne vais pas t’envoyer n’importe où. Vingt-quatre questions. Réponds honnêtement : les mensonges, je les sens à dix kilomètres.",
+    "welcome": "Assieds-toi. Je pose les questions, tu réponds. Et à la fin, je te dirai où tu seras le plus utile… à moi.",
     "halfway": "À mi-chemin. Tu tiens le coup ? Tiens, un coup de vodka. Contre les radiations, il n’y a pas mieux.",
     "computing": "Voyons voir ce dossier…",
     "hybrid": "Hm. {first} ou {second} ? J’hésite moi aussi. Allez, ce sera {first} : ils paient mieux.",

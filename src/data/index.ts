@@ -1,11 +1,15 @@
 // Point d'entrée des données du questionnaire pour le site.
+import { archetypeAnswers } from "@/lib/quiz/balance";
+import type { FactionKey } from "@/lib/quiz/domain";
 import { decodeAnswers, encodeAnswers, type DecodeError } from "@/lib/quiz/encoding";
 import { evaluate } from "@/lib/quiz/engine";
 import type { Answers, CentersFile, QuizResult } from "@/lib/quiz/types";
 import centersV1 from "./centers.v1.json";
+import { FACTIONS } from "./factions";
 import {
   CURRENT_QUESTIONNAIRE,
   QUESTIONNAIRES,
+  RETIRED_CODE_CHARS,
   type VersionId,
   type VersionedQuestionnaire,
 } from "./questionnaires";
@@ -43,3 +47,13 @@ export function resultFromCode(code: string): ResultFromCode {
     result: evaluate(questionnaire, CENTERS_FILES[questionnaire.version].centers, answers),
   };
 }
+
+/** Vrai si le code vient d'une version retirée du questionnaire [F-26]. */
+export const isRetiredCode = (code: string): boolean => RETIRED_CODE_CHARS.includes(code.charAt(0));
+
+/**
+ * Code du « dossier type » d'une faction : les réponses qu'elle donnerait elle-même
+ * (critère C1). Ces 12 résultats sont pré-rendus au build.
+ */
+export const archetypeCode = (faction: FactionKey): string =>
+  resultCode(archetypeAnswers(CURRENT_QUESTIONNAIRE, FACTIONS[faction].profile));

@@ -27,17 +27,19 @@ Ce plan découpe le projet en **phases courtes**. Chaque phase se termine par un
 ```
 src/
 ├─ app/[locale]/
-│  ├─ page.tsx                  Accueil (bunker)
-│  ├─ quiz/page.tsx             Questionnaire (dossier)
-│  ├─ r/[code]/page.tsx         Résultat (PDA), rendu à la demande puis mis en cache
-│  ├─ r/[code]/opengraph-image.tsx   Image d'aperçu dynamique
-│  ├─ factions/page.tsx
-│  ├─ how-it-works/page.tsx
-│  ├─ about/page.tsx
-│  └─ not-found.tsx
+│  ├─ layout.tsx · not-found.tsx    Layout racine (html, polices, textes client) ; 404
+│  └─ (site)/                   Garde de langue, en-tête et pied de page communs
+│     ├─ page.tsx               Accueil (bunker)
+│     ├─ quiz/page.tsx          Questionnaire (dossier)
+│     ├─ r/[code]/page.tsx      Résultat (PDA), rendu à la demande puis mis en cache
+│     ├─ r/[code]/opengraph-image.tsx   Image d'aperçu dynamique (phase 6)
+│     ├─ factions/page.tsx
+│     ├─ how-it-works/page.tsx
+│     └─ about/page.tsx
 ├─ lib/quiz/                    Moteur (fonctions pures, sans dépendance au navigateur)
 │  ├─ domain.ts · types.ts      Axes, factions, échelle, seuils ; types
 │  ├─ engine.ts                 Profil, distances, classement, résultat hybride
+│  ├─ session.ts                Déroulé d'une partie : réponses, retour arrière, mélange, sauvegarde
 │  ├─ encoding.ts               Réponses ↔ code d'URL (version + somme de contrôle)
 │  ├─ simulation.ts · random.ts Personas simulées, calibration des centres (graine fixe)
 │  ├─ balance.ts                Critères d'équilibrage C1 à C6
@@ -52,11 +54,13 @@ src/
 │  └─ index.ts                  resultCode(), resultFromCode()
 ├─ messages/fr.json · en.json · uk.json · ru.json   Tous les textes
 ├─ components/
-│  ├─ bunker/ · dossier/ · pda/ Composants propres à chaque scène
-│  └─ ui/                        Boutons, radar SVG, sélecteur de langue…
-└─ styles/tokens.css            Design tokens
+│  ├─ quiz/                     Questionnaire (client), partie sauvegardée dans le navigateur
+│  ├─ result/                   Radar SVG, boutons de partage
+│  └─ …                         En-tête, navigation, langues, répliques de Sidorovich
+│                               (phase 5 : bunker/ · dossier/ · pda/, design tokens)
 scripts/   calibrate.ts · balance-report.ts · gen-questionnaire-doc.ts · validate-data.ts
-tests/     unit/ · property/ · balance/ · e2e/
+tests/     unit/ · property/ · balance/       Vitest
+e2e/       quiz.spec.ts · pages.spec.ts         Playwright, sur le build de production
 ```
 
 **Code de résultat** `[F-25]` : les 24 réponses forment un nombre en base mixte (4 ou 5 possibilités par question, environ 50 bits), écrit en base64url. On ajoute un caractère de version et deux caractères de somme de contrôle, soit **12 caractères**. Exemple : `/fr/r/1AUoEtqwqfeJ`. L'ordre mélangé des réponses à l'écran n'intervient pas : on encode l'indice de la réponse d'origine.
@@ -156,14 +160,18 @@ flowchart LR
 
 Un design volontairement minimal : on valide le fonctionnement avant de l'habiller.
 
-- [ ] Créer les pages accueil, questionnaire, résultat, factions, « Comment ça marche », « À propos » et 404 `[F-01] [F-30…F-33]`.
-- [ ] Gérer l'état du questionnaire avec `useReducer` : mélange des réponses par graine, retour arrière, reprise depuis `localStorage` `[F-11] [F-13] [F-14]`.
-- [ ] Gérer le clavier et la progression `[F-12] [F-15]`.
-- [ ] Afficher les répliques de Sidorovich (effet de frappe qu'on peut passer) `[F-16]`.
-- [ ] Construire la page résultat : faction, %, classement, radar SVG avec alternative textuelle, explications par axe, cas hybride `[F-20…F-24]`.
-- [ ] Ajouter le partage natif et la copie du lien `[F-27]`.
-- [ ] Écrire les tests Playwright : parcours complet dans les 4 langues, sur mobile et ordinateur ; lien partagé rouvert dans un nouveau contexte ; code invalide.
-- [ ] **Playtest avec 10 à 20 personnes** : durée, réactions, résultat jugé juste ou non (note sur 5). Retour en phase 3 si besoin.
+- [x] Créer les pages accueil, questionnaire, résultat, factions, « Comment ça marche », « À propos » et 404 `[F-01] [F-30…F-33]`. En-tête commun avec lien d'évitement, navigation et langues. Chaque fiche de faction mène à son « dossier type ».
+- [x] Gérer l'état du questionnaire : un réducteur pur (`lib/quiz/session.ts`, testé sans navigateur) et une partie sauvegardée dans `localStorage`, lue avec `useSyncExternalStore`. Mélange des réponses par graine (les échelles d'accord ne sont jamais mélangées), retour arrière, reprise, « Recommencer » avec confirmation `[F-11] [F-13] [F-14]`.
+- [x] Gérer le clavier et la progression : touches 1 à 4 (ou 5), ← →, ↑ ↓ entre les réponses, Retour arrière ; focus replacé sur l'intitulé à chaque question `[F-12] [F-15]`.
+- [x] Afficher les répliques de Sidorovich : accueil, 8 réactions, mi-parcours, calcul ; effet de frappe qu'un clic passe, désactivé avec `prefers-reduced-motion` `[F-16] [V-06]`.
+- [x] Construire la page résultat : faction, %, verdict, description, radar SVG avec tableau pour les lecteurs d'écran, 7 explications par axe, classement des 12, cas hybride `[F-20…F-24]`. Page statique : les 12 dossiers types sont pré-rendus, tout autre code est rendu à sa première visite puis servi depuis le cache (`ensureStatic = "navigation"`) `[T-01]`. Non indexée.
+- [x] Ajouter le partage natif et la copie du lien `[F-27]`.
+- [x] Écrire les tests Playwright (17 scénarios, chacun sur ordinateur et sur mobile) : parcours complet dans les 4 langues ; lien partagé rouvert dans un nouveau contexte ; codes invalide, altéré et tronqué ; résultat hybride ; retour arrière ; reprise ; changement de langue ; clavier ; 404 ; bouton visible en 360 × 640 ; aucun défilement horizontal à 360 px. Ajoutés à la CI.
+- [ ] **Playtest avec 10 à 20 personnes** : durée, réactions, résultat jugé juste ou non (note sur 5). Retour en phase 3 si besoin. Protocole et grille : [document 04](04-playtest.md).
+
+À savoir : avec `cacheComponents`, Next.js garde les pages quittées dans le DOM, masquées (composant `Activity`). Deux langues d'une même page peuvent donc coexister. Les identifiants référencés par ARIA sont uniques (`useId`) et les tests ne visent que les éléments visibles.
+
+Mesures : 158 Ko de JavaScript compressé sur la page questionnaire (budget : 200 Ko) `[T-05]`.
 
 **Fini quand :** le test est jouable de bout en bout en production, les tests de bout en bout sont verts et la synthèse du playtest est écrite.
 

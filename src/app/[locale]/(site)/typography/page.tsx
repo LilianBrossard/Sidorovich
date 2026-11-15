@@ -25,7 +25,7 @@ const FONTS = [
 
 export default function TypographyPage() {
   return (
-    <main className="mx-auto w-full max-w-4xl px-4 py-10">
+    <div>
       <h1 className="font-terminal text-sm tracking-[0.25em] text-amber-400 uppercase">
         Contrôle typographique [I-04]
       </h1>
@@ -47,6 +47,6 @@ export default function TypographyPage() {
           </div>
         </section>
       ))}
-    </main>
+    </div>
   );
 }
