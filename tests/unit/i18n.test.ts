@@ -9,6 +9,20 @@ import uk from "@/messages/uk.json";
 
 type Catalog = { [key: string]: string | Catalog };
 
+/**
+ * Espaces de noms écrits en français mais pas encore traduits : contenu du questionnaire,
+ * traduit en phase 3 du plan. Ils doivent être soit absents, soit complets dans une langue.
+ * À vider en phase 3.
+ */
+const PENDING_TRANSLATION = [
+  "sidorovich",
+  "axes",
+  "factions",
+  "questionKinds",
+  "scale",
+  "questionnaire",
+] as const;
+
 function flatten(catalog: Catalog, prefix = ""): Record<string, string> {
   return Object.entries(catalog).reduce<Record<string, string>>((acc, [key, value]) => {
     const path = prefix ? `${prefix}.${key}` : key;
@@ -24,6 +38,7 @@ const placeholders = (message: string) =>
 
 const catalogs: Record<string, Catalog> = { fr, en, uk, ru };
 const reference = flatten(fr);
+const namespaceOf = (key: string) => key.split(".")[0];
 
 describe("traductions [I-03]", () => {
   it("chaque langue du routage a un catalogue, et inversement", () => {
@@ -32,9 +47,17 @@ describe("traductions [I-03]", () => {
 
   for (const [locale, catalog] of Object.entries(catalogs)) {
     const messages = flatten(catalog);
+    const present = new Set(Object.keys(catalog));
+    // Clés attendues : toutes celles du français, sauf les espaces en attente absents ici.
+    const expected = Object.keys(reference).filter((key) => {
+      const namespace = namespaceOf(key);
+      return (
+        !(PENDING_TRANSLATION as readonly string[]).includes(namespace) || present.has(namespace)
+      );
+    });
 
     it(`${locale} : mêmes clés que le français`, () => {
-      expect(Object.keys(messages).sort()).toEqual(Object.keys(reference).sort());
+      expect(Object.keys(messages).sort()).toEqual(expected.sort());
     });
 
     it(`${locale} : aucune chaîne vide`, () => {
@@ -48,4 +71,8 @@ describe("traductions [I-03]", () => {
       }
     });
   }
+
+  it("le français contient tous les espaces de noms en attente de traduction", () => {
+    for (const namespace of PENDING_TRANSLATION) expect(fr).toHaveProperty(namespace);
+  });
 });

@@ -35,24 +35,31 @@ src/
 │  ├─ how-it-works/page.tsx
 │  ├─ about/page.tsx
 │  └─ not-found.tsx
-├─ lib/quiz/
-│  ├─ engine.ts                 Profil, distances, classement (fonctions pures)
+├─ lib/quiz/                    Moteur (fonctions pures, sans dépendance au navigateur)
+│  ├─ domain.ts · types.ts      Axes, factions, échelle, seuils ; types
+│  ├─ engine.ts                 Profil, distances, classement, résultat hybride
 │  ├─ encoding.ts               Réponses ↔ code d'URL (version + somme de contrôle)
-│  ├─ calibrate.ts              Simulation des personas, centres calibrés
-│  └─ schema.ts                 Schémas Zod des données
+│  ├─ simulation.ts · random.ts Personas simulées, calibration des centres (graine fixe)
+│  ├─ balance.ts                Critères d'équilibrage C1 à C6
+│  ├─ fingerprint.ts            Empreinte stable des données
+│  └─ schema.ts                 Schémas Zod (tests et validation avant build)
 ├─ data/
-│  ├─ axes.ts · factions.ts · questions.ts   Deltas et profils, sans texte
-│  └─ centers.v1.json           Centres calibrés, versionnés
+│  ├─ questionnaire.v1.ts       Deltas des 24 questions, sans texte
+│  ├─ factions.ts               Profils déclarés des 12 factions
+│  ├─ centers.v1.json           Centres calibrés, générés et versionnés
+│  ├─ questionnaires.ts         Registre des versions (anciens liens lisibles)
+│  ├─ check.ts                  Contrôle de cohérence données + textes
+│  └─ index.ts                  resultCode(), resultFromCode()
 ├─ messages/fr.json · en.json · uk.json · ru.json   Tous les textes
 ├─ components/
 │  ├─ bunker/ · dossier/ · pda/ Composants propres à chaque scène
 │  └─ ui/                        Boutons, radar SVG, sélecteur de langue…
 └─ styles/tokens.css            Design tokens
-scripts/   calibrate.ts · balance-report.ts · gen-questionnaire-doc.ts
+scripts/   calibrate.ts · balance-report.ts · gen-questionnaire-doc.ts · validate-data.ts
 tests/     unit/ · property/ · balance/ · e2e/
 ```
 
-**Code de résultat** `[F-25]` : les 24 réponses forment un nombre en base mixte (4 ou 5 possibilités par question, environ 50 bits), écrit en base64url. On ajoute un caractère de version et deux caractères de somme de contrôle, soit **environ 12 caractères**. Exemple : `/fr/r/1Kq9xZ0aB7cf`. L'ordre mélangé des réponses à l'écran n'intervient pas : on encode l'indice de la réponse d'origine.
+**Code de résultat** `[F-25]` : les 24 réponses forment un nombre en base mixte (4 ou 5 possibilités par question, environ 50 bits), écrit en base64url. On ajoute un caractère de version et deux caractères de somme de contrôle, soit **12 caractères**. Exemple : `/fr/r/1AUoEtqwqfeJ`. L'ordre mélangé des réponses à l'écran n'intervient pas : on encode l'indice de la réponse d'origine.
 
 ---
 
@@ -76,8 +83,8 @@ flowchart LR
 | Phase | Objectif | Charge estimée* | Jalon | Tag |
 |---|---|---|---|---|
 | 0 · Cadrage | Les 3 documents et le prototype du moteur | ✅ fait | Documents validés par Lilian | — |
-| 1 · Socle | Projet Next.js en 4 langues, CI, déploiement | ✅ code fait, Vercel à brancher | « Hello Zone » en production dans les 4 langues | `v0.1.0` |
-| 2 · Moteur | Moteur de score en TypeScript, testé et équilibré | 2 j | Tests et critères C1 à C6 verts en CI | `v0.2.0` |
+| 1 · Socle | Projet Next.js en 4 langues, CI, déploiement | ✅ fait | « Hello Zone » en production dans les 4 langues | `v0.1.0` |
+| 2 · Moteur | Moteur de score en TypeScript, testé et équilibré | ✅ fait | Tests et critères C1 à C6 verts en CI | `v0.2.0` |
 | 3 · Contenu | Textes FR définitifs et traductions EN, UK, RU | 2 j + relectures | 100 % des clés traduites ; lore validé | `v0.3.0` |
 | 4 · Parcours brut | Test jouable de bout en bout, sans décor | 2 j | Tests de bout en bout verts ; playtest fait | `v0.4.0` |
 | 5 · Direction artistique | Bunker, dossier, PDA, animations | 4 à 5 j | Maquettes respectées ; budgets de performance tenus | `v0.5.0` |
@@ -96,7 +103,7 @@ flowchart LR
 - [x] Choix structurants : factions, rôle de Sidorovich, modèle de calcul, back-end, direction artistique, longueur.
 - [x] Cahier des charges ([01](01-cahier-des-charges.md)).
 - [x] Questionnaire v0 avec impacts calculés ([02](02-questionnaire.md)).
-- [x] Prototype du moteur et des tests d'équilibrage (`docs/prototype/`), tous les critères au vert.
+- [x] Prototype du moteur et des tests d'équilibrage, tous les critères au vert (porté en TypeScript en phase 2).
 - [x] Plan de développement (ce document).
 - [x] **Jalon : documents validés** le 15/11/2026 (réponses aux questions ouvertes reportées dans le cahier, § 13.2).
 
@@ -115,22 +122,22 @@ flowchart LR
 - [x] Ajouter le test de complétude des traductions `[I-03]`.
 - [x] Mettre en place GitHub Actions : lint, format, types, tests, équilibrage C1 à C6, build `[T-09] [T-10]`.
 - [ ] Protéger `main` dans les réglages GitHub (Settings → Branches : PR obligatoire, vérification « CI » requise). **À faire par Lilian.**
-- [ ] Brancher Vercel : import du dépôt, aperçu par PR, production sur `main`. **À faire par Lilian.**
+- [x] Brancher Vercel : import du dépôt, aperçu par PR, production sur `main` (https://sidorovich.vercel.app).
 
 **Fini quand :** l'URL de production affiche une page dans les 4 langues, la CI est verte et une PR de test a généré son aperçu.
 
-### Phase 2 · Moteur de score (développé en TDD)
+### Phase 2 · Moteur de score (développé en TDD) ✅
 
-- [ ] Porter le prototype en TypeScript dans `src/lib/quiz/` et `src/data/`. Les deltas restent dans le code ; les textes partent dans `messages/`.
-- [ ] Écrire les schémas Zod ; le build échoue sur une donnée invalide `[S-02]`.
-- [ ] Écrire `engine.ts` : fonctions pures `profile()`, `rank()`, `compatibility()`, détection du résultat hybride `[S-01] [F-24]`.
-- [ ] Écrire `encoding.ts` : encodage, décodage, version et somme de contrôle ; rejet propre des codes invalides `[F-25] [F-26]`.
-- [ ] Écrire `npm run calibrate` : graine fixe, sortie `centers.v1.json` versionnée `[S-03]`.
-- [ ] Tests unitaires : cas connus, bornes, déterminisme `[S-05]`.
-- [ ] Tests de propriétés (fast-check) : `décoder(encoder(x)) = x`, profil toujours dans [−1, 1]⁷, classement toujours de 12 factions.
-- [ ] Tests d'équilibrage C1 à C6, exécutés en CI `[5.3]`.
-- [ ] Empreinte de chaque version publiée du questionnaire `[S-04]`.
-- [ ] Remplacer `docs/prototype/` par `scripts/gen-questionnaire-doc.ts`, qui lit `src/data` et `messages/fr.json`.
+- [x] Porter le prototype en TypeScript dans `src/lib/quiz/` et `src/data/`. Les deltas restent dans le code ; les textes français sont dans `messages/fr.json`. Le portage est exact : les centres calibrés sont identiques à ceux du prototype, à la 4e décimale.
+- [x] Écrire les schémas Zod et `npm run validate`, lancé automatiquement avant chaque build : une donnée invalide, un texte manquant ou des centres périmés font échouer le build `[S-02]`.
+- [x] Écrire `engine.ts` : `computeProfile()`, `rankFactions()`, `compatibility()`, `evaluate()` avec détection du résultat hybride `[S-01] [F-24]`.
+- [x] Écrire `encoding.ts` : codes de 12 caractères, version et somme de contrôle modulo 4093, qui détecte toute faute de frappe sur un caractère et toute inversion de deux voisins ; erreurs typées, jamais d'exception `[F-25] [F-26]`.
+- [x] Écrire `npm run calibrate` : graine fixe, sortie `centers.v1.json` versionnée avec l'empreinte de ses entrées `[S-03]`.
+- [x] Tests unitaires : cas connus, bornes, déterminisme, codes de non-régression `[S-05]`.
+- [x] Tests de propriétés (fast-check) : `décoder(encoder(x)) = x`, profil toujours dans [−1, 1]⁷, classement toujours de 12 factions, décodage sans exception.
+- [x] Tests d'équilibrage C1 à C6, exécutés en CI `[5.3]`.
+- [x] Empreinte des versions publiées du questionnaire `[S-04]` : mécanisme en place ; v1 sera figée au lancement.
+- [x] Remplacer `docs/prototype/` par `scripts/gen-questionnaire-doc.ts`, qui lit `src/data` et `messages/fr.json`.
 
 **Fini quand :** `npm test` est vert, la couverture du moteur atteint au moins 90 % et le document 02 se régénère depuis le code.
 

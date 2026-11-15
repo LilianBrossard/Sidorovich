@@ -41,10 +41,13 @@ jobs:
       - name: Types
         run: npm run typecheck
 
-      - name: Tests unitaires
-        run: npm test
+      - name: Données du questionnaire
+        run: npm run validate
 
-      - name: Équilibrage du questionnaire (C1 à C6)
+      - name: Tests et couverture (dont équilibrage C1 à C6)
+        run: npm run test:coverage
+
+      - name: Rapport d'équilibrage
         run: npm run balance
 
       - name: Build

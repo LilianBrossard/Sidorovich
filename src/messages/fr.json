@@ -21,5 +21,368 @@
     "title": "Attention, anomalie…",
     "body": "Cette page n’existe pas. Ou alors, elle a été aspirée.",
     "back": "Retour au bunker"
+  },
+  "sidorovich": {
+    "halfway": "À mi-chemin. Tu tiens le coup ? Tiens, un coup de vodka. Contre les radiations, il n’y a pas mieux.",
+    "computing": "Voyons voir ce dossier…",
+    "hybrid": "Hm. Tu hésites entre {first} et {second}. Moi aussi. Je t’envoie chez {first}… ils paient mieux.",
+    "restart": "Encore ? Tu crois que tu vas me rouler ? Bon. On reprend depuis le début."
+  },
+  "axes": {
+    "ORD": {
+      "plus": "Ordre",
+      "minus": "Liberté",
+      "plusDescription": "Ordre, hiérarchie, discipline, respect des règles",
+      "minusDescription": "Liberté, refus de l’autorité, autonomie"
+    },
+    "ALT": {
+      "plus": "Altruisme",
+      "minus": "Intérêt personnel",
+      "plusDescription": "Bien commun, entraide, sacrifice pour autrui",
+      "minusDescription": "Profit, survie personnelle, opportunisme"
+    },
+    "COL": {
+      "plus": "Collectif",
+      "minus": "Indépendance",
+      "plusDescription": "Appartenance, loyauté au groupe, fraternité",
+      "minusDescription": "Loup solitaire, ne rien devoir à personne"
+    },
+    "FOI": {
+      "plus": "Foi",
+      "minus": "Raison",
+      "plusDescription": "Croyance, mystique, intuition, sacré",
+      "minusDescription": "Science, preuves, scepticisme"
+    },
+    "FOR": {
+      "plus": "Force",
+      "minus": "Non-violence",
+      "plusDescription": "La force est un outil légitime",
+      "minusDescription": "Refus de la violence, dialogue, prudence"
+    },
+    "ZON": {
+      "plus": "Respect",
+      "minus": "Maîtrise de l’inconnu",
+      "plusDescription": "Préserver, coexister, laisser vivre l’inconnu",
+      "minusDescription": "Contrôler, exploiter ou détruire l’inconnu"
+    },
+    "IDE": {
+      "plus": "Idéalisme",
+      "minus": "Pragmatisme",
+      "plusDescription": "Les principes avant le résultat",
+      "minusDescription": "Le résultat avant les principes, compromis"
+    }
+  },
+  "factions": {
+    "SOL": {
+      "name": "Solitaires",
+      "pitch": "Indépendants et débrouillards. Entraide ponctuelle entre stalkers, mais sans chef ni drapeau.",
+      "verdict": "Toi, tu n’appartiens à personne. Va, stalker. Et rapporte-moi des artefacts."
+    },
+    "DEV": {
+      "name": "Devoir",
+      "pitch": "Paramilitaires à la discipline de fer. La Zone est une menace qu’il faut éradiquer pour protéger l’humanité.",
+      "verdict": "Discipline, principes, gâchette facile… Le Devoir va t’adorer. Évite de leur parler de moi."
+    },
+    "LIB": {
+      "name": "Liberté",
+      "pitch": "Anarchistes. La Zone doit être ouverte à tous et le savoir circuler librement. Refus de toute autorité.",
+      "verdict": "Tu n’aimes ni les ordres ni les uniformes. Liberté t’attend. Là-bas, ils partagent tout, même ce qu’ils n’ont pas."
+    },
+    "BAN": {
+      "name": "Bandits",
+      "pitch": "Criminels en bandes. Le profit par la force, la loi du plus fort.",
+      "verdict": "Tu as le sens des affaires… mais pas celui des manières. Les Bandits ont une place pour toi. Loin de mon comptoir."
+    },
+    "MER": {
+      "name": "Mercenaires",
+      "pitch": "Professionnels sous contrat. Discipline, efficacité, et loyauté envers qui paie.",
+      "verdict": "Efficace, pas de questions, pas de bavardage. Les Mercenaires paient bien. Moi, moins."
+    },
+    "MON": {
+      "name": "Monolithe",
+      "pitch": "Fanatiques voués au Monolithe. Foi absolue, dévotion totale, sacrifice.",
+      "verdict": "Gloire au Monol… Hm. Non. Toi, je ne veux plus te voir ici."
+    },
+    "ECO": {
+      "name": "Écologistes",
+      "pitch": "Chercheurs. Comprendre la Zone par la science, avec prudence et sans violence.",
+      "verdict": "Des questions, toujours des questions. Va voir les scientifiques : ils adorent qu’on leur rapporte des échantillons."
+    },
+    "MIL": {
+      "name": "Militaires",
+      "pitch": "Armée régulière. Ordre, obéissance, et un périmètre à tenir coûte que coûte.",
+      "verdict": "Tu aimes les ordres. L’armée aussi. Au moins, tu sauras où dormir."
+    },
+    "CS": {
+      "name": "Clear Sky",
+      "pitch": "Chercheurs-combattants idéalistes. Comprendre la Zone pour la stabiliser et protéger le monde.",
+      "verdict": "De l’idéalisme et une bonne gâchette. Clear Sky… s’il en reste."
+    },
+    "WAR": {
+      "name": "Ward",
+      "pitch": "Force officielle de la Zone. Protéger la société extérieure, contrôler la Zone, quitte à la détruire.",
+      "verdict": "Protéger les gens du dehors, contrôler ce qui entre et ce qui sort… La Ward a besoin de gens comme toi. Moi, un peu moins."
+    },
+    "SPA": {
+      "name": "Spark",
+      "pitch": "Le groupe de Scar. Croit en une « Zone rayonnante » qui doit prospérer, et combat toute tentative de la contrôler.",
+      "verdict": "Tu crois que la Zone a une âme. Spark t’accueillera à bras ouverts. Je vends des combinaisons, si besoin."
+    },
+    "NOO": {
+      "name": "Noon",
+      "pitch": "Anciens fanatiques du Monolithe libérés de son emprise. Fraternité soudée et discrète, en quête de vérité.",
+      "verdict": "Tu as l’air de quelqu’un qui revient de loin. Noon saura quoi faire de toi."
+    }
+  },
+  "questionKinds": {
+    "dilemma": "Dilemme",
+    "situation": "Situation",
+    "society": "Société",
+    "statement": "Affirmation",
+    "preference": "Préférence",
+    "values": "Valeurs"
+  },
+  "scale": {
+    "stronglyDisagree": "Pas du tout d’accord",
+    "disagree": "Plutôt pas d’accord",
+    "neutral": "Sans avis",
+    "agree": "Plutôt d’accord",
+    "stronglyAgree": "Tout à fait d’accord"
+  },
+  "questionnaire": {
+    "Q01": {
+      "title": "Le wagon fou",
+      "prompt": "Un wagonnet de minerai dévale la pente, droit sur cinq ouvriers. Toi, tu tiens l’aiguillage : si tu le bascules, le wagonnet part sur la voie où travaille un seul ouvrier. Il te reste trois secondes.",
+      "answers": {
+        "a": "Je bascule. Cinq vies valent plus qu’une.",
+        "b": "Je ne touche à rien. Ce n’est pas à moi de choisir qui meurt.",
+        "c": "Je hurle pour les prévenir, sans toucher au levier.",
+        "d": "Je regarde d’abord qui sont les cinq."
+      },
+      "quips": {
+        "d": "Tu vérifies la marchandise avant d’acheter. J’aime ça."
+      }
+    },
+    "Q02": {
+      "title": "L’ordre stupide",
+      "prompt": "Ton chef d’équipe te donne un ordre complètement idiot. Pas dangereux, juste idiot.",
+      "answers": {
+        "a": "J’obéis. Une équipe sans discipline est une équipe morte.",
+        "b": "J’obéis, et je lui dis ce que j’en pense une fois le travail fini.",
+        "c": "Je fais à ma façon. Tant que le résultat est là, il n’y verra que du feu.",
+        "d": "Je refuse. Personne ne pense à ma place."
+      }
+    },
+    "Q03": {
+      "title": "Le portefeuille",
+      "prompt": "Tu trouves un portefeuille par terre : une belle liasse de billets et les papiers de son propriétaire. Personne ne t’a vu.",
+      "answers": {
+        "a": "Je le rends tel quel.",
+        "b": "Je le rends, mais une petite récompense ne serait pas de refus.",
+        "c": "Je garde les billets et je renvoie les papiers. Faut pas exagérer.",
+        "d": "Je garde tout. La chance, ça se saisit."
+      },
+      "quips": {
+        "a": "Honnête… Tu ne feras pas fortune ici, mais bon."
+      }
+    },
+    "Q04": {
+      "title": "L’inconnu sous l’émission",
+      "prompt": "Une émission arrive, le ciel vire au rouge. Quelqu’un tambourine à la porte de ton abri : une personne blessée, que tu ne connais pas. Tu n’as de provisions que pour toi.",
+      "answers": {
+        "a": "J’ouvre et je partage tout. On verra demain.",
+        "b": "J’ouvre, mais je garde mon arme à portée de main.",
+        "c": "Je lui glisse de quoi tenir et je referme.",
+        "d": "Je n’ouvre pas. Ma survie d’abord."
+      }
+    },
+    "Q05": {
+      "title": "L’énergie inconnue",
+      "prompt": "Des chercheurs ont découvert une énergie inconnue. Elle pourrait tout changer… ou tout raser.",
+      "answers": {
+        "a": "On l’étudie, avec prudence. Le savoir n’est jamais un crime.",
+        "b": "On la détruit avant qu’elle ne nous détruise.",
+        "c": "On la contrôle et on la met au service du pays.",
+        "d": "On n’y touche pas. Certaines choses nous dépassent."
+      }
+    },
+    "Q06": {
+      "title": "Les forces invisibles",
+      "prompt": "Il existe des forces qui nous dépassent, et la science ne les expliquera jamais."
+    },
+    "Q07": {
+      "title": "La parole donnée",
+      "prompt": "Tu as promis un travail à un client. La veille, quelqu’un d’autre t’offre le double pour faire exactement l’inverse.",
+      "answers": {
+        "a": "Je tiens parole, point. Un engagement, c’est sacré.",
+        "b": "Je tiens parole : un pro qui trahit ses clients ne retravaille jamais.",
+        "c": "Je prends le double. Le premier n’avait qu’à payer plus.",
+        "d": "Je préviens le premier client et je le laisse surenchérir."
+      },
+      "quips": {
+        "d": "Celle-là, c’est ma préférée."
+      }
+    },
+    "Q08": {
+      "title": "La caisse commune",
+      "prompt": "Ton meilleur ami pioche dans la caisse commune du groupe. Tu es la seule personne à le savoir.",
+      "answers": {
+        "a": "Je le dénonce. Les règles valent pour tout le monde.",
+        "b": "Je lui parle seul à seul : il rembourse et on n’en parle plus.",
+        "c": "Je me tais. Un ami, ça ne se trahit pas.",
+        "d": "Je lui demande ma part pour me taire."
+      }
+    },
+    "Q09": {
+      "title": "Le contrat doré",
+      "prompt": "On t’offre une fortune pour un travail propre en apparence. Seul problème : le client est quelqu’un que tu méprises.",
+      "answers": {
+        "a": "J’accepte. L’argent n’a pas d’odeur.",
+        "b": "J’accepte, et j’en reverse une partie à une bonne cause.",
+        "c": "Je refuse. Certaines choses ne s’achètent pas.",
+        "d": "J’accepte… pour mieux le saboter de l’intérieur."
+      },
+      "quips": {
+        "a": "Voilà qui me plaît."
+      }
+    },
+    "Q10": {
+      "title": "La force",
+      "prompt": "Certains problèmes ne se règlent que par la force."
+    },
+    "Q11": {
+      "title": "Survivre avec qui ?",
+      "prompt": "Le monde est devenu dur. Pour tenir, tu préfères t’entourer…",
+      "answers": {
+        "a": "D’une équipe soudée, avec un chef et des règles.",
+        "b": "D’une bande d’amis où chacun reste libre.",
+        "c": "De quelques contacts fiables, mais mes choix ne regardent que moi.",
+        "d": "De personne. On ne peut compter que sur soi."
+      }
+    },
+    "Q12": {
+      "title": "La forêt et la route",
+      "prompt": "Une forêt très ancienne bloque le tracé d’une route qui relancerait l’économie de toute une région.",
+      "answers": {
+        "a": "On construit. L’humain d’abord.",
+        "b": "On construit, et on replante ailleurs.",
+        "c": "On cherche un autre tracé, même s’il coûte bien plus cher.",
+        "d": "On ne touche pas à la forêt. Elle était là avant nous."
+      }
+    },
+    "Q13": {
+      "title": "Le secret",
+      "prompt": "Tu découvres un secret qui sèmerait la panique s’il éclatait. Pourtant, les gens auraient le droit de savoir.",
+      "answers": {
+        "a": "Je révèle tout. La vérité appartient à tout le monde.",
+        "b": "Je préviens les autorités et je les laisse gérer.",
+        "c": "Je garde le secret. Certaines vérités font plus de mal que de bien.",
+        "d": "Je le vends au plus offrant."
+      },
+      "quips": {
+        "d": "Enfin quelqu’un de raisonnable."
+      }
+    },
+    "Q14": {
+      "title": "La cause",
+      "prompt": "Jusqu’où irais-tu pour une cause en laquelle tu crois de tout ton être ?",
+      "answers": {
+        "a": "Jusqu’au bout. Donner ma vie, ou prendre celle des autres.",
+        "b": "Très loin, tant que je ne fais de mal à personne.",
+        "c": "Je me méfie des causes : elles finissent toujours par dévorer leurs fidèles.",
+        "d": "Nulle part. Aucune cause ne vaut ma peau."
+      },
+      "quips": {
+        "a": "Hm. Toi, je vais te garder à l’œil."
+      }
+    },
+    "Q15": {
+      "title": "Le remède",
+      "prompt": "Un scientifique veut tester un remède miracle sur des volontaires. Une chance sur dix d’y rester. Sans essai, des milliers de malades mourront.",
+      "answers": {
+        "a": "On teste tout de suite. Le progrès a toujours eu un prix.",
+        "b": "On teste, mais seulement après des années de précautions.",
+        "c": "Je me porte volontaire.",
+        "d": "Non. On ne joue pas avec la vie."
+      }
+    },
+    "Q16": {
+      "title": "La main de fer",
+      "prompt": "Le monde irait mieux s’il était dirigé d’une main de fer."
+    },
+    "Q17": {
+      "title": "Le butin",
+      "prompt": "Ton groupe met la main sur un gros butin. Comment on partage ?",
+      "answers": {
+        "a": "À parts égales, chef compris.",
+        "b": "Le chef décide. C’est son rôle.",
+        "c": "Selon ce que chacun a risqué. Contrat, c’est contrat.",
+        "d": "Je me sers en premier, avant que quelqu’un d’autre ne le fasse."
+      }
+    },
+    "Q18": {
+      "title": "La créature",
+      "prompt": "Une créature inconnue rôde près du village. Elle n’a encore attaqué personne.",
+      "answers": {
+        "a": "On l’abat avant qu’elle ne le fasse.",
+        "b": "On la capture pour l’étudier.",
+        "c": "On l’observe de loin et on la laisse vivre.",
+        "d": "Je m’approche. Elle cherche peut-être à nous dire quelque chose."
+      },
+      "quips": {
+        "d": "Si elle te répond, demande-lui où elle cache ses artefacts."
+      }
+    },
+    "Q19": {
+      "title": "Les caméras",
+      "prompt": "Pour en finir avec le crime, les autorités proposent de filmer chaque rue et chaque maison, jour et nuit.",
+      "answers": {
+        "a": "J’accepte. Qui n’a rien à se reprocher n’a rien à craindre.",
+        "b": "Les rues, oui. Les maisons, non.",
+        "c": "Je refuse. La liberté vaut bien quelques risques.",
+        "d": "Je refuse, et je casse les caméras."
+      }
+    },
+    "Q20": {
+      "title": "L’étape suivante",
+      "prompt": "Ce qui nous effraie aujourd’hui pourrait être la prochaine étape de l’humanité."
+    },
+    "Q21": {
+      "title": "Le repenti",
+      "prompt": "Un ancien membre d’une secte violente demande à rejoindre ton groupe. Sous l’emprise de son gourou, il a fait des choses terribles. Aujourd’hui, il dit avoir ouvert les yeux.",
+      "answers": {
+        "a": "Je l’accepte. Tout le monde mérite une seconde chance.",
+        "b": "Je l’accepte, mais il devra faire ses preuves sur le terrain.",
+        "c": "Je refuse. On ne change jamais vraiment.",
+        "d": "Je le livre à la justice. Il doit payer."
+      }
+    },
+    "Q22": {
+      "title": "Le voleur du camp",
+      "prompt": "On a surpris quelqu’un en train de piller les réserves du camp.",
+      "answers": {
+        "a": "Une punition sévère, devant tout le monde. Pour l’exemple.",
+        "b": "On le juge selon les règles du camp, ni plus ni moins.",
+        "c": "On cherche pourquoi il a volé. Si c’est la faim, on l’aide.",
+        "d": "On le relâche. Qui sommes-nous pour juger ?"
+      }
+    },
+    "Q23": {
+      "title": "La preuve",
+      "prompt": "Ce qui ne peut pas être prouvé n’existe pas."
+    },
+    "Q24": {
+      "title": "Le vœu",
+      "prompt": "Dernière question. On raconte qu’au cœur de la Zone, une machine exauce un vœu. Un seul. Tu demandes quoi ?",
+      "answers": {
+        "a": "La paix et la liberté pour tout le monde.",
+        "b": "Que la Zone disparaisse à jamais.",
+        "c": "Comprendre. Tout comprendre.",
+        "d": "Être riche. Immensément riche."
+      },
+      "quips": {
+        "d": "Tu iras loin… ou pas très loin."
+      }
+    }
   }
 }

@@ -12,8 +12,6 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
-    // Prototype de cadrage (JavaScript sans dépendance), porté en TypeScript en phase 2.
-    "docs/**",
     "coverage/**",
   ]),
 ]);
