@@ -18,7 +18,7 @@ Next.js 16 (App Router, Cache Components) · TypeScript strict · Tailwind CSS 4
 
 ## Démarrer
 
-Node.js 22 ou plus récent.
+Node.js 22 ou plus récent. Utiliser un npm récent (11.19 ou plus, livré avec Node 24) : npm 11.6 écrit un `package-lock.json` que la CI refuse.
 
 ```bash
 npm install
