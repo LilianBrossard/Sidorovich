@@ -24,9 +24,11 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
+      # Node 24 embarque npm 11, la version qui écrit le lockfile en local
+      # (npm 10 le refuse : « Missing: @emnapi/runtime from lock file »).
       - uses: actions/setup-node@v5
         with:
-          node-version: 22
+          node-version: 24
           cache: npm
 
       - run: npm ci
