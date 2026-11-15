@@ -1,10 +1,10 @@
 # 02 · Questionnaire et impacts par faction
 
-> **Version v0** · brouillon de cadrage du 15/11/2026 · à valider.
+> **Version v1** · brouillon à valider.
 >
-> Ce document est **généré** par `node docs/prototype/gen-doc.mjs` à partir de [`prototype/model.mjs`](prototype/model.mjs).
-> Pour modifier une question ou un profil, on modifie `model.mjs` puis on régénère : textes, tableaux et indicateurs restent ainsi cohérents.
-> Vérification rapide de l’équilibrage : `node docs/prototype/sim.mjs` (code de sortie 1 si un critère échoue).
+> Ce document est **généré** par `npm run docs:questionnaire` à partir de [`src/data/questionnaire.v1.ts`](../src/data/questionnaire.v1.ts) (logique), [`src/data/factions.ts`](../src/data/factions.ts) (profils) et [`src/messages/fr.json`](../src/messages/fr.json) (textes).
+> Pour modifier une question ou un profil, on modifie ces fichiers, on relance `npm run calibrate`, puis on régénère ce document.
+> Vérification de l’équilibrage : `npm run balance` (code de sortie 1 si un critère échoue).
 
 ## Sommaire
 
@@ -49,17 +49,17 @@ Le **profil déclaré** exprime l’intention de conception : où se situe chaqu
 
 | Code | Faction | Origine | En une phrase | Signature |
 |---|---|---|---|---|
-| `SOL` | **Solitaires** (Loners / Free Stalkers) | Trilogie, S2 | Indépendants et débrouillards. Entraide ponctuelle entre stalkers, mais sans chef ni drapeau. | Indépendance |
-| `DEV` | **Devoir** (Duty) | Trilogie, S2 | Paramilitaires à la discipline de fer. La Zone est une menace qu’il faut éradiquer pour protéger l’humanité. | Ordre (fort), Collectif (fort), Maîtrise de l’inconnu (fort), Force, Idéalisme, Altruisme |
-| `LIB` | **Liberté** (Freedom) | Trilogie, S2 | Anarchistes. La Zone doit être ouverte à tous et le savoir circuler librement. Refus de toute autorité. | Liberté (fort), Idéalisme |
+| `SOL` | **Solitaires** | Trilogie, S2 | Indépendants et débrouillards. Entraide ponctuelle entre stalkers, mais sans chef ni drapeau. | Indépendance |
+| `DEV` | **Devoir** | Trilogie, S2 | Paramilitaires à la discipline de fer. La Zone est une menace qu’il faut éradiquer pour protéger l’humanité. | Ordre (fort), Collectif (fort), Maîtrise de l’inconnu (fort), Force, Idéalisme, Altruisme |
+| `LIB` | **Liberté** | Trilogie, S2 | Anarchistes. La Zone doit être ouverte à tous et le savoir circuler librement. Refus de toute autorité. | Liberté (fort), Idéalisme |
 | `BAN` | **Bandits** | Trilogie, S2 | Criminels en bandes. Le profit par la force, la loi du plus fort. | Intérêt personnel (fort), Force, Pragmatisme, Liberté |
-| `MER` | **Mercenaires** (Mercenaries) | Trilogie, S2 | Professionnels sous contrat. Discipline, efficacité, et loyauté envers qui paie. | Pragmatisme (fort), Force, Intérêt personnel |
-| `MON` | **Monolithe** (Monolith) | Trilogie, S2 | Fanatiques voués au Monolithe. Foi absolue, dévotion totale, sacrifice. | Collectif (fort), Foi (fort), Force (fort), Idéalisme (fort), Ordre, Respect |
-| `ECO` | **Écologistes** (Ecologists / Scientists) | Trilogie, S2 | Chercheurs. Comprendre la Zone par la science, avec prudence et sans violence. | Raison (fort), Non-violence (fort) |
-| `MIL` | **Militaires** (Military) | Trilogie | Armée régulière. Ordre, obéissance, et un périmètre à tenir coûte que coûte. | Ordre (fort), Force (fort), Collectif, Maîtrise de l’inconnu |
+| `MER` | **Mercenaires** | Trilogie, S2 | Professionnels sous contrat. Discipline, efficacité, et loyauté envers qui paie. | Pragmatisme (fort), Force, Intérêt personnel |
+| `MON` | **Monolithe** | Trilogie, S2 | Fanatiques voués au Monolithe. Foi absolue, dévotion totale, sacrifice. | Collectif (fort), Foi (fort), Force (fort), Idéalisme (fort), Ordre, Respect |
+| `ECO` | **Écologistes** | Trilogie, S2 | Chercheurs. Comprendre la Zone par la science, avec prudence et sans violence. | Raison (fort), Non-violence (fort) |
+| `MIL` | **Militaires** | Trilogie | Armée régulière. Ordre, obéissance, et un périmètre à tenir coûte que coûte. | Ordre (fort), Force (fort), Collectif, Maîtrise de l’inconnu |
 | `CS` | **Clear Sky** | Clear Sky | Chercheurs-combattants idéalistes. Comprendre la Zone pour la stabiliser et protéger le monde. | Altruisme, Idéalisme, Collectif |
 | `WAR` | **Ward** | S2 | Force officielle de la Zone. Protéger la société extérieure, contrôler la Zone, quitte à la détruire. | Maîtrise de l’inconnu (fort), Ordre, Raison |
-| `SPA` | **Spark** | S2 | Le groupe de Scar. Croit en une « Zone rayonnante » qui doit prospérer, et combat toute tentative de la contrôler. | Respect (fort), Idéalisme, Altruisme, Foi |
+| `SPA` | **Spark** | S2 | Le groupe de Scar. Croit en une « Zone rayonnante » qui doit prospérer, et combat toute tentative de la contrôler. | Respect (fort), Idéalisme, Altruisme, Foi |
 | `NOO` | **Noon** | S2 | Anciens fanatiques du Monolithe libérés de son emprise. Fraternité soudée et discrète, en quête de vérité. | Collectif (fort), Force |
 
 **Profils déclarés** (intention) :
@@ -91,7 +91,7 @@ Le **profil déclaré** exprime l’intention de conception : où se situe chaqu
 
 Bornes actuelles :
 
-| | ORD | ALT | COL | FOI | FOR | ZON | IDE |
+|  | ORD | ALT | COL | FOI | FOR | ZON | IDE |
 |---|---:|---:|---:|---:|---:|---:|---:|
 | Maximum + | 20 | 17 | 11 | 12 | 15 | 12 | 19 |
 | Maximum − | 18 | 19 | 12 | 12 | 9 | 13 | 23 |
@@ -110,14 +110,14 @@ La distance euclidienne a un avantage sur la similarité cosinus : elle tient co
 
 Un vrai répondant ne choisit jamais 24 fois la réponse la plus extrême. Comparer son profil directement aux profils déclarés favoriserait donc les factions modérées, et des factions extrêmes comme le Monolithe ne sortiraient presque jamais.
 
-Le moteur utilise donc des **centres calibrés**. Pour chaque faction, on simule 3 000 personas proches du profil déclaré (profil + bruit gaussien σ = 0,3, réponses tirées avec une probabilité ∝ exp(3 × alignement)). Le centre est le profil moyen que ces personas obtiennent réellement. Le calcul est reproductible (générateur pseudo-aléatoire à graine fixe). Il est refait à chaque modification du questionnaire et ses résultats sont versionnés.
+Le moteur utilise donc des **centres calibrés**. Pour chaque faction, on simule 3 000 personas proches du profil déclaré (profil + bruit gaussien σ = 0,3, réponses tirées avec une probabilité ∝ exp(3 × alignement)). Le centre est le profil moyen que ces personas obtiennent réellement. Le calcul est reproductible (générateur pseudo-aléatoire à graine fixe). Il est refait par `npm run calibrate` à chaque modification du questionnaire, et ses résultats sont versionnés dans [`src/data/centers.v1.json`](../src/data/centers.v1.json).
 
 **Centres calibrés** (utilisés par le moteur) :
 
 | Faction | ORD | ALT | COL | FOI | FOR | ZON | IDE |
 |---|---:|---:|---:|---:|---:|---:|---:|
 | Solitaires | −0,22 | −0,11 | −0,62 | −0,01 | −0,01 | −0,10 | −0,48 |
-| Devoir | 0,75 | 0,48 | 0,79 | −0,25 | 0,52 | −0,71 | 0,40 |
+| Devoir | 0,76 | 0,48 | 0,79 | −0,25 | 0,52 | −0,71 | 0,40 |
 | Liberté | −0,70 | 0,23 | −0,01 | −0,07 | −0,16 | 0,24 | 0,53 |
 | Bandits | −0,31 | −0,75 | −0,29 | −0,14 | 0,46 | −0,46 | −0,60 |
 | Mercenaires | 0,27 | −0,55 | −0,46 | −0,46 | 0,47 | −0,72 | −0,81 |
@@ -140,7 +140,7 @@ Seuils : `++` pour les 15 % d’effets les plus forts (|indice| ≥ 0,112), `+` 
 
 Un candidat qui répond systématiquement « comme le Devoir » obtient le profil :
 
-| | ORD | ALT | COL | FOI | FOR | ZON | IDE |
+|  | ORD | ALT | COL | FOI | FOR | ZON | IDE |
 |---|---:|---:|---:|---:|---:|---:|---:|
 | u | 0,85 | 0,47 | 0,82 | −0,42 | 0,73 | −0,92 | 0,32 |
 
@@ -152,9 +152,9 @@ Classement : 1. Devoir 86 % · 2. Ward 71 % · 3. Militaires 64 % · 4. Noon 61 
 
 *Dilemme* · Départage surtout : Écologistes, Militaires, Mercenaires
 
-> **Sidorovich :** « Un wagonnet de minerai dévale la pente, droit sur cinq ouvriers. Toi, tu tiens l’aiguillage : si tu le bascules, le wagonnet part sur la voie où travaille un seul ouvrier. Il te reste trois secondes. »
+> **Sidorovich :** « Un wagonnet de minerai dévale la pente, droit sur cinq ouvriers. Toi, tu tiens l’aiguillage : si tu le bascules, le wagonnet part sur la voie où travaille un seul ouvrier. Il te reste trois secondes. »
 
-| | Réponse | Effet sur les axes |
+|  | Réponse | Effet sur les axes |
 |---|---|---|
 | **A** | Je bascule. Cinq vies valent plus qu’une. | ALT +1 · FOR +1 · IDE −2 |
 | **B** | Je ne touche à rien. Ce n’est pas à moi de choisir qui meurt. | FOI +1 · FOR −1 · IDE +1 |
@@ -168,7 +168,7 @@ Classement : 1. Devoir 86 % · 2. Ward 71 % · 3. Militaires 64 % · 4. Noon 61 
 | **C** | · | − | · | − | − | − | ++ | − | · | · | · | − |
 | **D** | · | · | · | + | + | · | − | + | · | · | · | + |
 
-*Réplique de Sidorovich après la réponse D :* « Prudent. J’aime les gens qui vérifient la marchandise. »
+*Réplique de Sidorovich après la réponse D :* « Tu vérifies la marchandise avant d’acheter. J’aime ça. »
 
 ### Q02 · L’ordre stupide
 
@@ -176,7 +176,7 @@ Classement : 1. Devoir 86 % · 2. Ward 71 % · 3. Militaires 64 % · 4. Noon 61 
 
 > **Sidorovich :** « Ton chef d’équipe te donne un ordre complètement idiot. Pas dangereux, juste idiot. »
 
-| | Réponse | Effet sur les axes |
+|  | Réponse | Effet sur les axes |
 |---|---|---|
 | **A** | J’obéis. Une équipe sans discipline est une équipe morte. | ORD +2 · COL +1 |
 | **B** | J’obéis, et je lui dis ce que j’en pense une fois le travail fini. | ORD +1 · COL +1 · IDE −1 |
@@ -194,9 +194,9 @@ Classement : 1. Devoir 86 % · 2. Ward 71 % · 3. Militaires 64 % · 4. Noon 61 
 
 *Situation* · Départage surtout : Bandits, Devoir, Ward
 
-> **Sidorovich :** « Tu trouves un portefeuille par terre : une belle liasse de billets et les papiers de son propriétaire. Personne ne t’a vu. »
+> **Sidorovich :** « Tu trouves un portefeuille par terre : une belle liasse de billets et les papiers de son propriétaire. Personne ne t’a vu. »
 
-| | Réponse | Effet sur les axes |
+|  | Réponse | Effet sur les axes |
 |---|---|---|
 | **A** | Je le rends tel quel. | ORD +1 · ALT +2 |
 | **B** | Je le rends, mais une petite récompense ne serait pas de refus. | ALT +1 · IDE −1 |
@@ -216,9 +216,9 @@ Classement : 1. Devoir 86 % · 2. Ward 71 % · 3. Militaires 64 % · 4. Noon 61 
 
 *Dilemme* · Départage surtout : Bandits, Clear Sky, Mercenaires
 
-> **Sidorovich :** « Une émission arrive, le ciel vire au rouge. Quelqu’un tambourine à la porte de ton abri : une personne blessée, que tu ne connais pas. Tu n’as de provisions que pour toi. »
+> **Sidorovich :** « Une émission arrive, le ciel vire au rouge. Quelqu’un tambourine à la porte de ton abri : une personne blessée, que tu ne connais pas. Tu n’as de provisions que pour toi. »
 
-| | Réponse | Effet sur les axes |
+|  | Réponse | Effet sur les axes |
 |---|---|---|
 | **A** | J’ouvre et je partage tout. On verra demain. | ALT +2 · IDE +1 |
 | **B** | J’ouvre, mais je garde mon arme à portée de main. | ALT +1 · FOR +1 · IDE −1 |
@@ -238,7 +238,7 @@ Classement : 1. Devoir 86 % · 2. Ward 71 % · 3. Militaires 64 % · 4. Noon 61 
 
 > **Sidorovich :** « Des chercheurs ont découvert une énergie inconnue. Elle pourrait tout changer… ou tout raser. »
 
-| | Réponse | Effet sur les axes |
+|  | Réponse | Effet sur les axes |
 |---|---|---|
 | **A** | On l’étudie, avec prudence. Le savoir n’est jamais un crime. | FOI −2 · FOR −1 · ZON +1 |
 | **B** | On la détruit avant qu’elle ne nous détruise. | FOR +1 · ZON −2 · IDE +1 |
@@ -271,10 +271,10 @@ Classement : 1. Devoir 86 % · 2. Ward 71 % · 3. Militaires 64 % · 4. Noon 61 
 
 > **Sidorovich :** « Tu as promis un travail à un client. La veille, quelqu’un d’autre t’offre le double pour faire exactement l’inverse. »
 
-| | Réponse | Effet sur les axes |
+|  | Réponse | Effet sur les axes |
 |---|---|---|
 | **A** | Je tiens parole, point. Un engagement, c’est sacré. | ORD +1 · IDE +2 |
-| **B** | Je tiens parole : un pro qui trahit ses clients ne retravaille jamais. | ORD +1 · COL −1 · IDE −2 |
+| **B** | Je tiens parole : un pro qui trahit ses clients ne retravaille jamais. | ORD +1 · COL −1 · IDE −2 |
 | **C** | Je prends le double. Le premier n’avait qu’à payer plus. | ORD −1 · ALT −2 · IDE −1 |
 | **D** | Je préviens le premier client et je le laisse surenchérir. | COL −1 · IDE −2 |
 
@@ -293,10 +293,10 @@ Classement : 1. Devoir 86 % · 2. Ward 71 % · 3. Militaires 64 % · 4. Noon 61 
 
 > **Sidorovich :** « Ton meilleur ami pioche dans la caisse commune du groupe. Tu es la seule personne à le savoir. »
 
-| | Réponse | Effet sur les axes |
+|  | Réponse | Effet sur les axes |
 |---|---|---|
 | **A** | Je le dénonce. Les règles valent pour tout le monde. | ORD +2 · COL +1 · IDE +1 |
-| **B** | Je lui parle seul à seul : il rembourse et on n’en parle plus. | ORD −1 · ALT +1 · IDE −1 |
+| **B** | Je lui parle seul à seul : il rembourse et on n’en parle plus. | ORD −1 · ALT +1 · IDE −1 |
 | **C** | Je me tais. Un ami, ça ne se trahit pas. | ORD −2 · COL +1 |
 | **D** | Je lui demande ma part pour me taire. | ORD −1 · ALT −2 · IDE −1 |
 
@@ -311,9 +311,9 @@ Classement : 1. Devoir 86 % · 2. Ward 71 % · 3. Militaires 64 % · 4. Noon 61 
 
 *Dilemme* · Départage surtout : Mercenaires, Spark, Bandits
 
-> **Sidorovich :** « On t’offre une fortune pour un travail propre en apparence. Seul problème : le client est quelqu’un que tu méprises. »
+> **Sidorovich :** « On t’offre une fortune pour un travail propre en apparence. Seul problème : le client est quelqu’un que tu méprises. »
 
-| | Réponse | Effet sur les axes |
+|  | Réponse | Effet sur les axes |
 |---|---|---|
 | **A** | J’accepte. L’argent n’a pas d’odeur. | ALT −1 · IDE −2 |
 | **B** | J’accepte, et j’en reverse une partie à une bonne cause. | ALT +1 · IDE −1 |
@@ -342,13 +342,13 @@ Classement : 1. Devoir 86 % · 2. Ward 71 % · 3. Militaires 64 % · 4. Noon 61 
 | Tout à fait d’accord | · | + | · | + | + | + | − | + | · | + | · | + |
 | Pas du tout d’accord | · | − | · | − | − | − | ++ | −− | · | − | · | −− |
 
-### Q11 · Survivre avec qui ?
+### Q11 · Survivre avec qui ?
 
 *Préférence* · Départage surtout : Devoir, Noon, Monolithe
 
 > **Sidorovich :** « Le monde est devenu dur. Pour tenir, tu préfères t’entourer… »
 
-| | Réponse | Effet sur les axes |
+|  | Réponse | Effet sur les axes |
 |---|---|---|
 | **A** | D’une équipe soudée, avec un chef et des règles. | ORD +1 · COL +2 |
 | **B** | D’une bande d’amis où chacun reste libre. | ORD −1 · COL +1 |
@@ -368,7 +368,7 @@ Classement : 1. Devoir 86 % · 2. Ward 71 % · 3. Militaires 64 % · 4. Noon 61 
 
 > **Sidorovich :** « Une forêt très ancienne bloque le tracé d’une route qui relancerait l’économie de toute une région. »
 
-| | Réponse | Effet sur les axes |
+|  | Réponse | Effet sur les axes |
 |---|---|---|
 | **A** | On construit. L’humain d’abord. | ZON −2 · IDE −1 |
 | **B** | On construit, et on replante ailleurs. | ALT +1 · ZON −1 |
@@ -388,7 +388,7 @@ Classement : 1. Devoir 86 % · 2. Ward 71 % · 3. Militaires 64 % · 4. Noon 61 
 
 > **Sidorovich :** « Tu découvres un secret qui sèmerait la panique s’il éclatait. Pourtant, les gens auraient le droit de savoir. »
 
-| | Réponse | Effet sur les axes |
+|  | Réponse | Effet sur les axes |
 |---|---|---|
 | **A** | Je révèle tout. La vérité appartient à tout le monde. | ORD −2 · COL −1 · IDE +2 |
 | **B** | Je préviens les autorités et je les laisse gérer. | ORD +2 · COL +1 |
@@ -408,13 +408,13 @@ Classement : 1. Devoir 86 % · 2. Ward 71 % · 3. Militaires 64 % · 4. Noon 61 
 
 *Valeurs* · Départage surtout : Monolithe, Devoir, Noon
 
-> **Sidorovich :** « Jusqu’où irais-tu pour une cause en laquelle tu crois de tout ton être ? »
+> **Sidorovich :** « Jusqu’où irais-tu pour une cause en laquelle tu crois de tout ton être ? »
 
-| | Réponse | Effet sur les axes |
+|  | Réponse | Effet sur les axes |
 |---|---|---|
 | **A** | Jusqu’au bout. Donner ma vie, ou prendre celle des autres. | COL +2 · FOI +1 · FOR +1 · IDE +2 |
 | **B** | Très loin, tant que je ne fais de mal à personne. | FOR −1 · IDE +1 |
-| **C** | Je me méfie des causes : elles finissent toujours par dévorer leurs fidèles. | COL −1 · FOI −1 · IDE −1 |
+| **C** | Je me méfie des causes : elles finissent toujours par dévorer leurs fidèles. | COL −1 · FOI −1 · IDE −1 |
 | **D** | Nulle part. Aucune cause ne vaut ma peau. | ALT −1 · COL −2 · IDE −2 |
 
 | Impact | SOL | DEV | LIB | BAN | MER | MON | ECO | MIL | CS | WAR | SPA | NOO |
@@ -432,7 +432,7 @@ Classement : 1. Devoir 86 % · 2. Ward 71 % · 3. Militaires 64 % · 4. Noon 61 
 
 > **Sidorovich :** « Un scientifique veut tester un remède miracle sur des volontaires. Une chance sur dix d’y rester. Sans essai, des milliers de malades mourront. »
 
-| | Réponse | Effet sur les axes |
+|  | Réponse | Effet sur les axes |
 |---|---|---|
 | **A** | On teste tout de suite. Le progrès a toujours eu un prix. | FOI −1 · ZON −1 · IDE −1 |
 | **B** | On teste, mais seulement après des années de précautions. | FOI −1 · IDE +1 |
@@ -463,9 +463,9 @@ Classement : 1. Devoir 86 % · 2. Ward 71 % · 3. Militaires 64 % · 4. Noon 61 
 
 *Situation* · Départage surtout : Mercenaires, Clear Sky, Spark
 
-> **Sidorovich :** « Ton groupe met la main sur un gros butin. Comment on partage ? »
+> **Sidorovich :** « Ton groupe met la main sur un gros butin. Comment on partage ? »
 
-| | Réponse | Effet sur les axes |
+|  | Réponse | Effet sur les axes |
 |---|---|---|
 | **A** | À parts égales, chef compris. | ORD −1 · ALT +1 · COL +1 |
 | **B** | Le chef décide. C’est son rôle. | ORD +2 |
@@ -485,7 +485,7 @@ Classement : 1. Devoir 86 % · 2. Ward 71 % · 3. Militaires 64 % · 4. Noon 61 
 
 > **Sidorovich :** « Une créature inconnue rôde près du village. Elle n’a encore attaqué personne. »
 
-| | Réponse | Effet sur les axes |
+|  | Réponse | Effet sur les axes |
 |---|---|---|
 | **A** | On l’abat avant qu’elle ne le fasse. | FOR +2 · ZON −2 |
 | **B** | On la capture pour l’étudier. | FOI −2 · ZON −1 |
@@ -507,7 +507,7 @@ Classement : 1. Devoir 86 % · 2. Ward 71 % · 3. Militaires 64 % · 4. Noon 61 
 
 > **Sidorovich :** « Pour en finir avec le crime, les autorités proposent de filmer chaque rue et chaque maison, jour et nuit. »
 
-| | Réponse | Effet sur les axes |
+|  | Réponse | Effet sur les axes |
 |---|---|---|
 | **A** | J’accepte. Qui n’a rien à se reprocher n’a rien à craindre. | ORD +2 · IDE −1 |
 | **B** | Les rues, oui. Les maisons, non. | ORD +1 |
@@ -540,7 +540,7 @@ Classement : 1. Devoir 86 % · 2. Ward 71 % · 3. Militaires 64 % · 4. Noon 61 
 
 > **Sidorovich :** « Un ancien membre d’une secte violente demande à rejoindre ton groupe. Sous l’emprise de son gourou, il a fait des choses terribles. Aujourd’hui, il dit avoir ouvert les yeux. »
 
-| | Réponse | Effet sur les axes |
+|  | Réponse | Effet sur les axes |
 |---|---|---|
 | **A** | Je l’accepte. Tout le monde mérite une seconde chance. | ALT +1 · COL +1 · IDE +1 |
 | **B** | Je l’accepte, mais il devra faire ses preuves sur le terrain. | ORD +1 · COL +1 · FOR +1 |
@@ -560,12 +560,12 @@ Classement : 1. Devoir 86 % · 2. Ward 71 % · 3. Militaires 64 % · 4. Noon 61 
 
 > **Sidorovich :** « On a surpris quelqu’un en train de piller les réserves du camp. »
 
-| | Réponse | Effet sur les axes |
+|  | Réponse | Effet sur les axes |
 |---|---|---|
 | **A** | Une punition sévère, devant tout le monde. Pour l’exemple. | ORD +1 · FOR +2 |
 | **B** | On le juge selon les règles du camp, ni plus ni moins. | ORD +2 |
 | **C** | On cherche pourquoi il a volé. Si c’est la faim, on l’aide. | ALT +2 · FOR −1 |
-| **D** | On le relâche. Qui sommes-nous pour juger ? | ORD −2 · FOR −1 |
+| **D** | On le relâche. Qui sommes-nous pour juger ? | ORD −2 · FOR −1 |
 
 | Impact | SOL | DEV | LIB | BAN | MER | MON | ECO | MIL | CS | WAR | SPA | NOO |
 |---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
@@ -591,9 +591,9 @@ Classement : 1. Devoir 86 % · 2. Ward 71 % · 3. Militaires 64 % · 4. Noon 61 
 
 *Valeurs* · Départage surtout : Devoir, Mercenaires, Clear Sky
 
-> **Sidorovich :** « Dernière question. On raconte qu’au cœur de la Zone, une machine exauce un vœu. Un seul. Tu demandes quoi ? »
+> **Sidorovich :** « Dernière question. On raconte qu’au cœur de la Zone, une machine exauce un vœu. Un seul. Tu demandes quoi ? »
 
-| | Réponse | Effet sur les axes |
+|  | Réponse | Effet sur les axes |
 |---|---|---|
 | **A** | La paix et la liberté pour tout le monde. | ORD −1 · ALT +2 · IDE +1 |
 | **B** | Que la Zone disparaisse à jamais. | ALT +1 · ZON −2 · IDE +1 |
@@ -615,11 +615,11 @@ Première version du ton : bourru, sarcastique, mercantile, jamais insultant. Pa
 
 | Moment | Réplique |
 |---|---|
-| Accueil | « Entre, entre. Et ferme la porte, ça fait des courants d’air. Alors comme ça, tu veux travailler dans la Zone ? Bien. Je ne vais pas t’envoyer n’importe où. Vingt-quatre questions. Réponds honnêtement : les mensonges, je les sens à dix kilomètres. » |
-| Mi-parcours (après Q12) | « À mi-chemin. Tu tiens le coup ? Tiens, un coup de vodka. Contre les radiations, il n’y a pas mieux. » |
+| Accueil | « Entre, entre. Et ferme la porte, ça fait des courants d’air. Alors comme ça, tu veux travailler dans la Zone ? Bien. Je ne vais pas t’envoyer n’importe où. Vingt-quatre questions. Réponds honnêtement : les mensonges, je les sens à dix kilomètres. » |
+| Mi-parcours (après Q12) | « À mi-chemin. Tu tiens le coup ? Tiens, un coup de vodka. Contre les radiations, il n’y a pas mieux. » |
 | Calcul du résultat | « Voyons voir ce dossier… » |
-| Résultat hybride | « Hm. Tu hésites entre {A} et {B}. Moi aussi. Je t’envoie chez {A}… ils paient mieux. » |
-| Recommencer | « Encore ? Tu crois que tu vas me rouler ? Bon. On reprend depuis le début. » |
+| Résultat hybride | « Hm. Tu hésites entre {first} et {second}. Moi aussi. Je t’envoie chez {first}… ils paient mieux. » |
+| Recommencer | « Encore ? Tu crois que tu vas me rouler ? Bon. On reprend depuis le début. » |
 
 **Verdicts par faction :**
 
@@ -631,7 +631,7 @@ Première version du ton : bourru, sarcastique, mercantile, jamais insultant. Pa
 | Bandits | « Tu as le sens des affaires… mais pas celui des manières. Les Bandits ont une place pour toi. Loin de mon comptoir. » |
 | Mercenaires | « Efficace, pas de questions, pas de bavardage. Les Mercenaires paient bien. Moi, moins. » |
 | Monolithe | « Gloire au Monol… Hm. Non. Toi, je ne veux plus te voir ici. » |
-| Écologistes | « Des questions, toujours des questions. Va voir les scientifiques : ils adorent qu’on leur rapporte des échantillons. » |
+| Écologistes | « Des questions, toujours des questions. Va voir les scientifiques : ils adorent qu’on leur rapporte des échantillons. » |
 | Militaires | « Tu aimes les ordres. L’armée aussi. Au moins, tu sauras où dormir. » |
 | Clear Sky | « De l’idéalisme et une bonne gâchette. Clear Sky… s’il en reste. » |
 | Ward | « Protéger les gens du dehors, contrôler ce qui entre et ce qui sort… La Ward a besoin de gens comme toi. Moi, un peu moins. » |
@@ -656,7 +656,7 @@ Chaque case indique l’amplitude disponible sur l’axe : plus forte valeur pos
 | Q08 La caisse commune | +2 / −2 | +1 / −2 | +1 |  |  |  | +1 / −1 |
 | Q09 Le contrat doré | −1 | +1 / −1 |  |  | +1 |  | +2 / −2 |
 | Q10 La force |  |  |  |  | +2 / −2 |  |  |
-| Q11 Survivre avec qui ? | +1 / −1 | −1 | +2 / −2 |  |  |  | −1 |
+| Q11 Survivre avec qui ? | +1 / −1 | −1 | +2 / −2 |  |  |  | −1 |
 | Q12 La forêt et la route |  | +1 |  | +1 |  | +2 / −2 | +1 / −1 |
 | Q13 Le secret | +2 / −2 | +1 / −2 | +1 / −1 |  |  |  | +2 / −2 |
 | Q14 La cause |  | −1 | +2 / −2 | +1 / −1 | +1 / −1 |  | +2 / −2 |
@@ -674,7 +674,7 @@ Chaque case indique l’amplitude disponible sur l’axe : plus forte valeur pos
 
 ### 7.2 Critères d’équilibrage
 
-Ces critères sont repris dans le cahier des charges (section 5.3) et deviendront des tests automatisés exécutés en intégration continue.
+Ces critères sont repris dans le cahier des charges (section 5.3). Ils sont vérifiés par les tests automatisés (`tests/balance`) à chaque intégration continue.
 
 | Critère | Mesure actuelle | Statut |
 |---|---|---|
@@ -683,7 +683,7 @@ Ces critères sont repris dans le cahier des charges (section 5.3) et deviendron
 | C3 · Reconnaissance (≥ 65 % chacune, ≥ 80 % en moyenne) | min 65,5 %, moyenne 83,2 % | ✅ |
 | C4 · Répartition (entre 2 % et 25 %) | de 2,8 % à 21,7 % | ✅ |
 | C5 · Couverture (≥ 8 questions par axe) | min 8 | ✅ |
-| C6 · Aucune option sans effet (hors « Sans avis ») | 24 questions | ✅ |
+| C6 · Aucune réponse sans effet (hors « Sans avis ») | 24 questions | ✅ |
 
 Définitions :
 
@@ -719,4 +719,4 @@ Quelqu’un qui clique au hasard obtient le plus souvent **Solitaires** : un pro
 - **Noon** : reconnaissance 66,5 %, souvent confondue avec Devoir et Monolithe. Piste : ajouter ou ajuster une question qui oppose directement ces factions.
 - **Ward** : reconnaissance 72,5 %, souvent confondue avec Devoir et Militaires. Piste : ajouter ou ajuster une question qui oppose directement ces factions.
 - **Devoir** reste rare chez les personas uniformes (2,8 %) : son profil combine cinq axes très marqués, une zone étroite de l’espace. Les joueurs qui « visent » le Devoir l’obtiennent sans difficulté (archétype 86 %).
-- Les personas simulées ne remplacent pas de vrais répondants. Un test avec 10 à 20 personnes est prévu en phase 3 pour confronter le modèle à la réalité.
+- Les personas simulées ne remplacent pas de vrais répondants. Un test avec 10 à 20 personnes est prévu en phase 4 pour confronter le modèle à la réalité.

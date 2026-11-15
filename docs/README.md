@@ -6,24 +6,16 @@
 | [02 · Questionnaire et impacts](02-questionnaire.md) | Les 7 axes, les 12 factions, la méthode de calcul, les 24 questions avec leur impact sur chaque faction, les indicateurs d'équilibrage. **Document généré.** |
 | [03 · Plan de développement](03-plan-de-developpement.md) | Phases, tâches, jalons, architecture cible, risques. |
 
-## Prototype du moteur (`prototype/`)
+## Régénérer le document 02
 
-Un prototype JavaScript sans dépendance, qui a servi à concevoir et équilibrer le questionnaire avant tout développement. Il nécessite Node.js 18 ou plus récent.
-
-| Fichier | Rôle |
-|---|---|
-| `model.mjs` | Données : axes, profils des factions, questions, réponses, deltas, répliques. |
-| `engine.mjs` | Moteur : normalisation, distances, compatibilité, simulation de personas, calibration. |
-| `metrics.mjs` | Indicateurs d'équilibrage C1 à C6 (seuils du cahier des charges, § 5.3). |
-| `sim.mjs` | Affiche les indicateurs. Code de sortie 1 si un critère échoue. |
-| `gen-doc.mjs` | Régénère `02-questionnaire.md`. |
+Le document 02 est produit à partir du code : la logique dans [`src/data/`](../src/data), les textes dans [`src/messages/fr.json`](../src/messages/fr.json), le moteur dans [`src/lib/quiz/`](../src/lib/quiz).
 
 ```bash
-node docs/prototype/sim.mjs
+npm run calibrate
 ```
 
 ```bash
-node docs/prototype/gen-doc.mjs
+npm run docs:questionnaire
 ```
 
-En phase 2 du plan, ce prototype est porté en TypeScript dans `src/lib/quiz/` puis retiré.
+`npm run calibrate` est nécessaire seulement si les deltas ou les profils des factions ont changé. `npm run balance` affiche les indicateurs d'équilibrage sans rien écrire.
