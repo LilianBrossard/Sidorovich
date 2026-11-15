@@ -55,6 +55,21 @@ export const DELTA_MAX = 2;
 /** Écart de compatibilité (en points) sous lequel le résultat est présenté comme hybride [F-24]. */
 export const HYBRID_THRESHOLD = 3;
 
+/**
+ * Tendance sur un axe, pour les phrases d'explication du résultat [F-23].
+ * |valeur| ≥ 0,5 : tendance nette ; ≥ 0,2 : penchant ; sinon : équilibre.
+ */
+export const TENDENCY_LEVELS = [
+  "strongMinus",
+  "leanMinus",
+  "balanced",
+  "leanPlus",
+  "strongPlus",
+] as const;
+export type Tendency = (typeof TENDENCY_LEVELS)[number];
+export const TENDENCY_STRONG = 0.5;
+export const TENDENCY_LEAN = 0.2;
+
 /** Jeux où apparaît une faction. */
 export const GAME_IDS = ["soc", "cs", "cop", "s2"] as const;
 export type GameId = (typeof GAME_IDS)[number];

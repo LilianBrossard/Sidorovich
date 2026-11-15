@@ -25,7 +25,7 @@
   "sidorovich": {
     "halfway": "À mi-chemin. Tu tiens le coup ? Tiens, un coup de vodka. Contre les radiations, il n’y a pas mieux.",
     "computing": "Voyons voir ce dossier…",
-    "hybrid": "Hm. Tu hésites entre {first} et {second}. Moi aussi. Je t’envoie chez {first}… ils paient mieux.",
+    "hybrid": "Hm. {first} ou {second} ? J’hésite moi aussi. Allez, ce sera {first} : ils paient mieux.",
     "restart": "Encore ? Tu crois que tu vas me rouler ? Bon. On reprend depuis le début."
   },
   "axes": {
@@ -33,104 +33,165 @@
       "plus": "Ordre",
       "minus": "Liberté",
       "plusDescription": "Ordre, hiérarchie, discipline, respect des règles",
-      "minusDescription": "Liberté, refus de l’autorité, autonomie"
+      "minusDescription": "Liberté, refus de l’autorité, autonomie",
+      "tendencies": {
+        "strongMinus": "Personne ne te dit quoi faire : ta liberté passe avant tout.",
+        "leanMinus": "Tu préfères ta liberté aux ordres.",
+        "balanced": "Tu respectes les règles… quand elles ont du sens.",
+        "leanPlus": "Tu fais plutôt confiance aux règles et à l’autorité.",
+        "strongPlus": "Tu crois fermement à l’ordre, à la hiérarchie et aux règles."
+      }
     },
     "ALT": {
       "plus": "Altruisme",
       "minus": "Intérêt personnel",
       "plusDescription": "Bien commun, entraide, sacrifice pour autrui",
-      "minusDescription": "Profit, survie personnelle, opportunisme"
+      "minusDescription": "Profit, survie personnelle, opportunisme",
+      "tendencies": {
+        "strongMinus": "Ton intérêt d’abord, le reste ensuite. S’il reste quelque chose.",
+        "leanMinus": "Tu penses d’abord à ton intérêt.",
+        "balanced": "Tu aides les autres, sans oublier de veiller sur toi.",
+        "leanPlus": "Tu aides volontiers les autres.",
+        "strongPlus": "Le bien commun passe avant ton intérêt, quitte à te sacrifier."
+      }
     },
     "COL": {
       "plus": "Collectif",
       "minus": "Indépendance",
       "plusDescription": "Appartenance, loyauté au groupe, fraternité",
-      "minusDescription": "Loup solitaire, ne rien devoir à personne"
+      "minusDescription": "Loup solitaire, ne rien devoir à personne",
+      "tendencies": {
+        "strongMinus": "Loup solitaire : tu ne dois rien à personne.",
+        "leanMinus": "Tu préfères compter sur toi-même.",
+        "balanced": "Tu sais travailler en équipe, mais tu gardes ton indépendance.",
+        "leanPlus": "Tu as besoin d’un groupe sur lequel compter.",
+        "strongPlus": "Le groupe passe avant tout : loyauté, fraternité, appartenance."
+      }
     },
     "FOI": {
       "plus": "Foi",
       "minus": "Raison",
       "plusDescription": "Croyance, mystique, intuition, sacré",
-      "minusDescription": "Science, preuves, scepticisme"
+      "minusDescription": "Science, preuves, scepticisme",
+      "tendencies": {
+        "strongMinus": "Seuls les faits comptent : ce qui ne se prouve pas n’existe pas.",
+        "leanMinus": "Tu fais davantage confiance aux preuves qu’aux croyances.",
+        "balanced": "Tu crois à la science, sans fermer la porte au mystère.",
+        "leanPlus": "Tu laisses de la place à l’intuition et au mystère.",
+        "strongPlus": "Tu crois à des forces qui dépassent la raison."
+      }
     },
     "FOR": {
       "plus": "Force",
       "minus": "Non-violence",
       "plusDescription": "La force est un outil légitime",
-      "minusDescription": "Refus de la violence, dialogue, prudence"
+      "minusDescription": "Refus de la violence, dialogue, prudence",
+      "tendencies": {
+        "strongMinus": "Tu refuses la violence, presque à tout prix.",
+        "leanMinus": "Tu préfères le dialogue à la confrontation.",
+        "balanced": "La force ? En dernier recours, seulement.",
+        "leanPlus": "Tu n’hésites pas à employer la manière forte quand il le faut.",
+        "strongPlus": "Pour toi, la force est un outil comme un autre."
+      }
     },
     "ZON": {
       "plus": "Respect",
       "minus": "Maîtrise de l’inconnu",
       "plusDescription": "Préserver, coexister, laisser vivre l’inconnu",
-      "minusDescription": "Contrôler, exploiter ou détruire l’inconnu"
+      "minusDescription": "Contrôler, exploiter ou détruire l’inconnu",
+      "tendencies": {
+        "strongMinus": "L’inconnu est une menace : il faut le maîtriser, ou l’éliminer.",
+        "leanMinus": "Ce qu’on ne comprend pas, mieux vaut le contrôler.",
+        "balanced": "Ni détruire ni vénérer : tu observes l’inconnu avec prudence.",
+        "leanPlus": "Tu préfères comprendre et laisser vivre plutôt que contrôler.",
+        "strongPlus": "L’inconnu mérite d’être préservé, même s’il nous dépasse."
+      }
     },
     "IDE": {
       "plus": "Idéalisme",
       "minus": "Pragmatisme",
       "plusDescription": "Les principes avant le résultat",
-      "minusDescription": "Le résultat avant les principes, compromis"
+      "minusDescription": "Le résultat avant les principes, compromis",
+      "tendencies": {
+        "strongMinus": "Seul le résultat compte. Les grands principes, c’est pour les autres.",
+        "leanMinus": "Tu juges sur les résultats plutôt que sur les principes.",
+        "balanced": "Tu as des principes, mais tu sais faire des compromis.",
+        "leanPlus": "Tu tiens à tes principes, même quand ça coûte.",
+        "strongPlus": "Tes principes ne se négocient pas."
+      }
     }
   },
   "factions": {
     "SOL": {
       "name": "Solitaires",
       "pitch": "Indépendants et débrouillards. Entraide ponctuelle entre stalkers, mais sans chef ni drapeau.",
+      "description": "La majorité silencieuse de la Zone : des chasseurs d’artefacts qui ne prêtent allégeance à personne. On se dépanne autour d’un feu de camp, on partage un tuyau, puis chacun repart de son côté. Leur seule règle : survivre, sans trop devoir aux autres.",
       "verdict": "Toi, tu n’appartiens à personne. Va, stalker. Et rapporte-moi des artefacts."
     },
     "DEV": {
       "name": "Devoir",
       "pitch": "Paramilitaires à la discipline de fer. La Zone est une menace qu’il faut éradiquer pour protéger l’humanité.",
+      "description": "Une organisation paramilitaire qui voit dans la Zone une plaie à refermer avant qu’elle ne s’étende au reste du monde. Hiérarchie stricte, entraînement, sens du sacrifice : au Devoir, on sert une mission plus grande que soi. Leur ennemi juré : Liberté.",
       "verdict": "Discipline, principes, gâchette facile… Le Devoir va t’adorer. Évite de leur parler de moi."
     },
     "LIB": {
       "name": "Liberté",
       "pitch": "Anarchistes. La Zone doit être ouverte à tous et le savoir circuler librement. Refus de toute autorité.",
+      "description": "Des anarchistes convaincus que la Zone appartient à tout le monde et que personne, ni État ni armée, ne doit en verrouiller l’accès ou les secrets. Sans chef ni uniforme, ils partagent ce qu’ils trouvent et défendent leurs idées les armes à la main s’il le faut. Leur rival historique : le Devoir.",
       "verdict": "Tu n’aimes ni les ordres ni les uniformes. Liberté t’attend. Là-bas, ils partagent tout, même ce qu’ils n’ont pas."
     },
     "BAN": {
       "name": "Bandits",
       "pitch": "Criminels en bandes. Le profit par la force, la loi du plus fort.",
+      "description": "Des bandes de truands venues faire fortune dans la Zone sans passer par le travail honnête. Racket, embuscades, trafics : la loi du plus fort tient lieu de code. Entre eux, on se serre les coudes… tant que ça rapporte.",
       "verdict": "Tu as le sens des affaires… mais pas celui des manières. Les Bandits ont une place pour toi. Loin de mon comptoir."
     },
     "MER": {
       "name": "Mercenaires",
       "pitch": "Professionnels sous contrat. Discipline, efficacité, et loyauté envers qui paie.",
+      "description": "Des professionnels bien équipés qui vendent leurs services au plus offrant. Discipline militaire, efficacité, discrétion : ils ne posent pas de questions et ne prennent pas parti. Un contrat est un contrat, peu importe qui signe.",
       "verdict": "Efficace, pas de questions, pas de bavardage. Les Mercenaires paient bien. Moi, moins."
     },
     "MON": {
       "name": "Monolithe",
       "pitch": "Fanatiques voués au Monolithe. Foi absolue, dévotion totale, sacrifice.",
+      "description": "Une secte armée vouée à un mystérieux monolithe qui se trouverait au cœur de la Zone. Ses membres obéissent sans hésiter et se sacrifient sans peur pour protéger ce qu’ils tiennent pour sacré. Personne ne sait vraiment ce qu’ils pensent, ni même s’ils pensent encore.",
       "verdict": "Gloire au Monol… Hm. Non. Toi, je ne veux plus te voir ici."
     },
     "ECO": {
       "name": "Écologistes",
       "pitch": "Chercheurs. Comprendre la Zone par la science, avec prudence et sans violence.",
+      "description": "Les scientifiques de la Zone. Depuis leurs laboratoires, ils mesurent, analysent et cataloguent anomalies et artefacts, et paient bien ceux qui les aident. Ils préfèrent les données aux balles, même s’ils savent s’entourer d’escortes quand il le faut.",
       "verdict": "Des questions, toujours des questions. Va voir les scientifiques : ils adorent qu’on leur rapporte des échantillons."
     },
     "MIL": {
       "name": "Militaires",
       "pitch": "Armée régulière. Ordre, obéissance, et un périmètre à tenir coûte que coûte.",
+      "description": "L’armée régulière, chargée de boucler le périmètre et de tenir la Zone à distance du reste du pays. Les ordres sont les ordres : on contrôle, on patrouille, on tire si nécessaire. Pour eux, un stalker est d’abord un intrus.",
       "verdict": "Tu aimes les ordres. L’armée aussi. Au moins, tu sauras où dormir."
     },
     "CS": {
       "name": "Clear Sky",
       "pitch": "Chercheurs-combattants idéalistes. Comprendre la Zone pour la stabiliser et protéger le monde.",
+      "description": "Un groupe discret de chercheurs et de combattants qui veulent comprendre la Zone pour mieux la stabiliser. Idéalistes et méthodiques, ils croient que la science peut protéger le monde de ce qui se passe ici. Leur sort après les événements de Clear Sky reste un mystère.",
       "verdict": "De l’idéalisme et une bonne gâchette. Clear Sky… s’il en reste."
     },
     "WAR": {
       "name": "Ward",
       "pitch": "Force officielle de la Zone. Protéger la société extérieure, contrôler la Zone, quitte à la détruire.",
+      "description": "Les forces officielles chargées de reprendre le contrôle de la Zone. Pour eux, la sécurité de la société extérieure passe avant tout, quitte à exploiter la Zone, voire à la détruire. Méthodiques et pragmatiques, ils incarnent la raison d’État.",
       "verdict": "Protéger les gens du dehors, contrôler ce qui entre et ce qui sort… La Ward a besoin de gens comme toi. Moi, un peu moins."
     },
     "SPA": {
       "name": "Spark",
       "pitch": "Le groupe de Scar. Croit en une « Zone rayonnante » qui doit prospérer, et combat toute tentative de la contrôler.",
+      "description": "Le mouvement fondé par Scar, l’ancien mercenaire de Clear Sky. Ses membres rêvent d’une Zone « rayonnante » qu’il faudrait protéger et laisser prospérer plutôt que contrôler. Idéalistes, presque mystiques, ils s’opposent frontalement à la Ward.",
       "verdict": "Tu crois que la Zone a une âme. Spark t’accueillera à bras ouverts. Je vends des combinaisons, si besoin."
     },
     "NOO": {
       "name": "Noon",
       "pitch": "Anciens fanatiques du Monolithe libérés de son emprise. Fraternité soudée et discrète, en quête de vérité.",
+      "description": "D’anciens fanatiques du Monolithe, réveillés de leur endoctrinement. Unis par ce passé qu’ils doivent porter, ils forment une fraternité soudée et discrète, convaincue que chacun mérite une seconde chance. Ils cherchent la vérité sur ce qui leur est arrivé, et ne laisseront plus personne penser à leur place.",
       "verdict": "Tu as l’air de quelqu’un qui revient de loin. Noon saura quoi faire de toi."
     }
   },

@@ -85,7 +85,7 @@ flowchart LR
 | 0 · Cadrage | Les 3 documents et le prototype du moteur | ✅ fait | Documents validés par Lilian | — |
 | 1 · Socle | Projet Next.js en 4 langues, CI, déploiement | ✅ fait | « Hello Zone » en production dans les 4 langues | `v0.1.0` |
 | 2 · Moteur | Moteur de score en TypeScript, testé et équilibré | ✅ fait | Tests et critères C1 à C6 verts en CI | `v0.2.0` |
-| 3 · Contenu | Textes FR définitifs et traductions EN, UK, RU | 2 j + relectures | 100 % des clés traduites ; lore validé | `v0.3.0` |
+| 3 · Contenu | Textes FR définitifs et traductions EN, UK, RU | ✅ fait (relecture native à venir) | 100 % des clés traduites ; lore validé | `v0.3.0` |
 | 4 · Parcours brut | Test jouable de bout en bout, sans décor | 2 j | Tests de bout en bout verts ; playtest fait | `v0.4.0` |
 | 5 · Direction artistique | Bunker, dossier, PDA, animations | 4 à 5 j | Maquettes respectées ; budgets de performance tenus | `v0.5.0` |
 | 6 · Partage et SEO | Images d'aperçu, métadonnées | 1 j | Aperçus validés sur 4 plateformes | `v0.6.0` |
@@ -141,18 +141,16 @@ flowchart LR
 
 **Fini quand :** `npm test` est vert, la couverture du moteur atteint au moins 90 % et le document 02 se régénère depuis le code.
 
-### Phase 3 · Contenu et traductions
+### Phase 3 · Contenu et traductions ✅
 
-- [ ] Intégrer tes retours sur le document 02 : formulations, réponses, répliques.
-- [ ] Traiter les points faibles connus (doc 02, § 7.4) : mieux séparer Clear Sky de Spark et Liberté, Noon de Devoir, et Ward de Devoir et Militaires. Relancer l'équilibrage après chaque changement.
-- [ ] Rédiger les fiches des 12 factions, les textes d'interface et les explications par axe `[F-23] [F-30] [N-06]`.
-- [ ] Faire la relecture lore, en particulier pour Ward, Spark et Noon : idéologie et noms officiels en français `[13.2]`.
-- [ ] Traduire en EN, UK et RU à partir du glossaire (cahier, § 7).
-- [ ] Ajouter le test de complétude des traductions `[I-03]`.
-- [ ] Faire relire UK et RU par des locuteurs natifs `[I-07]` (question Q-B).
-- [ ] Relire les contenus sensibles : rien de politique ou de religieux réel ; formulations épicènes `[N-03] [N-04]`.
-
-**Fini quand :** les 4 langues sont complètes, le test de complétude passe et les relectures sont notées.
+- [x] Intégrer tes retours sur le document 02 : aucun retour pour l'instant ; les questions restent celles de la v1.
+- [x] Traiter les points faibles connus. Seuls les **profils déclarés** de trois factions ont été ajustés, sans toucher aux questions : Ward plus pragmatique, Clear Sky plus rationnelle et plus soudée, Noon qui rejette l'obéissance aveugle et croit à la seconde chance. Reconnaissance minimale : 65,5 % → 70,2 % ; Ward : 72,5 % → 81,1 %.
+- [x] Rédiger les fiches des 12 factions (description de 2 à 3 phrases) et les explications par axe, avec des seuils testés `[F-23] [F-30] [N-06]`. Les textes d'interface du parcours sont écrits avec l'interface, en phase 4.
+- [x] Faire la relecture lore de Ward, Spark et Noon `[13.2]`. Noon : anciens du Monolithe libérés de leur endoctrinement, « seconde chance » (Strider). Noms russes Варта et Полдень confirmés. En français, la Ward serait « la Garde » dans la VF (une seule source) : le nom anglais est conservé en attendant une confirmation.
+- [x] Traduire en EN, UK et RU à partir du glossaire (cahier, § 7) : 273 textes par langue. En ukrainien et en russe, les réponses sont au présent et l'échelle d'accord évite les adjectifs genrés (« Скорее да », « Скоріше ні »).
+- [x] Ajouter le test de complétude des traductions, sans exception désormais `[I-03]`.
+- [ ] Faire relire UK et RU par des locuteurs natifs `[I-07]` (Q-B : plus tard, par Lilian).
+- [x] Relire les contenus sensibles : rien de politique ou de religieux réel ; formulations épicènes `[N-03] [N-04]`.
 
 ### Phase 4 · Parcours fonctionnel brut
 

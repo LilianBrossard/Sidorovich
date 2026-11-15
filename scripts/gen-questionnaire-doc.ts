@@ -5,7 +5,15 @@ import { writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { CENTERS_FILES, CURRENT_QUESTIONNAIRE, FACTIONS } from "../src/data";
 import { runBalance } from "../src/lib/quiz/balance";
-import { AXIS_KEYS, FACTION_KEYS, SCALE_LEVELS, type FactionKey } from "../src/lib/quiz/domain";
+import {
+  AXIS_KEYS,
+  FACTION_KEYS,
+  SCALE_LEVELS,
+  TENDENCY_LEAN,
+  TENDENCY_LEVELS,
+  TENDENCY_STRONG,
+  type FactionKey,
+} from "../src/lib/quiz/domain";
 import {
   compile,
   computeProfile,
@@ -128,7 +136,7 @@ w(
   `- Questions de type *Affirmation* : échelle à 5 niveaux (${SCALE_LEVELS.map((l) => `« ${fr.scale[l]} »`).join(", ")}). Les niveaux intermédiaires valent la moitié des extrêmes, « ${fr.scale.neutral} » vaut 0.`,
 );
 w(
-  "- Les textes sont rédigés en **français**, langue source. Ils sont formulés à l’épicène autant que possible : le candidat peut être une candidate. Les traductions EN, UK et RU sont produites en phase 3 du plan de développement.",
+  "- Les textes sont rédigés en **français**, langue source. Ils sont formulés à l’épicène autant que possible : le candidat peut être une candidate. Les traductions EN, UK et RU (premières versions, relecture par des locuteurs natifs à prévoir) sont dans `src/messages/`.",
 );
 w();
 
@@ -275,6 +283,32 @@ w();
       .join(
         " · ",
       )} … ${factionName(ranking.at(-1)!.faction)} ${Math.round(ranking.at(-1)!.compatibility)} %.`,
+  );
+  w();
+}
+
+{
+  const fmt = (v: number) => String(v).replace(".", ",");
+  w("### 4.6 Explications par axe");
+  w();
+  w(
+    `Sur la page résultat, une phrase décrit la position du candidat sur chaque axe [F-23]. Seuils : |valeur| ≥ ${fmt(TENDENCY_STRONG)} pour une tendance nette, ≥ ${fmt(TENDENCY_LEAN)} pour un penchant, sinon équilibre.`,
+  );
+  w();
+  const LABELS: Record<(typeof TENDENCY_LEVELS)[number], string> = {
+    strongMinus: `≤ −${fmt(TENDENCY_STRONG)}`,
+    leanMinus: `≤ −${fmt(TENDENCY_LEAN)}`,
+    balanced: "entre les deux",
+    leanPlus: `≥ ${fmt(TENDENCY_LEAN)}`,
+    strongPlus: `≥ ${fmt(TENDENCY_STRONG)}`,
+  };
+  table(
+    ["Axe", ...TENDENCY_LEVELS.map((l) => LABELS[l])],
+    ["---", ...TENDENCY_LEVELS.map(() => "---")],
+    AXIS_KEYS.map((axis) => [
+      `\`${axis}\``,
+      ...TENDENCY_LEVELS.map((l) => fr.axes[axis].tendencies[l]),
+    ]),
   );
   w();
 }
@@ -455,7 +489,7 @@ w(
   "Quelqu’un qui clique au hasard obtient le plus souvent **Solitaires** : un profil sans conviction marquée reste proche du centre. C’est un comportement acceptable.",
 );
 w();
-w("### 7.4 Points faibles connus (à traiter en phase 3)");
+w("### 7.4 Points faibles connus (à confronter au playtest de la phase 4)");
 w();
 for (const r of report.recognition.filter((x) => x.rate < 75).sort((a, b) => a.rate - b.rate)) {
   w(
