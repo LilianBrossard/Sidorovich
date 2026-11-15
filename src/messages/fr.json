@@ -16,17 +16,21 @@
     "quiz": "L’entretien",
     "factions": "Les factions",
     "howItWorks": "Comment ça marche",
-    "about": "À propos"
+    "about": "À propos",
+    "menu": "Menu"
   },
   "home": {
     "kicker": "Bureau de recrutement · Cordon",
     "tagline": "24 questions. 12 factions. Un seul verdict.",
     "cta": "Commencer l’entretien",
     "facts": {
-      "duration": "24 questions, environ 5 minutes.",
-      "noRightAnswer": "Pas de bonne réponse : seulement la tienne.",
-      "privacy": "Aucun compte, aucune donnée collectée."
-    }
+      "duration": "24 questions · 5 min",
+      "noRightAnswer": "Aucune bonne réponse",
+      "privacy": "Aucune donnée collectée"
+    },
+    "howLink": "Comment ça marche ?",
+    "videoPause": "Mettre la vidéo en pause",
+    "videoPlay": "Relancer la vidéo"
   },
   "quiz": {
     "metaTitle": "L’entretien",
@@ -35,21 +39,26 @@
     "rules": "Questions : {total}, une par écran. Il n’y a pas de bonne réponse, et tu peux revenir en arrière à tout moment. Ta progression reste dans ton navigateur.",
     "start": "Je m’assois",
     "skip": "Tout afficher",
-    "progress": "Question {current} sur {total}",
+    "progress": "Feuillet {current} sur {total}",
     "progressLabel": "Progression de l’entretien",
     "progressValue": "Réponses : {answered} sur {total}",
     "navigationLabel": "Navigation entre les questions",
-    "back": "Précédente",
-    "next": "Suivante",
+    "back": "Feuillet précédent",
+    "next": "Feuillet suivant",
     "restart": "Recommencer",
     "restartConfirm": "Effacer toutes tes réponses ?",
     "restartYes": "Oui, effacer",
     "restartNo": "Non, continuer",
-    "keyboardHint": "Au clavier : touches 1 à {count} pour répondre, ← et → pour changer de question, ↑ et ↓ pour parcourir les réponses.",
+    "keyboardHint": "Touches 1 à {count} pour répondre, ← et → pour changer de feuillet, ↑ et ↓ pour parcourir les réponses.",
     "doneTitle": "Dossier complet",
     "seeVerdict": "Voir mon verdict",
     "review": "Revoir mes réponses",
-    "storageWarning": "Ton navigateur bloque la sauvegarde : si tu fermes l’onglet, ta progression sera perdue."
+    "storageWarning": "Ton navigateur bloque la sauvegarde : si tu fermes l’onglet, ta progression sera perdue.",
+    "fileTitle": "Dossier de candidature",
+    "keyboardTitle": "Au clavier",
+    "confidential": "Confidentiel",
+    "backShort": "Précédent",
+    "nextShort": "Suivant"
   },
   "resume": {
     "inProgress": "Entretien en cours : tu en es à la question {current} sur {total}.",
@@ -63,7 +72,7 @@
   },
   "result": {
     "metaTitle": "Verdict : {faction} ({percent})",
-    "kicker": "Dossier n° <id>{code}</id>",
+    "kicker": "Dossier n° <id>{code}</id> · analyse terminée",
     "verdictLabel": "Faction recommandée",
     "compatibility": "{percent} de compatibilité",
     "radarTitle": "Ton profil sur les 7 axes",
@@ -81,7 +90,10 @@
     "invalidTitle": "Dossier illisible",
     "invalidBody": "Ce code ne correspond à aucun dossier. Il a peut-être été mal copié… ou falsifié. Et Sidorovich n’aime pas les faux papiers.",
     "outdatedTitle": "Dossier périmé",
-    "outdatedBody": "Ce dossier date d’une ancienne version de l’entretien. Repasse-le pour obtenir un verdict à jour."
+    "outdatedBody": "Ce dossier date d’une ancienne version de l’entretien. Repasse-le pour obtenir un verdict à jour.",
+    "messageTitle": "Message reçu · Sidorovich",
+    "runnerUp": "{faction} à {percent}",
+    "deviceLabel": "PDA-7 · Réseau Zone"
   },
   "factionsPage": {
     "metaTitle": "Les factions",

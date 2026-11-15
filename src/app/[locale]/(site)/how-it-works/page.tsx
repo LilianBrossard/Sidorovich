@@ -18,7 +18,7 @@ export default async function HowItWorksPage() {
   const axes = await getTranslations("axes");
 
   return (
-    <article className="space-y-10 leading-relaxed">
+    <article className="mx-auto w-full max-w-3xl space-y-10 px-4 py-10 leading-relaxed sm:px-8 sm:py-14">
       <header className="space-y-3">
         <h1 className="font-typewriter text-3xl text-paper-100 sm:text-4xl">{t("title")}</h1>
         <p className="text-paper-300">{t("intro")}</p>

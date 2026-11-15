@@ -6,6 +6,7 @@
 | [02 · Questionnaire et impacts](02-questionnaire.md) | Les 7 axes, les 12 factions, la méthode de calcul, les 24 questions avec leur impact sur chaque faction, les indicateurs d'équilibrage. **Document généré.** |
 | [03 · Plan de développement](03-plan-de-developpement.md) | Phases, tâches, jalons, architecture cible, risques. |
 | [04 · Protocole de playtest](04-playtest.md) | Déroulé, questions à poser, grille de synthèse et seuils du playtest de la phase 4. |
+| [05 · Direction artistique](05-direction-artistique.md) | Les trois décors, couleurs, polices, emblèmes, animations, et le cahier des charges de la vidéo du bunker. |
 
 ## Régénérer le document 02
 

@@ -1,9 +1,8 @@
 @import "tailwindcss";
 
 /*
- * Design tokens, première version [V-01].
- * Palette : béton du bunker, papier jauni du dossier, rouille, kaki, ambre du PDA.
- * La charte complète arrive en phase 5.
+ * Design tokens [V-01]. Trois décors : le béton du bunker, le papier du dossier, l'écran
+ * du PDA. Planche d'ambiance et maquettes validées en phase 5.
  */
 @theme {
   --color-bunker-950: #0d0d0b;
@@ -11,18 +10,146 @@
   --color-bunker-800: #23211a;
   --color-bunker-700: #34312a;
   --color-paper-100: #efe6cf;
+  --color-paper-200: #e3d6b4;
   --color-paper-300: #d9c9a3;
   --color-paper-500: #a8987a;
+  --color-ink-600: #4a4336;
   --color-ink-900: #1d1a14;
   --color-rust-500: #a4502a;
+  /* Rouille lisible sur le papier (contraste ≥ 4,5:1). */
+  --color-rust-600: #8f4322;
   --color-khaki-500: #6b6b3e;
   --color-amber-400: #f2b544;
+  /* Le bureau sous le dossier, la coque et l'écran du PDA. */
+  --color-desk-900: #1b1912;
+  --color-pda-900: #2e2f24;
+  --color-pda-700: #3d3e2f;
+  --color-pda-300: #c9c39a;
+  --color-screen-950: #0b0c08;
+
+  /* Mouvement [V-05] ; chaque animation a sa variante réduite [V-06]. */
+  --animate-sheet-in: sheet-in 260ms cubic-bezier(0.2, 0.7, 0.3, 1) both;
+  --animate-fade-in: fade-in 200ms ease-out both;
+  --animate-stamp: stamp 220ms cubic-bezier(0.3, 1.4, 0.5, 1) both;
+  --animate-boot: boot 420ms ease-out both;
+  --animate-draw: draw 900ms ease-out both;
+  --animate-flicker: flicker 23s linear infinite;
+
+  @keyframes sheet-in {
+    from {
+      opacity: 0;
+      transform: translate(28px, 6px) rotate(0.8deg);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes stamp {
+    from {
+      opacity: 0;
+      transform: scale(1.8) rotate(-14deg);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1) rotate(-6deg);
+    }
+  }
+  @keyframes boot {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+      filter: brightness(1.8);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+      filter: none;
+    }
+  }
+  @keyframes draw {
+    from {
+      stroke-dashoffset: 1;
+      fill-opacity: 0;
+    }
+    70% {
+      stroke-dashoffset: 0;
+      fill-opacity: 0;
+    }
+    to {
+      stroke-dashoffset: 0;
+      fill-opacity: 1;
+    }
+  }
+  /* Deux ou trois baisses de lumière irrégulières, jamais un clignotement rapide. */
+  @keyframes flicker {
+    0%,
+    31%,
+    33.5%,
+    71%,
+    72.4%,
+    100% {
+      opacity: 1;
+    }
+    32% {
+      opacity: 0.55;
+    }
+    33% {
+      opacity: 0.8;
+    }
+    71.7% {
+      opacity: 0.6;
+    }
+  }
 }
 
 @theme inline {
   --font-sans: var(--font-pt-sans), ui-sans-serif, system-ui, sans-serif;
   --font-typewriter: var(--font-pt-mono), ui-monospace, monospace;
   --font-terminal: var(--font-plex-mono), ui-monospace, monospace;
+}
+
+/* Matières, sans aucune image. */
+@utility bg-concrete {
+  background-color: var(--color-bunker-900);
+  background-image:
+    repeating-linear-gradient(0deg, transparent 0 118px, rgb(13 13 11 / 0.85) 118px 120px),
+    repeating-linear-gradient(90deg, transparent 0 238px, rgb(13 13 11 / 0.85) 238px 240px);
+}
+
+@utility bg-desk {
+  background-color: var(--color-desk-900);
+  background-image: repeating-linear-gradient(
+    100deg,
+    transparent 0 22px,
+    rgb(52 49 42 / 0.25) 22px 23px
+  );
+}
+
+@utility bg-ruled {
+  background-color: var(--color-paper-100);
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent 0 31px,
+    rgb(29 26 20 / 0.08) 31px 32px
+  );
+}
+
+@utility bg-scanlines {
+  background-color: var(--color-screen-950);
+  background-image: repeating-linear-gradient(
+    0deg,
+    rgb(242 181 68 / 0.05) 0 1px,
+    transparent 1px 3px
+  );
 }
 
 html {
@@ -37,4 +164,9 @@ body {
 :focus-visible {
   outline: 2px solid var(--color-amber-400);
   outline-offset: 3px;
+}
+
+/* Sur le papier, l'ambre ne se voit pas : contour à l'encre. */
+.surface-paper :focus-visible {
+  outline-color: var(--color-ink-900);
 }

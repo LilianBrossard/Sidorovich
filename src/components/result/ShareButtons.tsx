@@ -6,7 +6,13 @@ import { useState, useSyncExternalStore } from "react";
 const subscribeNothing = () => () => {};
 const hasNativeShare = () => typeof navigator.share === "function";
 
-/** Partage natif quand le navigateur le propose, copie du lien dans tous les cas [F-27]. */
+const key =
+  "inline-flex min-h-12 items-center justify-center rounded-sm border-2 border-amber-400 px-3 font-terminal text-xs tracking-[0.08em] uppercase sm:px-5 sm:text-sm";
+
+/**
+ * Partage natif quand le navigateur le propose, copie du lien dans tous les cas [F-27].
+ * Rendu en fragment : les touches se rangent dans la barre d'actions du PDA.
+ */
 export function ShareButtons({ title, text }: { title: string; text: string }) {
   const t = useTranslations("share");
   const canShare = useSyncExternalStore(subscribeNothing, hasNativeShare, () => false);
@@ -30,33 +36,28 @@ export function ShareButtons({ title, text }: { title: string; text: string }) {
     }
   };
 
-  const button =
-    "rounded-sm border px-4 py-2 font-terminal text-sm tracking-wider uppercase transition-colors";
-
   return (
-    <div className="space-y-2">
-      <div className="flex flex-wrap gap-3">
-        {canShare && (
-          <button
-            type="button"
-            onClick={share}
-            className={`${button} border-amber-400 bg-amber-400 text-ink-900 hover:bg-amber-400/85`}
-          >
-            {t("share")}
-          </button>
-        )}
+    <>
+      {canShare && (
         <button
           type="button"
-          onClick={copy}
-          className={`${button} border-paper-500/60 text-paper-300 hover:border-paper-100 hover:text-paper-100`}
+          onClick={share}
+          className={`${key} bg-amber-400 font-semibold text-screen-950 hover:bg-amber-400/85`}
         >
-          {t("copy")}
+          {t("share")}
         </button>
-      </div>
-      <p role="status" className="min-h-5 text-sm text-paper-300">
+      )}
+      <button
+        type="button"
+        onClick={copy}
+        className={`${key} ${canShare ? "text-amber-400 hover:bg-amber-400/10" : "col-span-2 bg-amber-400 font-semibold text-screen-950 hover:bg-amber-400/85"}`}
+      >
+        {t("copy")}
+      </button>
+      <p role="status" className="order-last col-span-2 min-h-5 basis-full text-sm">
         {status === "copied" && t("copied")}
         {status === "failed" && t("copyFailed")}
       </p>
-    </div>
+    </>
   );
 }

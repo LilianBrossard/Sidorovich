@@ -7,18 +7,20 @@ export function SiteFooter() {
   const t = useTranslations("common");
 
   return (
-    <footer className="mt-12 border-t border-bunker-700 pt-6 text-xs leading-relaxed text-paper-500">
-      <p>{t("notice")}</p>
-      <p className="mt-1">{t("disclaimer")}</p>
-      <p className="mt-3">
+    <footer className="border-t border-bunker-700 bg-bunker-950">
+      <div className="mx-auto flex w-full max-w-6xl flex-wrap justify-between gap-x-8 gap-y-2 px-4 py-5 text-xs leading-relaxed text-paper-500 sm:px-8">
+        <div>
+          <p>{t("disclaimer")}</p>
+          <p>{t("notice")}</p>
+        </div>
         <a
           href={REPOSITORY_URL}
-          className="underline underline-offset-4 hover:text-paper-100"
+          className="self-start underline underline-offset-4 hover:text-paper-100"
           rel="noopener"
         >
           {t("sourceCode")}
         </a>
-      </p>
+      </div>
     </footer>
   );
 }

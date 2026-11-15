@@ -10,22 +10,19 @@ export default function LocaleNotFound() {
   return (
     <>
       <SiteHeader />
-      <main
-        id="content"
-        className="mx-auto flex w-full max-w-3xl flex-1 flex-col justify-center px-4 py-16"
-      >
-        <p className="font-terminal text-xs tracking-[0.25em] text-amber-400 uppercase">404</p>
-        <h1 className="mt-3 font-typewriter text-3xl sm:text-5xl">{t("title")}</h1>
-        <p className="mt-4 text-paper-300">{t("body")}</p>
-        <p className="mt-8">
-          <Link href="/" className="text-amber-400 underline underline-offset-4">
-            {t("back")}
-          </Link>
-        </p>
+      <main id="content" className="flex flex-1 flex-col bg-concrete">
+        <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col justify-center px-4 py-16 sm:px-8">
+          <p className="font-terminal text-xs tracking-[0.25em] text-amber-400 uppercase">404</p>
+          <h1 className="mt-3 font-typewriter text-3xl sm:text-5xl">{t("title")}</h1>
+          <p className="mt-4 text-paper-300">{t("body")}</p>
+          <p className="mt-8">
+            <Link href="/" className="text-amber-400 underline underline-offset-4">
+              {t("back")}
+            </Link>
+          </p>
+        </div>
       </main>
-      <div className="mx-auto w-full max-w-3xl px-4 pb-8">
-        <SiteFooter />
-      </div>
+      <SiteFooter />
     </>
   );
 }

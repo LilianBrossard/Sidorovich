@@ -54,10 +54,11 @@ src/
 │  └─ index.ts                  resultCode(), resultFromCode()
 ├─ messages/fr.json · en.json · uk.json · ru.json   Tous les textes
 ├─ components/
-│  ├─ quiz/                     Questionnaire (client), partie sauvegardée dans le navigateur
-│  ├─ result/                   Radar SVG, boutons de partage
-│  └─ …                         En-tête, navigation, langues, répliques de Sidorovich
-│                               (phase 5 : bunker/ · dossier/ · pda/, design tokens)
+│  ├─ bunker/                   Scène d'accueil, lecteur du fond vidéo
+│  ├─ quiz/                     Dossier (client), partie sauvegardée dans le navigateur
+│  ├─ result/                   Radar SVG, touches de partage du PDA
+│  └─ …                         En-tête et menu, 12 emblèmes, notes de Sidorovich
+│                               (design tokens et matières : app/globals.css)
 scripts/   calibrate.ts · balance-report.ts · gen-questionnaire-doc.ts · validate-data.ts
 tests/     unit/ · property/ · balance/       Vitest
 e2e/       quiz.spec.ts · pages.spec.ts         Playwright, sur le build de production
@@ -177,15 +178,15 @@ Mesures : 158 Ko de JavaScript compressé sur la page questionnaire (budget : 20
 
 ### Phase 5 · Direction artistique
 
-- [ ] Préparer un moodboard (planche d'ambiance), puis **6 maquettes** : 3 scènes × mobile et ordinateur. **Tu les valides avant l'intégration** `[V-04]`.
-- [ ] Créer les design tokens et les composants de base : papier, tampon, case à cocher, écran PDA, boutons `[V-01] [V-02]`.
-- [ ] **Bunker** : décor en SVG et CSS, lampe qui vacille, silhouette de Sidorovich à contre-jour, bulles de dialogue.
-- [ ] **Dossier** : formulaire, cases cochées, tampon final, transitions entre questions.
-- [ ] **PDA** : séquence de démarrage, lignes de balayage, radar animé, 12 emblèmes SVG originaux `[V-03]`.
-- [ ] Animations Motion, `prefers-reduced-motion`, 60 images par seconde `[V-05] [V-06]`.
-- [ ] Responsive de 360 px à 1920 px `[V-07]`.
+- [x] Préparer un moodboard (planche d'ambiance), puis **6 maquettes** : 3 scènes × mobile et ordinateur. **Tu les valides avant l'intégration** `[V-04]`. Validées le 15 novembre 2026, avec une demande : un fond vidéo en boucle pour Sidorovich au lieu du SVG. Détails : [document 05](05-direction-artistique.md).
+- [x] Créer les design tokens et les composants de base : papier, tampon, case à cocher, écran PDA, boutons `[V-01] [V-02]`. Matières en CSS, sans image.
+- [ ] **Bunker** : lampe qui vacille et bulle de dialogue faites ; le lecteur du fond vidéo est prêt (pause, économie de données, animations réduites). **Reste la vidéo, fournie par Lilian** (cahier des charges et prompt : document 05).
+- [x] **Dossier** : feuillets, 24 cases de progression, cases cochées, notes trombonées de Sidorovich, tampon « Dossier complet », feuillet glissé à chaque question.
+- [x] **PDA** : coque et écran à phosphore, démarrage bloc par bloc, radar tracé à l'écran, curseurs par axe, 12 emblèmes SVG originaux `[V-03]`.
+- [x] Animations en CSS plutôt qu'avec Motion (aucun JavaScript en plus), `prefers-reduced-motion` respecté `[V-05] [V-06]`. Les 60 images par seconde restent à mesurer sur un téléphone.
+- [x] Responsive de 360 px à 1920 px, vérifié par les tests de bout en bout (360, 768, 1280, 1920 px) `[V-07]`. Menu repliable sur mobile.
 - [ ] (Souhaitable) Ambiance sonore coupée par défaut `[F-40]`.
-- [ ] Contrôler les budgets : Lighthouse et poids du JavaScript à chaque PR `[T-03…T-05]`.
+- [ ] Contrôler les budgets `[T-03…T-05]` : JavaScript mesuré (161 Ko compressés sur le questionnaire, 164 Ko sur le résultat, pour 200 Ko autorisés) ; Lighthouse en phase 7.
 
 **Fini quand :** les maquettes sont respectées, les seuils de performance et d'accessibilité sont tenus et le rendu est vérifié sur un vrai téléphone.
 

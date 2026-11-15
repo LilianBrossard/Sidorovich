@@ -2,7 +2,7 @@
 
 > Entretien d'embauche dans la Zone : réponds aux 24 questions de Sidorovich et découvre laquelle des 12 factions de l'univers _S.T.A.L.K.E.R._ est faite pour toi.
 
-**Statut :** phase 4 du [plan de développement](docs/03-plan-de-developpement.md) : le test est jouable de bout en bout, dans les 4 langues, avec un habillage volontairement minimal. La direction artistique (bunker, dossier, PDA) arrive en phase 5.
+**Statut :** phase 5 du [plan de développement](docs/03-plan-de-developpement.md) : le test est jouable de bout en bout dans les 4 langues, habillé de ses trois décors (bunker, dossier, PDA). Reste la vidéo de fond du bunker ([cahier des charges](docs/05-direction-artistique.md#5-la-vidéo-du-bunker-à-fournir)).
 
 Site en 4 langues : français, English, українська, русский.
 

@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import { HYBRID_CODE, LOCALES, title } from "./helpers";
+import { HYBRID_CODE, LOCALES, openMenu, title } from "./helpers";
 
 const PAGES = ["", "/quiz", "/factions", "/how-it-works", "/about", `/r/${HYBRID_CODE}`];
 
@@ -25,12 +25,29 @@ test("aucun défilement horizontal à 360 px [V-07]", async ({ page }) => {
   }
 });
 
+test("aucun défilement horizontal à 768, 1280 et 1920 px [V-07]", async ({ page, isMobile }) => {
+  test.skip(isMobile, "Largeurs de tablette et d’ordinateur.");
+  for (const width of [768, 1280, 1920]) {
+    await page.setViewportSize({ width, height: 900 });
+    for (const locale of ["fr", "ru"]) {
+      for (const path of PAGES) {
+        await page.goto(`/${locale}${path}`);
+        const overflow = await page.evaluate(
+          () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
+        );
+        expect(overflow, `${width} px · /${locale}${path}`).toBeLessThanOrEqual(0);
+      }
+    }
+  }
+});
+
 test("chaque page a un titre de niveau 1 et le sélecteur de langue [F-02] [F-03]", async ({
   page,
 }) => {
   for (const path of PAGES) {
     await page.goto(`/uk${path}`);
     await expect(title(page)).toHaveCount(1);
+    await openMenu(page);
     await expect(page.getByRole("link", { name: "Русский" })).toBeVisible();
     await expect(page.locator("footer")).toContainText("GSC Game World");
   }

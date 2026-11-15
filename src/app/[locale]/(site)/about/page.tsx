@@ -31,7 +31,7 @@ export default async function AboutPage() {
   ];
 
   return (
-    <article className="space-y-10 leading-relaxed">
+    <article className="mx-auto w-full max-w-3xl space-y-10 px-4 py-10 leading-relaxed sm:px-8 sm:py-14">
       <h1 className="font-typewriter text-3xl text-paper-100 sm:text-4xl">{t("title")}</h1>
       {sections.map(({ id, title, lines }) => (
         <section key={id} className="space-y-2">
