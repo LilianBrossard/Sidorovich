@@ -57,9 +57,15 @@ Animations en CSS uniquement : rien n'alourdit le JavaScript `[T-05]`.
 
 Avec `prefers-reduced-motion` `[V-06]` : la lampe ne vacille plus, les répliques s'affichent d'un coup, le radar apparaît directement, tout le reste devient un simple fondu, et la vidéo n'est pas chargée.
 
-## 5. La vidéo du bunker (à fournir)
+## 5. La vidéo du bunker
 
-Le lecteur est en place ([`BackgroundVideo.tsx`](../src/components/bunker/BackgroundVideo.tsx)). En attendant la vidéo, la scène montre seulement la lumière de la lampe.
+Livrée le 16/11/2026 par Lilian : 10 secondes, 1280 × 720, Sidorovich à son bureau. Elle reprend le personnage et le décor du jeu : c'est une exception à L-02, créditée à GSC Game World et exclue de la licence MIT (cahier, § 13.5).
+
+- `npm run video -- source.mp4` produit `sidorovich.mp4` (H.264, 786 Ko), `sidorovich.webm` (VP9, 1,7 Mo) et `sidorovich-poster.webp` (960 px, 36 Ko) **sans piste son**, avec le Chromium de Playwright (pas de FFmpeg sur le poste).
+- La scène est au format 16:9, pour ne pas recadrer l'image ; la bulle de Sidorovich se pose dessous comme un sous-titre.
+- L'image fixe est une vraie `<img>` prioritaire sous la vidéo : c'est l'élément LCP de l'accueil.
+
+Le cahier des charges ci-dessous reste valable pour remplacer la vidéo par une création originale.
 
 ### Contenu
 
@@ -86,7 +92,7 @@ Le lecteur est en place ([`BackgroundVideo.tsx`](../src/components/bunker/Backgr
 
 ### Encodage
 
-Avec [FFmpeg](https://ffmpeg.org/), depuis la vidéo d'origine `source.mp4` :
+Le plus simple : `npm run video -- source.mp4` (voir plus haut), sans rien installer. Avec [FFmpeg](https://ffmpeg.org/), si on préfère régler l'encodage soi-même :
 
 ```bash
 ffmpeg -i source.mp4 -an -vf "scale=1280:-2,fps=24" -c:v libvpx-vp9 -b:v 0 -crf 38 -row-mt 1 public/media/bunker/sidorovich.webm
@@ -97,21 +103,21 @@ ffmpeg -i source.mp4 -an -vf "scale=1280:-2,fps=24" -c:v libx264 -preset slow -c
 ```
 
 ```bash
-ffmpeg -i source.mp4 -vf "scale=1280:-2" -frames:v 1 -q:v 4 public/media/bunker/sidorovich-poster.jpg
+ffmpeg -i source.mp4 -vf "scale=960:-2" -frames:v 1 -quality 70 public/media/bunker/sidorovich-poster.webp
 ```
 
 Si un fichier dépasse son poids maximal, augmenter `-crf` de 2 et recommencer.
 
 ### Activation
 
-Poser les trois fichiers dans `public/media/bunker/`, puis renseigner [`src/components/bunker/video.ts`](../src/components/bunker/video.ts) :
+Les trois fichiers vont dans `public/media/bunker/`, déclarés dans [`src/components/bunker/video.ts`](../src/components/bunker/video.ts) :
 
 ```ts
 export const BUNKER_VIDEO = {
-  poster: "/media/bunker/sidorovich-poster.jpg",
+  poster: "/media/bunker/sidorovich-poster.webp",
   sources: [
-    { src: "/media/bunker/sidorovich.webm", type: "video/webm" },
     { src: "/media/bunker/sidorovich.mp4", type: "video/mp4" },
+    { src: "/media/bunker/sidorovich.webm", type: "video/webm" },
   ],
 };
 ```

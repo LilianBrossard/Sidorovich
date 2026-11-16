@@ -293,7 +293,7 @@ Ils sont exécutés en intégration continue. **Un échec bloque la fusion.** Le
 | ID | Exigence | Critère de validation | Priorité |
 |---|---|---|---|
 | L-01 | Mention visible : « Projet de fan non officiel, non affilié à GSC Game World. S.T.A.L.K.E.R. est une marque de GSC Game World. » | Pied de page et page « À propos », dans les 4 langues. | Indispensable |
-| L-02 | Aucun asset officiel. Tout est original ou sous une licence libre compatible. | Liste des crédits et licences dans « À propos » et dans le README. | Indispensable |
+| L-02 | Aucun asset officiel, sauf la vidéo de fond du bunker (décision du 16/11/2026, § 13.5). Tout le reste est original ou sous une licence libre compatible. | Liste des crédits et licences dans « À propos », le README et `LICENSE`. | Indispensable |
 | L-03 | Aucune donnée personnelle collectée en V1. Seul stockage : la progression du questionnaire dans le navigateur, et un cookie fonctionnel de langue. | Pas de bandeau cookies requis ; vérifié dans les outils du navigateur. | Indispensable |
 | L-04 | V2 : statistiques uniquement agrégées et anonymes, sans adresse IP stockée, décrites dans une politique de confidentialité. | Relecture avant la mise en ligne de la V2. | V2 |
 | L-05 | Vérifier les conditions de GSC Game World concernant les créations de fans avant le lancement. | Conclusion notée dans la section 13. | Important |
@@ -356,7 +356,7 @@ La V1 est mise en ligne quand **tous** les points suivants sont vrais :
 
 | # | Question | À trancher avant |
 |---|---|---|
-| Q-F | Nom définitif du site (nom de travail : « Sidorovich RH ») ? | Lancement (`v1.0.0`) |
+| — | Aucune. | — |
 
 ### 13.4 Conditions de GSC Game World pour les créations de fans `[L-05]` (16/11/2026)
 
@@ -373,3 +373,15 @@ Source : [Fan Content Creation Guidelines](https://gsc-game.com/guidelines) de G
 | Droits révocables à tout moment par GSC. | Le site sera retiré ou modifié sur simple demande. |
 
 **Conclusion :** le projet respecte ces conditions. GSC « recommande fortement » de contacter son service communauté avant d'ouvrir un site : c'est à Lilian de le faire avant le lancement de la `v1.0.0` (recommandation, pas obligation).
+
+### 13.5 Décisions du 16/11/2026
+
+| Sujet | Décision |
+|---|---|
+| Nom et adresse (Q-F) | On garde « Sidorovich RH » et `sidorovich.vercel.app`. |
+| Vidéo du bunker | Fournie par Lilian. Elle montre Sidorovich et son bunker **tels qu'ils apparaissent dans le jeu** : c'est une exception à L-02. Elle est utilisée sans but commercial, créditée à GSC Game World dans « À propos » et exclue de la licence MIT (`LICENSE`). Le son est retiré. |
+| Conditions de GSC Game World | Aucune démarche obligatoire : pas de contact avec le service communauté (le projet ne rapporte rien et ne réutilise rien ailleurs). |
+| Traductions UK et RU | Acceptées en l'état. |
+| Aperçus de partage | Vérifiés par Lilian sur les plateformes visées. |
+| En-têtes de sécurité | Note A sur securityheaders.com, plafonnée par `'unsafe-inline'` dans la CSP : compromis accepté pour garder les pages statiques. |
+| Portfolio | Lien « Réalisé par Lilian Brossard » vers https://lilian-brossard.vercel.app dans le pied de page. |

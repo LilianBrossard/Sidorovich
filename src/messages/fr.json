@@ -19,7 +19,8 @@
     "languageLabel": "Langue",
     "disclaimer": "Projet de fan non officiel, non affilié à GSC Game World. S.T.A.L.K.E.R. est une marque de GSC Game World.",
     "notice": "Un test pour s’amuser, pas une évaluation psychologique.",
-    "sourceCode": "Code source"
+    "sourceCode": "Code source",
+    "madeBy": "Réalisé par <link>Lilian Brossard</link>"
   },
   "nav": {
     "label": "Navigation principale",
@@ -178,7 +179,7 @@
       "title": "Crédits",
       "fonts": "Polices : PT Sans et PT Mono (ParaType), IBM Plex Mono (IBM), sous licence SIL Open Font License 1.1.",
       "code": "Construit avec Next.js, React, next-intl, Tailwind CSS et Zod, sous licence MIT.",
-      "images": "Illustrations et emblèmes : créations originales. Aucun élément graphique ou sonore officiel n’est utilisé."
+      "images": "Emblèmes et décors : créations originales. Vidéo du bunker : Sidorovich et son bunker tels qu’ils apparaissent dans S.T.A.L.K.E.R., propriété de GSC Game World, utilisés sans but commercial."
     },
     "fan": {
       "title": "Avertissement",

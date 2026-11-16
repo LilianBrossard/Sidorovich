@@ -30,6 +30,12 @@ export function BackgroundVideo({ poster, sources, pauseLabel, playLabel }: Prop
   const [paused, setPaused] = useState(false);
   const [onScreen, setOnScreen] = useState(true);
 
+  // Les sources arrivent après l'hydratation, dans le même élément : l'image fixe, déjà
+  // peinte, n'est pas remplacée (sinon elle serait repeinte plus tard, et le LCP avec) [T-04].
+  useEffect(() => {
+    if (active) video.current?.load();
+  }, [active]);
+
   useEffect(() => {
     const element = video.current;
     if (!element || !active) return;
@@ -47,16 +53,25 @@ export function BackgroundVideo({ poster, sources, pauseLabel, playLabel }: Prop
 
   return (
     <>
+      {/*
+        L'image fixe est une vraie <img>, sous la vidéo : découverte tout de suite et chargée
+        en priorité, c'est l'élément LCP de l'accueil [T-04]. Déjà en WebP et à la bonne
+        taille : le composant <Image> de Next.js n'apporterait rien ici.
+      */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={poster}
+        alt=""
+        fetchPriority="high"
+        decoding="async"
+        className="absolute inset-0 h-full w-full object-cover"
+      />
       <video
-        // Nouvelle clé quand les sources apparaissent : le navigateur les recharge.
-        key={active ? "video" : "poster"}
         ref={video}
-        poster={poster}
         muted
         loop
         playsInline
-        autoPlay={active}
-        preload={active ? "auto" : "none"}
+        preload="none"
         aria-hidden="true"
         tabIndex={-1}
         className="absolute inset-0 h-full w-full object-cover"
@@ -68,7 +83,7 @@ export function BackgroundVideo({ poster, sources, pauseLabel, playLabel }: Prop
           type="button"
           onClick={() => setPaused((value) => !value)}
           aria-label={paused ? playLabel : pauseLabel}
-          className="absolute right-3 bottom-3 z-10 inline-flex size-11 items-center justify-center rounded-sm border border-paper-300/40 bg-bunker-950/70 text-paper-100 hover:bg-bunker-950"
+          className="absolute top-3 right-3 z-10 inline-flex size-11 items-center justify-center rounded-sm border border-paper-300/40 bg-bunker-950/70 text-paper-100 hover:bg-bunker-950"
         >
           <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
             {paused ? <path d="M7 4.5v15l12-7.5z" /> : <path d="M6 4h4v16H6zM14 4h4v16h-4z" />}
