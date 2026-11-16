@@ -24,7 +24,8 @@
     "balance": "tsx scripts/balance-report.ts",
     "docs:questionnaire": "tsx scripts/gen-questionnaire-doc.ts",
     "check": "npm run lint && npm run format:check && npm run typecheck && npm run validate && npm run test:coverage",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "icons": "node scripts/generate-icons.mjs"
   },
   "dependencies": {
     "next": "16.4.6",

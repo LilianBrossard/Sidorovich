@@ -90,24 +90,24 @@ interface Props {
   /** Nom lu par les lecteurs d'écran ; sans nom, l'emblème est décoratif. */
   readonly label?: string;
   readonly className?: string;
+  /** Couleur du trait ; par défaut celle du texte. Utile hors CSS (images d'aperçu). */
+  readonly color?: string;
+  /** Taille en pixels, pour les rendus sans CSS. */
+  readonly size?: number;
 }
 
-export function FactionEmblem({ faction, label, className }: Props) {
+export function FactionEmblem({ faction, label, className, color = "currentColor", size }: Props) {
   return (
     <svg
       viewBox="0 0 96 96"
+      width={size}
+      height={size}
       role={label ? "img" : undefined}
       aria-label={label}
       aria-hidden={label ? undefined : true}
       className={className}
     >
-      <g
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="3"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
+      <g fill="none" stroke={color} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="48" cy="48" r="44" />
         <circle cx="48" cy="48" r="38" strokeWidth="1.2" />
         {PICTOGRAMS[faction]}

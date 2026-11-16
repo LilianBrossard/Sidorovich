@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getFormatter, getTranslations } from "next-intl/server";
+import { getFormatter, getLocale, getTranslations } from "next-intl/server";
 import type { CSSProperties, ReactNode } from "react";
 import { FactionEmblem } from "@/components/FactionEmblem";
 import { RetakeLink } from "@/components/quiz/RetakeLink";
@@ -7,8 +7,10 @@ import { Radar } from "@/components/result/Radar";
 import { ShareButtons } from "@/components/result/ShareButtons";
 import { CENTERS_FILES, archetypeCode, isRetiredCode, resultFromCode } from "@/data/index";
 import { Link } from "@/i18n/navigation";
+import type { AppLocale } from "@/i18n/routing";
 import { AXIS_KEYS, FACTION_KEYS } from "@/lib/quiz/domain";
 import { axisTendency } from "@/lib/quiz/engine";
+import { pageMetadata } from "@/lib/site";
 
 // Page résultat [F-20…F-27], sur l'écran d'un PDA. Le résultat se recalcule à partir du code
 // de l'URL : aucune base de données. Les 12 dossiers types sont pré-rendus ; tout autre code
@@ -25,23 +27,34 @@ export async function generateMetadata({
   params,
 }: PageProps<"/[locale]/r/[code]">): Promise<Metadata> {
   const { code } = await params;
-  const t = await getTranslations("result");
-  const factions = await getTranslations("factions");
+  const t = await getTranslations();
   const format = await getFormatter();
   const decoded = resultFromCode(code);
   // Une infinité de combinaisons possibles : ces pages ne sont pas indexées.
-  const robots = { index: false, follow: true };
-  if (!decoded.ok) return { title: t("invalidTitle"), robots };
+  const base = {
+    locale: (await getLocale()) as AppLocale,
+    path: `/r/${code}`,
+    siteName: t("metadata.title"),
+    imageAlt: null,
+    index: false,
+  };
+  if (!decoded.ok) {
+    return pageMetadata({
+      ...base,
+      title: t("result.invalidTitle"),
+      description: t("metadata.description"),
+    });
+  }
 
   const { top } = decoded.result;
-  return {
-    title: t("metaTitle", {
-      faction: factions(`${top.faction}.name`),
+  return pageMetadata({
+    ...base,
+    title: t("result.metaTitle", {
+      faction: t(`factions.${top.faction}.name`),
       percent: format.number(top.compatibility / 100, percentOptions),
     }),
-    description: factions(`${top.faction}.pitch`),
-    robots,
-  };
+    description: t(`factions.${top.faction}.pitch`),
+  });
 }
 
 /** Démarrage du PDA : chaque bloc s'allume un peu après le précédent [V-05] [V-06]. */

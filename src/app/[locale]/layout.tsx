@@ -1,8 +1,9 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { NextIntlClientProvider, type Messages } from "next-intl";
 import { getLocale, getMessages, getTranslations } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import { fontVariables } from "@/lib/fonts";
+import { SITE_URL } from "@/lib/site";
 import "../globals.css";
 
 // Les 4 langues sont pré-rendues. Une langue inconnue (ex. /fichier.txt, qui ne passe pas
@@ -14,10 +15,14 @@ export function generateStaticParams() {
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("metadata");
   return {
+    metadataBase: SITE_URL,
+    applicationName: t("title"),
     title: { default: t("title"), template: `%s · ${t("title")}` },
     description: t("description"),
   };
 }
+
+export const viewport: Viewport = { themeColor: "#0d0d0b", colorScheme: "dark" };
 
 /**
  * Seuls ces espaces de noms partent dans le navigateur : les composants client n'utilisent

@@ -1,12 +1,21 @@
 import type { Metadata } from "next";
-import { getMessages, getTranslations } from "next-intl/server";
+import { getLocale, getMessages, getTranslations } from "next-intl/server";
 import { buildQuizCopy } from "@/components/quiz/copy";
 import { Quiz } from "@/components/quiz/Quiz";
 import { CURRENT_QUESTIONNAIRE } from "@/data/questionnaires";
+import type { AppLocale } from "@/i18n/routing";
+import { pageMetadata } from "@/lib/site";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations("quiz");
-  return { title: t("metaTitle") };
+  const t = await getTranslations();
+  return pageMetadata({
+    locale: (await getLocale()) as AppLocale,
+    path: "/quiz",
+    siteName: t("metadata.title"),
+    imageAlt: t("og.defaultAlt"),
+    title: t("quiz.metaTitle"),
+    description: t("seo.quiz"),
+  });
 }
 
 /**

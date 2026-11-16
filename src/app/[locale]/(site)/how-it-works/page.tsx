@@ -1,12 +1,21 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
+import type { AppLocale } from "@/i18n/routing";
 import { AXIS_KEYS } from "@/lib/quiz/domain";
+import { pageMetadata } from "@/lib/site";
 
 const ENGINE_URL = "https://github.com/LilianBrossard/Sidorovich/tree/main/src/lib/quiz";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations("howItWorks");
-  return { title: t("metaTitle"), description: t("intro") };
+  const t = await getTranslations();
+  return pageMetadata({
+    locale: (await getLocale()) as AppLocale,
+    path: "/how-it-works",
+    siteName: t("metadata.title"),
+    imageAlt: t("og.defaultAlt"),
+    title: t("howItWorks.metaTitle"),
+    description: t("seo.howItWorks"),
+  });
 }
 
 const STEPS = ["answers", "profile", "distance", "verdict"] as const;

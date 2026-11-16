@@ -5,9 +5,9 @@ import type { Vector } from "@/lib/quiz/types";
 // le cercle pointillé du milieu correspond à l'équilibre (valeur 0).
 // Sur l'écran du PDA : traits au phosphore, le profil du candidat se dessine au démarrage.
 
-const SIZE = 400;
+export const SIZE = 400;
 const CENTER = SIZE / 2;
-const RADIUS = 110;
+export const RADIUS = 110;
 const LABEL_RADIUS = RADIUS + 18;
 
 export interface RadarSeries {
@@ -26,14 +26,14 @@ interface Props {
 
 const angle = (i: number, n: number) => -Math.PI / 2 + (2 * Math.PI * i) / n;
 /** Valeur dans [-1, 1] → distance au centre dans [0, RADIUS]. */
-const radiusOf = (value: number) => (RADIUS * (Math.max(-1, Math.min(1, value)) + 1)) / 2;
+export const radiusOf = (value: number) => (RADIUS * (Math.max(-1, Math.min(1, value)) + 1)) / 2;
 
 function point(i: number, n: number, r: number): [number, number] {
   const a = angle(i, n);
   return [CENTER + r * Math.cos(a), CENTER + r * Math.sin(a)];
 }
 
-const polygon = (radii: readonly number[]) =>
+export const polygon = (radii: readonly number[]) =>
   radii
     .map((r, i) => point(i, radii.length, r))
     .map(([x, y]) => `${x.toFixed(1)},${y.toFixed(1)}`)

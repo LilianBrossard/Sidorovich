@@ -1,7 +1,22 @@
+import type { Metadata } from "next";
 import { useTranslations } from "next-intl";
+import { getLocale, getTranslations } from "next-intl/server";
 import { BunkerScene } from "@/components/bunker/BunkerScene";
 import { ResumeHint } from "@/components/quiz/ResumeHint";
 import { Link } from "@/i18n/navigation";
+import type { AppLocale } from "@/i18n/routing";
+import { pageMetadata } from "@/lib/site";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations();
+  return pageMetadata({
+    locale: (await getLocale()) as AppLocale,
+    path: "",
+    siteName: t("metadata.title"),
+    description: t("metadata.description"),
+    imageAlt: t("og.defaultAlt"),
+  });
+}
 
 /** Accueil, dans le bunker : le bouton « Commencer » est visible sans défilement [F-01]. */
 export default function HomePage() {

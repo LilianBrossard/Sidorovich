@@ -192,10 +192,10 @@ Mesures : 158 Ko de JavaScript compressé sur la page questionnaire (budget : 20
 
 ### Phase 6 · Partage et SEO
 
-- [ ] Générer les images d'aperçu par résultat et par langue (`opengraph-image.tsx`) `[F-28]`.
-- [ ] Ajouter les métadonnées par page et par langue, `hreflang`, `sitemap.xml`, `robots.txt`, icônes et manifest `[T-08] [I-06]`.
-- [ ] Vérifier les aperçus dans les outils de Discord, X, Facebook et LinkedIn.
-- [ ] Trancher le nom et le domaine (question Q-A).
+- [x] Générer les images d'aperçu par résultat et par langue (`opengraph-image.tsx`) `[F-28]` : écran du PDA, emblème, faction, % et mini-radar ; une image par défaut par langue pour les autres pages. Polices WOFF latin et cyrillique dans `assets/fonts/` (licence OFL), car le moteur de rendu ne lit pas le WOFF2.
+- [x] Ajouter les métadonnées par page et par langue, `hreflang` (avec `x-default`), `sitemap.xml`, `robots.txt`, icônes et manifest `[T-08] [I-06]`. Les résultats ne sont pas indexés et ne figurent pas dans le sitemap. Icône : un radar à 7 branches, régénérable avec `npm run icons`.
+- [ ] Vérifier les aperçus dans les outils de Discord, X, Facebook et LinkedIn (après la mise en production, par Lilian).
+- [ ] Trancher le nom définitif (question Q-F) ; l'adresse reste `sidorovich.vercel.app` (Q-A).
 
 **Fini quand :** un lien de résultat collé sur les 4 plateformes affiche le bon aperçu, dans la bonne langue.
 
