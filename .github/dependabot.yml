@@ -7,6 +7,17 @@ updates:
       interval: weekly
       day: monday
     open-pull-requests-limit: 5
+    # Majeures écartées (PR 12 à 14, 16/11/2026) :
+    # - TypeScript et ESLint : pas encore pris en charge par typescript-eslint et les
+    #   extensions d'eslint-config-next ; à rouvrir quand Next.js les acceptera.
+    # - @types/node : suit la version minimale de Node du projet (22, champ engines).
+    ignore:
+      - dependency-name: typescript
+        update-types: ["version-update:semver-major"]
+      - dependency-name: eslint
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "@types/node"
+        update-types: ["version-update:semver-major"]
     groups:
       production:
         dependency-type: production
