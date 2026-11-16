@@ -48,7 +48,10 @@ export async function answerRange(
 /** Sur mobile, les liens et les langues sont dans le menu : on l’ouvre s’il est fermé. */
 export async function openMenu(page: Page) {
   const toggle = byTestId(page, "menu-toggle");
-  if ((await toggle.count()) > 0 && (await toggle.getAttribute("aria-expanded")) === "false") {
-    await toggle.click();
-  }
+  if ((await toggle.count()) === 0) return;
+  // Un clic avant l'hydratation de React est perdu (WebKit est plus lent) : on réessaie.
+  await expect(async () => {
+    if ((await toggle.getAttribute("aria-expanded")) !== "true") await toggle.click();
+    await expect(toggle).toHaveAttribute("aria-expanded", "true", { timeout: 1000 });
+  }).toPass({ timeout: 10_000 });
 }

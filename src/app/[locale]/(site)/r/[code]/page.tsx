@@ -5,7 +5,13 @@ import { FactionEmblem } from "@/components/FactionEmblem";
 import { RetakeLink } from "@/components/quiz/RetakeLink";
 import { Radar } from "@/components/result/Radar";
 import { ShareButtons } from "@/components/result/ShareButtons";
-import { CENTERS_FILES, archetypeCode, isRetiredCode, resultFromCode } from "@/data/index";
+import {
+  CENTERS_FILES,
+  archetypeCode,
+  isArchetypeCode,
+  isRetiredCode,
+  resultFromCode,
+} from "@/data/index";
 import { Link } from "@/i18n/navigation";
 import type { AppLocale } from "@/i18n/routing";
 import { AXIS_KEYS, FACTION_KEYS } from "@/lib/quiz/domain";
@@ -30,13 +36,13 @@ export async function generateMetadata({
   const t = await getTranslations();
   const format = await getFormatter();
   const decoded = resultFromCode(code);
-  // Une infinité de combinaisons possibles : ces pages ne sont pas indexées.
+  // Une infinité de combinaisons possibles : seuls les 12 dossiers types sont indexés.
   const base = {
     locale: (await getLocale()) as AppLocale,
     path: `/r/${code}`,
     siteName: t("metadata.title"),
     imageAlt: null,
-    index: false,
+    index: isArchetypeCode(code),
   };
   if (!decoded.ok) {
     return pageMetadata({

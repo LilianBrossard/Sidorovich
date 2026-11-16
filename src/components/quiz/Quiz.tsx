@@ -37,14 +37,6 @@ export function Quiz({ copy }: { copy: QuizCopy }) {
   // Identifiants uniques : Next.js peut garder une autre instance de la page, masquée.
   const titleId = useId();
 
-  if (session === undefined) {
-    return (
-      <p role="status" className="font-terminal text-sm text-paper-300">
-        {t("loading")}
-      </p>
-    );
-  }
-
   const restart = () => {
     clear();
     setRestarted(true);
