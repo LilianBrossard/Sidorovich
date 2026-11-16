@@ -2,7 +2,7 @@
 
 > Entretien d'embauche dans la Zone : réponds aux 24 questions de Sidorovich et découvre laquelle des 12 factions de l'univers _S.T.A.L.K.E.R._ est faite pour toi.
 
-**Statut :** phase 5 du [plan de développement](docs/03-plan-de-developpement.md) : le test est jouable de bout en bout dans les 4 langues, habillé de ses trois décors (bunker, dossier, PDA). Reste la vidéo de fond du bunker ([cahier des charges](docs/05-direction-artistique.md#5-la-vidéo-du-bunker-à-fournir)).
+**Statut :** phase 6 du [plan de développement](docs/03-plan-de-developpement.md) : test jouable de bout en bout dans les 4 langues, habillé de ses trois décors, avec aperçus de partage par résultat et par langue. Reste la vidéo de fond du bunker ([cahier des charges](docs/05-direction-artistique.md#5-la-vidéo-du-bunker-à-fournir)).
 
 Site en 4 langues : français, English, українська, русский.
 
@@ -27,20 +27,21 @@ npm run dev
 
 Puis ouvrir <http://localhost:3000>. Aucune variable d'environnement n'est nécessaire.
 
-| Commande                     | Rôle                                                      |
-| ---------------------------- | --------------------------------------------------------- |
-| `npm run dev`                | Serveur de développement                                  |
-| `npm run build`              | Build de production (précédé de `validate`)               |
-| `npm run lint`               | ESLint                                                    |
-| `npm run format`             | Prettier (`format:check` pour vérifier sans écrire)       |
-| `npm run typecheck`          | Génère les types de routes puis vérifie TypeScript        |
-| `npm test`                   | Tests (Vitest) ; `test:coverage` avec la couverture       |
-| `npm run test:e2e`           | Tests de bout en bout (Playwright), après `npm run build` |
-| `npm run validate`           | Vérifie la cohérence des données du questionnaire         |
-| `npm run calibrate`          | Recalcule les centres des factions après une modification |
-| `npm run balance`            | Rapport d'équilibrage du questionnaire (critères C1 à C6) |
-| `npm run docs:questionnaire` | Régénère `docs/02-questionnaire.md`                       |
-| `npm run check`              | Tout ce que la CI vérifie, sauf le build                  |
+| Commande                     | Rôle                                                            |
+| ---------------------------- | --------------------------------------------------------------- |
+| `npm run dev`                | Serveur de développement                                        |
+| `npm run build`              | Build de production (précédé de `validate`)                     |
+| `npm run lint`               | ESLint                                                          |
+| `npm run format`             | Prettier (`format:check` pour vérifier sans écrire)             |
+| `npm run typecheck`          | Génère les types de routes puis vérifie TypeScript              |
+| `npm test`                   | Tests (Vitest) ; `test:coverage` avec la couverture             |
+| `npm run test:e2e`           | Tests de bout en bout (Playwright), après `npm run build`       |
+| `npm run validate`           | Vérifie la cohérence des données du questionnaire               |
+| `npm run calibrate`          | Recalcule les centres des factions après une modification       |
+| `npm run balance`            | Rapport d'équilibrage du questionnaire (critères C1 à C6)       |
+| `npm run docs:questionnaire` | Régénère `docs/02-questionnaire.md`                             |
+| `npm run icons`              | Régénère les icônes PNG et le favicon depuis `src/app/icon.svg` |
+| `npm run check`              | Tout ce que la CI vérifie, sauf le build                        |
 
 Avant le premier `npm run test:e2e`, installer le navigateur des tests : `npx playwright install chromium`.
 
@@ -57,6 +58,6 @@ L'équilibrage est vérifié à chaque intégration continue (critères C1 à C6
 
 ## Licence et mentions
 
-Code, textes et visuels originaux sous [licence MIT](LICENSE).
+Code, textes et visuels originaux sous [licence MIT](LICENSE). Les polices PT Mono (ParaType) et IBM Plex Mono (IBM), embarquées dans `assets/fonts/` pour les images d'aperçu, sont sous licence SIL Open Font License 1.1 (textes joints).
 
 Projet de fan non officiel, non affilié à GSC Game World. _S.T.A.L.K.E.R._ et les noms de son univers sont des marques de GSC Game World et ne sont pas couverts par cette licence.

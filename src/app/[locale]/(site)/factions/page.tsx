@@ -1,14 +1,23 @@
 import type { Metadata } from "next";
-import { getFormatter, getTranslations } from "next-intl/server";
+import { getFormatter, getLocale, getTranslations } from "next-intl/server";
 import { AxisBars } from "@/components/AxisBars";
 import { FactionEmblem } from "@/components/FactionEmblem";
 import { CENTERS_FILES, CURRENT_QUESTIONNAIRE, FACTIONS, archetypeCode } from "@/data/index";
 import { Link } from "@/i18n/navigation";
+import type { AppLocale } from "@/i18n/routing";
 import { AXIS_KEYS, FACTION_KEYS } from "@/lib/quiz/domain";
+import { pageMetadata } from "@/lib/site";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations("factionsPage");
-  return { title: t("metaTitle"), description: t("intro") };
+  const t = await getTranslations();
+  return pageMetadata({
+    locale: (await getLocale()) as AppLocale,
+    path: "/factions",
+    siteName: t("metadata.title"),
+    imageAlt: t("og.defaultAlt"),
+    title: t("factionsPage.metaTitle"),
+    description: t("seo.factions"),
+  });
 }
 
 /** Les 12 fiches : nom, emblème, idéologie, signature sur les axes [F-30]. */

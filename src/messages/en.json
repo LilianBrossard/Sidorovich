@@ -3,6 +3,17 @@
     "title": "Sidorovich HR",
     "description": "Sit Sidorovich’s job interview and find out which faction of the Zone you belong to."
   },
+  "seo": {
+    "quiz": "24 questions on morals, society and dilemmas. Answer honestly: Sidorovich will tell you which faction of the Zone you belong to.",
+    "factions": "The 12 factions of S.T.A.L.K.E.R., from the Loners to Noon: their ideology and their position on the test’s 7 value axes.",
+    "howItWorks": "Seven value axes, one distance, centres calibrated by simulation: how the test picks your faction, and how its balance is checked.",
+    "about": "Unofficial fan project: legal notice, personal data (none collected), credits and MIT licence."
+  },
+  "og": {
+    "defaultAlt": "Sidorovich HR: 24 questions, 12 factions, one verdict.",
+    "verdictAlt": "Sidorovich’s verdict: {faction}, {percent} compatibility.",
+    "cta": "Which faction are you?"
+  },
   "common": {
     "speaker": "Sidorovich",
     "languageLabel": "Language",

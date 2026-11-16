@@ -1,12 +1,21 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
+import type { AppLocale } from "@/i18n/routing";
+import { pageMetadata } from "@/lib/site";
 
 const REPOSITORY_URL = "https://github.com/LilianBrossard/Sidorovich";
 const LICENSE_URL = `${REPOSITORY_URL}/blob/main/LICENSE`;
 
 export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations("about");
-  return { title: t("metaTitle") };
+  const t = await getTranslations();
+  return pageMetadata({
+    locale: (await getLocale()) as AppLocale,
+    path: "/about",
+    siteName: t("metadata.title"),
+    imageAlt: t("og.defaultAlt"),
+    title: t("about.metaTitle"),
+    description: t("seo.about"),
+  });
 }
 
 /** Mentions légales, données personnelles, crédits, licence et avertissement fan [F-32]. */
