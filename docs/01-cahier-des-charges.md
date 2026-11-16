@@ -385,3 +385,4 @@ Source : [Fan Content Creation Guidelines](https://gsc-game.com/guidelines) de G
 | Aperçus de partage | Vérifiés par Lilian sur les plateformes visées. |
 | En-têtes de sécurité | Note A sur securityheaders.com, plafonnée par `'unsafe-inline'` dans la CSP : compromis accepté pour garder les pages statiques. |
 | Portfolio | Lien « Réalisé par Lilian Brossard » vers https://lilian-brossard.vercel.app dans le pied de page. |
+| Version `v1.0.0` | Taguée le 16/11/2026, sans attendre les tests aux lecteurs d'écran (NVDA, VoiceOver) ni sur de vrais appareils. Ils restent à faire ; leurs corrections éventuelles sortiront en `v1.0.x`. |

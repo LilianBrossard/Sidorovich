@@ -90,11 +90,11 @@ flowchart LR
 | 0 · Cadrage | Les 3 documents et le prototype du moteur | ✅ fait | Documents validés par Lilian | — |
 | 1 · Socle | Projet Next.js en 4 langues, CI, déploiement | ✅ fait | « Hello Zone » en production dans les 4 langues | `v0.1.0` |
 | 2 · Moteur | Moteur de score en TypeScript, testé et équilibré | ✅ fait | Tests et critères C1 à C6 verts en CI | `v0.2.0` |
-| 3 · Contenu | Textes FR définitifs et traductions EN, UK, RU | ✅ fait (relecture native à venir) | 100 % des clés traduites ; lore validé | `v0.3.0` |
-| 4 · Parcours brut | Test jouable de bout en bout, sans décor | 2 j | Tests de bout en bout verts ; playtest fait | `v0.4.0` |
-| 5 · Direction artistique | Bunker, dossier, PDA, animations | 4 à 5 j | Maquettes respectées ; budgets de performance tenus | `v0.5.0` |
-| 6 · Partage et SEO | Images d'aperçu, métadonnées | 1 j | Aperçus validés sur 4 plateformes | `v0.6.0` |
-| 7 · Qualité et lancement | Audits, mentions légales, README | 1 à 2 j | Recette du cahier des charges (§ 12) complète | `v1.0.0` |
+| 3 · Contenu | Textes FR définitifs et traductions EN, UK, RU | ✅ fait (traductions acceptées en l'état) | 100 % des clés traduites ; lore validé | `v0.3.0` |
+| 4 · Parcours brut | Test jouable de bout en bout, sans décor | ✅ fait (playtest à venir) | Tests de bout en bout verts ; playtest fait | `v0.4.0` |
+| 5 · Direction artistique | Bunker, dossier, PDA, animations | ✅ fait | Maquettes respectées ; budgets de performance tenus | `v0.5.0` |
+| 6 · Partage et SEO | Images d'aperçu, métadonnées | ✅ fait | Aperçus validés sur 4 plateformes | `v0.6.0` |
+| 7 · Qualité et lancement | Audits, mentions légales, README | ✅ fait (lecteurs d'écran et vrais appareils à venir) | Recette du cahier des charges (§ 12) complète | `v1.0.0` |
 | 8 · V2 | Statistiques, comparaison, easter egg | 2 à 3 j | Au choix après le lancement | `v1.x` |
 
 \* En jours de travail effectif. Les relectures externes (traductions, lore) et tes validations s'ajoutent au calendrier, sans être du temps de développement.
@@ -203,14 +203,14 @@ Mesures : 158 Ko de JavaScript compressé sur la page questionnaire (budget : 20
 
 - [x] Audit d'accessibilité automatisé : axe-core sur toutes les pages, en français et en ukrainien, sur ordinateur et mobile (WCAG 2.1 AA, 0 violation) ; parcours au clavier testé `[T-06]`. Correction en route : le nom accessible des langues commence désormais par le texte visible (« FR · Français », WCAG 2.5.3).
 - [ ] Tester avec NVDA (Windows) et VoiceOver (iPhone, Mac) : à faire par Lilian.
-- [x] Lighthouse mobile sur les 3 pages clés `[T-03] [T-04]` (`npm run lighthouse`) : accueil 98, questionnaire 92, résultat 95 en performance ; 100 en accessibilité, bonnes pratiques et SEO. Corrections : repli Courier New pour les polices à chasse fixe (CLS de 0,18 à 0), couverture du dossier rendue côté serveur, animations qui partent de 30 % d'opacité, 12 dossiers types indexés. Reste à confirmer les Core Web Vitals réels après le lancement : le LCP de laboratoire du questionnaire est de 2,6 s.
+- [x] Lighthouse mobile sur les 3 pages clés `[T-03] [T-04]` (`npm run lighthouse`) : accueil 92 (98 avant la vidéo du bunker), questionnaire 93, résultat 97 en performance ; 100 en accessibilité, bonnes pratiques et SEO. Corrections : repli Courier New pour les polices à chasse fixe (CLS de 0,18 à 0), couverture du dossier rendue côté serveur, animations qui partent de 30 % d'opacité, 12 dossiers types indexés. Reste à confirmer les Core Web Vitals réels après le lancement : le LCP de laboratoire du questionnaire est de 2,6 s.
 - [x] Tests de bout en bout sur 5 navigateurs : Chrome, Firefox, Safari (WebKit), Chrome Android, Safari iOS `[T-07]`. Firefox ne démarre pas sur le poste de développement (Windows le bloque) : il tourne dans la CI.
 - [ ] Tester sur de vrais appareils (un iPhone, un Android) : à faire par Lilian.
-- [x] En-têtes de sécurité (CSP sans nonce pour garder les pages statiques, HSTS, `nosniff`, `X-Frame-Options`, `Referrer-Policy`, `Permissions-Policy`), Dependabot, `npm audit` à 0 grâce à une surcharge de `minimatch` `[T-11]`. La note securityheaders.com sera à relever en production.
+- [x] En-têtes de sécurité (CSP sans nonce pour garder les pages statiques, HSTS, `nosniff`, `X-Frame-Options`, `Referrer-Policy`, `Permissions-Policy`), Dependabot, `npm audit` à 0 grâce à une surcharge de `minimatch` `[T-11]`. Note A sur securityheaders.com en production (cahier, § 13.5).
 - [x] Mentions légales, crédits, avertissement fan, licence `[L-01…L-06]`. Conditions de GSC Game World vérifiées : le projet les respecte (cahier, § 13.4) ; pas de contact avec GSC, rien d'obligatoire (§ 13.5). Lien vers le portfolio de Lilian dans le pied de page.
 - [ ] (Souhaitable) Vercel Web Analytics `[T-12]` : à activer d'abord dans le tableau de bord Vercel.
 - [x] README portfolio : capture animée, captures mobiles, schéma d'architecture, moteur, équilibrage, scores (`npm run demo` régénère les captures).
-- [ ] Dérouler la recette du cahier des charges (§ 12) ; tag `v1.0.0`.
+- [x] Dérouler la recette du cahier des charges (§ 12) ; tag `v1.0.0` posé le 16/11/2026, les points encore ouverts sont dans le tableau ci-dessous (cahier, § 13.5).
 
 État de la recette (§ 12) au 16/11/2026 :
 
@@ -224,7 +224,7 @@ Mesures : 158 Ko de JavaScript compressé sur la page questionnaire (budget : 20
 | Aperçus de partage | Vérifiés |
 | Relectures | Traductions acceptées en l'état |
 | Mentions légales et crédits | Publiés, vidéo du jeu créditée |
-| README et tag `v1.0.0` | README publié ; tag après les lecteurs d'écran et les vrais appareils |
+| README et tag `v1.0.0` | README publié ; `v1.0.0` taguée le 16/11/2026, avant les lecteurs d'écran et les vrais appareils |
 
 **Fini quand :** tous les points de la recette sont cochés.
 

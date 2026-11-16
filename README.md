@@ -6,7 +6,7 @@
 
 ![Parcours : le bunker, le dossier, puis le verdict sur le PDA](docs/images/demo.gif)
 
-**Statut :** phase 7 du [plan de développement](docs/03-plan-de-developpement.md) (qualité et lancement). Le site est complet, en production ; restent les tests aux lecteurs d'écran et sur de vrais appareils avant la `v1.0.0`.
+**Statut :** `v1.0.0`, en production. Restent les tests aux lecteurs d'écran et sur de vrais appareils ; la V2 (phase 8 du [plan de développement](docs/03-plan-de-developpement.md)) est facultative.
 
 ## Ce que montre le projet
 
