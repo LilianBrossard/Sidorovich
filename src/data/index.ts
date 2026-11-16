@@ -1,6 +1,6 @@
 // Point d'entrée des données du questionnaire pour le site.
 import { archetypeAnswers } from "@/lib/quiz/balance";
-import type { FactionKey } from "@/lib/quiz/domain";
+import { FACTION_KEYS, type FactionKey } from "@/lib/quiz/domain";
 import { decodeAnswers, encodeAnswers, type DecodeError } from "@/lib/quiz/encoding";
 import { evaluate } from "@/lib/quiz/engine";
 import type { Answers, CentersFile, QuizResult } from "@/lib/quiz/types";
@@ -57,3 +57,11 @@ export const isRetiredCode = (code: string): boolean => RETIRED_CODE_CHARS.inclu
  */
 export const archetypeCode = (faction: FactionKey): string =>
   resultCode(archetypeAnswers(CURRENT_QUESTIONNAIRE, FACTIONS[faction].profile));
+
+const ARCHETYPE_CODES: ReadonlySet<string> = new Set(FACTION_KEYS.map(archetypeCode));
+
+/**
+ * Vrai pour les 12 dossiers types : ce sont de vraies pages de faction, indexées et listées
+ * dans le sitemap. Les autres résultats ne le sont pas (combinaisons infinies) [T-08].
+ */
+export const isArchetypeCode = (code: string): boolean => ARCHETYPE_CODES.has(code);

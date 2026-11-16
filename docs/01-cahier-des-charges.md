@@ -356,5 +356,20 @@ La V1 est mise en ligne quand **tous** les points suivants sont vrais :
 
 | # | Question | À trancher avant |
 |---|---|---|
-| Q-F | Nom définitif du site (nom de travail : « Sidorovich RH ») ? | Phase 6 |
-| Q-G | Conclusion de la vérification des conditions de GSC Game World sur les créations de fans `[L-05]`. | Phase 7 |
+| Q-F | Nom définitif du site (nom de travail : « Sidorovich RH ») ? | Lancement (`v1.0.0`) |
+
+### 13.4 Conditions de GSC Game World pour les créations de fans `[L-05]` (16/11/2026)
+
+Source : [Fan Content Creation Guidelines](https://gsc-game.com/guidelines) de GSC Game World, lues le 16/11/2026 (aucune date de version visible sur la page). Elles font partie des contrats de licence des jeux.
+
+| Point des conditions | Ce que fait le site |
+|---|---|
+| Les sites de fans sont « généralement » acceptés ; personnages, lieux et univers peuvent servir de matière. | Test de personnalité qui cite des factions et le personnage de Sidorovich. Conforme. |
+| Aucun usage commercial ; pas de contenu derrière un paiement. | Ni publicité, ni don, ni paiement. Usage de portfolio non mentionné par les conditions : vitrine personnelle, sans revenu. |
+| Ne pas laisser croire à une affiliation, ne pas se présenter comme officiel. | Avertissement « projet de fan non officiel » en pied de page et dans « À propos » `[L-01]` ; nom et visuels originaux. |
+| Les éléments des jeux (personnages, univers) restent à GSC. | Aucun élément graphique ni sonore du jeu `[L-02]` ; seuls des noms sont cités. |
+| Le contenu de fan est concédé à GSC sous une licence non exclusive, gratuite et irrévocable. | Compatible avec la licence MIT du dépôt, déjà ouverte à tous. |
+| Pas de contenu raciste, xénophobe, sexiste, diffamatoire ou offensant. | Relecture des contenus sensibles faite en phase 3 `[N-03] [N-04]`. |
+| Droits révocables à tout moment par GSC. | Le site sera retiré ou modifié sur simple demande. |
+
+**Conclusion :** le projet respecte ces conditions. GSC « recommande fortement » de contacter son service communauté avant d'ouvrir un site : c'est à Lilian de le faire avant le lancement de la `v1.0.0` (recommandation, pas obligation).

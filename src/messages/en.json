@@ -46,7 +46,6 @@
   "quiz": {
     "metaTitle": "The interview",
     "title": "Job interview",
-    "loading": "Sidorovich is looking for your file…",
     "rules": "Questions: {total}, one per screen. There are no right answers, and you can go back at any time. Your progress stays in your browser.",
     "start": "Take a seat",
     "skip": "Show all",

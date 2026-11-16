@@ -201,14 +201,30 @@ Mesures : 158 Ko de JavaScript compressé sur la page questionnaire (budget : 20
 
 ### Phase 7 · Qualité et lancement
 
-- [ ] Audit d'accessibilité : axe-core automatisé, parcours au clavier, NVDA et VoiceOver `[T-06]`.
-- [ ] Lighthouse sur les 3 pages clés, sur mobile ; Core Web Vitals `[T-03] [T-04]`.
-- [ ] Tests multi-navigateurs et sur appareils réels `[T-07]`.
-- [ ] En-têtes de sécurité, Dependabot, `npm audit` `[T-11]`.
-- [ ] Mentions légales, crédits, avertissement fan, licence ; vérification des conditions de GSC Game World `[L-01…L-06]`.
-- [ ] (Souhaitable) Vercel Web Analytics `[T-12]`.
-- [ ] README portfolio : capture animée, schéma d'architecture, explication du moteur, indicateurs d'équilibrage, scores Lighthouse.
-- [ ] Dérouler la checklist de recette du cahier des charges (§ 12) ; tag `v1.0.0`.
+- [x] Audit d'accessibilité automatisé : axe-core sur toutes les pages, en français et en ukrainien, sur ordinateur et mobile (WCAG 2.1 AA, 0 violation) ; parcours au clavier testé `[T-06]`. Correction en route : le nom accessible des langues commence désormais par le texte visible (« FR · Français », WCAG 2.5.3).
+- [ ] Tester avec NVDA (Windows) et VoiceOver (iPhone, Mac) : à faire par Lilian.
+- [x] Lighthouse mobile sur les 3 pages clés `[T-03] [T-04]` (`npm run lighthouse`) : accueil 98, questionnaire 92, résultat 95 en performance ; 100 en accessibilité, bonnes pratiques et SEO. Corrections : repli Courier New pour les polices à chasse fixe (CLS de 0,18 à 0), couverture du dossier rendue côté serveur, animations qui partent de 30 % d'opacité, 12 dossiers types indexés. Reste à confirmer les Core Web Vitals réels après le lancement : le LCP de laboratoire du questionnaire est de 2,6 s.
+- [x] Tests de bout en bout sur 5 navigateurs : Chrome, Firefox, Safari (WebKit), Chrome Android, Safari iOS `[T-07]`. Firefox ne démarre pas sur le poste de développement (Windows le bloque) : il tourne dans la CI.
+- [ ] Tester sur de vrais appareils (un iPhone, un Android) : à faire par Lilian.
+- [x] En-têtes de sécurité (CSP sans nonce pour garder les pages statiques, HSTS, `nosniff`, `X-Frame-Options`, `Referrer-Policy`, `Permissions-Policy`), Dependabot, `npm audit` à 0 grâce à une surcharge de `minimatch` `[T-11]`. La note securityheaders.com sera à relever en production.
+- [x] Mentions légales, crédits, avertissement fan, licence `[L-01…L-06]`. Conditions de GSC Game World vérifiées : le projet les respecte (cahier, § 13.4). GSC recommande de contacter son service communauté avant d'ouvrir un site : à faire par Lilian.
+- [ ] (Souhaitable) Vercel Web Analytics `[T-12]` : à activer d'abord dans le tableau de bord Vercel.
+- [x] README portfolio : capture animée, captures mobiles, schéma d'architecture, moteur, équilibrage, scores (`npm run demo` régénère les captures).
+- [ ] Dérouler la recette du cahier des charges (§ 12) ; tag `v1.0.0`.
+
+État de la recette (§ 12) au 16/11/2026 :
+
+| Point | État |
+|---|---|
+| Exigences *Indispensable* validées | Oui, sauf la vérification des aperçus sur les 4 plateformes et les lecteurs d'écran |
+| Exigences *Important* non livrées listées | Vidéo du bunker (fournie par Lilian), ambiance sonore et analytics (souhaitables) |
+| CI verte sur `main` | À confirmer sur cette PR (Firefox n'y tourne que là) |
+| Lighthouse et Core Web Vitals | Lighthouse atteint ; Core Web Vitals réels à relever après le lancement |
+| Audit d'accessibilité | axe-core et clavier faits ; NVDA et VoiceOver à faire |
+| Aperçus de partage | À vérifier sur Discord, X, Facebook et LinkedIn |
+| Relectures | Traductions UK et RU à faire relire par des locuteurs natifs |
+| Mentions légales et crédits | Publiés |
+| README et tag `v1.0.0` | README publié ; tag après les points ci-dessus |
 
 **Fini quand :** tous les points de la recette sont cochés.
 

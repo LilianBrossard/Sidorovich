@@ -1,8 +1,9 @@
 "use client";
 
 // Partie en cours, gardée dans le stockage local du navigateur [F-14] [L-03].
-// Lue avec useSyncExternalStore : le serveur et la première passe d'hydratation voient
-// `undefined` (« pas encore lu »), puis le client affiche la partie sauvegardée.
+// Lue avec useSyncExternalStore : le serveur et la première passe d'hydratation supposent
+// « aucune partie » (la couverture du dossier s'affiche tout de suite : bon LCP [T-04]),
+// puis le client affiche la partie sauvegardée s'il y en a une.
 import { useCallback, useSyncExternalStore } from "react";
 import { CURRENT_QUESTIONNAIRE } from "@/data/questionnaires";
 import {
@@ -67,7 +68,7 @@ function getSnapshot(): QuizSession | null {
   return snapshot.session;
 }
 
-const getServerSnapshot = (): undefined => undefined;
+const getServerSnapshot = (): null => null;
 
 function save(session: QuizSession | null): void {
   writeRaw(session === null ? null : serializeSession(session));
@@ -85,8 +86,8 @@ export const isPersistent = (): boolean => {
 };
 
 export interface QuizSessionApi {
-  /** `undefined` avant la lecture du stockage, `null` s'il n'y a pas de partie. */
-  readonly session: QuizSession | null | undefined;
+  /** `null` s'il n'y a pas de partie (et côté serveur, avant la lecture du stockage). */
+  readonly session: QuizSession | null;
   readonly start: () => void;
   readonly dispatch: (action: QuizAction) => QuizSession | null;
   readonly clear: () => void;

@@ -35,9 +35,10 @@
   --animate-draw: draw 900ms ease-out both;
   --animate-flicker: flicker 23s linear infinite;
 
+  /* Départ à 30 % d'opacité, pas 0 : le texte est peint, et compté pour le LCP, dès le début. */
   @keyframes sheet-in {
     from {
-      opacity: 0;
+      opacity: 0.3;
       transform: translate(28px, 6px) rotate(0.8deg);
     }
     to {
@@ -65,7 +66,7 @@
   }
   @keyframes boot {
     from {
-      opacity: 0;
+      opacity: 0.3;
       transform: translateY(6px);
       filter: brightness(1.8);
     }

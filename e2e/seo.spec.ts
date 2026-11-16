@@ -53,11 +53,19 @@ test.describe("partage et référencement", () => {
     expect((await response.body()).length).toBeGreaterThan(10_000);
   });
 
-  test("sitemap : 5 pages × 4 langues, avec leurs équivalents", async ({ request }) => {
+  test("sitemap : 5 pages et 12 dossiers types × 4 langues, avec leurs équivalents", async ({
+    request,
+  }) => {
     const xml = await (await request.get("/sitemap.xml")).text();
-    expect(xml.match(/<url>/g)).toHaveLength(20);
+    expect(xml.match(/<url>/g)).toHaveLength(68);
     expect(xml).toContain('hreflang="x-default"');
-    expect(xml).not.toContain("/r/");
+    expect(xml).not.toContain(`/r/${HYBRID_CODE}`);
+  });
+
+  test("seuls les dossiers types sont indexés", async ({ page }) => {
+    await page.goto("/en/factions");
+    await page.locator("#content li article").first().getByRole("link").click();
+    await expect(page.locator('meta[name="robots"]')).toHaveCount(0);
   });
 
   test("robots, manifeste et icônes", async ({ request }) => {

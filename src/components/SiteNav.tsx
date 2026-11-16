@@ -79,14 +79,21 @@ export function SiteNav() {
               lang={locale}
               hrefLang={locale}
               aria-current={active ? "true" : undefined}
-              aria-label={short ? `${LOCALE_LABELS[locale]} (${code})` : undefined}
               className={
                 active
                   ? "text-amber-400 underline underline-offset-4"
                   : "text-paper-300 hover:text-paper-100"
               }
             >
-              {short ? code : LOCALE_LABELS[locale]}
+              {short ? (
+                <>
+                  {code}
+                  {/* Le texte visible ouvre le nom accessible (WCAG 2.5.3). */}
+                  <span className="sr-only"> · {LOCALE_LABELS[locale]}</span>
+                </>
+              ) : (
+                LOCALE_LABELS[locale]
+              )}
             </Link>
           </li>
         );

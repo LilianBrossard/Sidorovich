@@ -1,7 +1,13 @@
 import type { Messages } from "next-intl";
 import { describe, expect, it } from "vitest";
 import { buildQuizCopy } from "@/components/quiz/copy";
-import { archetypeCode, CURRENT_QUESTIONNAIRE, isRetiredCode, resultFromCode } from "@/data/index";
+import {
+  archetypeCode,
+  CURRENT_QUESTIONNAIRE,
+  isArchetypeCode,
+  isRetiredCode,
+  resultFromCode,
+} from "@/data/index";
 import { FACTION_KEYS } from "@/lib/quiz/domain";
 import { compile } from "@/lib/quiz/engine";
 import en from "@/messages/en.json";
@@ -43,6 +49,11 @@ describe("dossiers types pré-rendus", () => {
       const decoded = resultFromCode(codes[i]);
       expect(decoded.ok && decoded.result.top.faction).toBe(faction);
     });
+  });
+
+  it("seuls les dossiers types sont reconnus comme tels (indexés)", () => {
+    for (const faction of FACTION_KEYS) expect(isArchetypeCode(archetypeCode(faction))).toBe(true);
+    expect(isArchetypeCode("1C85I1jjhQcN")).toBe(false);
   });
 
   it("aucune version n'est retirée pour l'instant", () => {

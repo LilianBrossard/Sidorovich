@@ -46,7 +46,6 @@
   "quiz": {
     "metaTitle": "L’entretien",
     "title": "Entretien d’embauche",
-    "loading": "Sidorovich cherche ton dossier…",
     "rules": "Questions : {total}, une par écran. Il n’y a pas de bonne réponse, et tu peux revenir en arrière à tout moment. Ta progression reste dans ton navigateur.",
     "start": "Je m’assois",
     "skip": "Tout afficher",
