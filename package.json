@@ -27,7 +27,8 @@
     "test:e2e": "playwright test",
     "icons": "node scripts/generate-icons.mjs",
     "lighthouse": "node scripts/lighthouse.mjs",
-    "demo": "node scripts/record-demo.mjs"
+    "demo": "node scripts/record-demo.mjs",
+    "video": "node scripts/encode-video.mjs"
   },
   "dependencies": {
     "next": "16.4.6",

@@ -180,7 +180,7 @@ Mesures : 158 Ko de JavaScript compressé sur la page questionnaire (budget : 20
 
 - [x] Préparer un moodboard (planche d'ambiance), puis **6 maquettes** : 3 scènes × mobile et ordinateur. **Tu les valides avant l'intégration** `[V-04]`. Validées le 15 novembre 2026, avec une demande : un fond vidéo en boucle pour Sidorovich au lieu du SVG. Détails : [document 05](05-direction-artistique.md).
 - [x] Créer les design tokens et les composants de base : papier, tampon, case à cocher, écran PDA, boutons `[V-01] [V-02]`. Matières en CSS, sans image.
-- [ ] **Bunker** : lampe qui vacille et bulle de dialogue faites ; le lecteur du fond vidéo est prêt (pause, économie de données, animations réduites). **Reste la vidéo, fournie par Lilian** (cahier des charges et prompt : document 05).
+- [x] **Bunker** : vidéo fournie par Lilian (10 s, sans son), réencodée en MP4 (786 Ko) et WebM (1,7 Mo) par `npm run video`, au format 16:9 avec la bulle en sous-titre ; image fixe WebP de 36 Ko. Lecteur : pause, pause hors écran, rien de téléchargé avec les animations réduites ou l'économiseur de données. Images du jeu : exception à L-02 (cahier, § 13.5).
 - [x] **Dossier** : feuillets, 24 cases de progression, cases cochées, notes trombonées de Sidorovich, tampon « Dossier complet », feuillet glissé à chaque question.
 - [x] **PDA** : coque et écran à phosphore, démarrage bloc par bloc, radar tracé à l'écran, curseurs par axe, 12 emblèmes SVG originaux `[V-03]`.
 - [x] Animations en CSS plutôt qu'avec Motion (aucun JavaScript en plus), `prefers-reduced-motion` respecté `[V-05] [V-06]`. Les 60 images par seconde restent à mesurer sur un téléphone.
@@ -194,8 +194,8 @@ Mesures : 158 Ko de JavaScript compressé sur la page questionnaire (budget : 20
 
 - [x] Générer les images d'aperçu par résultat et par langue (`opengraph-image.tsx`) `[F-28]` : écran du PDA, emblème, faction, % et mini-radar ; une image par défaut par langue pour les autres pages. Polices WOFF latin et cyrillique dans `assets/fonts/` (licence OFL), car le moteur de rendu ne lit pas le WOFF2.
 - [x] Ajouter les métadonnées par page et par langue, `hreflang` (avec `x-default`), `sitemap.xml`, `robots.txt`, icônes et manifest `[T-08] [I-06]`. Les résultats ne sont pas indexés et ne figurent pas dans le sitemap. Icône : un radar à 7 branches, régénérable avec `npm run icons`.
-- [ ] Vérifier les aperçus dans les outils de Discord, X, Facebook et LinkedIn (après la mise en production, par Lilian).
-- [ ] Trancher le nom définitif (question Q-F) ; l'adresse reste `sidorovich.vercel.app` (Q-A).
+- [x] Vérifier les aperçus dans les outils de Discord, X, Facebook et LinkedIn (fait par Lilian, 16/11/2026).
+- [x] Trancher le nom définitif (question Q-F) : « Sidorovich RH », à l'adresse `sidorovich.vercel.app`.
 
 **Fini quand :** un lien de résultat collé sur les 4 plateformes affiche le bon aperçu, dans la bonne langue.
 
@@ -207,7 +207,7 @@ Mesures : 158 Ko de JavaScript compressé sur la page questionnaire (budget : 20
 - [x] Tests de bout en bout sur 5 navigateurs : Chrome, Firefox, Safari (WebKit), Chrome Android, Safari iOS `[T-07]`. Firefox ne démarre pas sur le poste de développement (Windows le bloque) : il tourne dans la CI.
 - [ ] Tester sur de vrais appareils (un iPhone, un Android) : à faire par Lilian.
 - [x] En-têtes de sécurité (CSP sans nonce pour garder les pages statiques, HSTS, `nosniff`, `X-Frame-Options`, `Referrer-Policy`, `Permissions-Policy`), Dependabot, `npm audit` à 0 grâce à une surcharge de `minimatch` `[T-11]`. La note securityheaders.com sera à relever en production.
-- [x] Mentions légales, crédits, avertissement fan, licence `[L-01…L-06]`. Conditions de GSC Game World vérifiées : le projet les respecte (cahier, § 13.4). GSC recommande de contacter son service communauté avant d'ouvrir un site : à faire par Lilian.
+- [x] Mentions légales, crédits, avertissement fan, licence `[L-01…L-06]`. Conditions de GSC Game World vérifiées : le projet les respecte (cahier, § 13.4) ; pas de contact avec GSC, rien d'obligatoire (§ 13.5). Lien vers le portfolio de Lilian dans le pied de page.
 - [ ] (Souhaitable) Vercel Web Analytics `[T-12]` : à activer d'abord dans le tableau de bord Vercel.
 - [x] README portfolio : capture animée, captures mobiles, schéma d'architecture, moteur, équilibrage, scores (`npm run demo` régénère les captures).
 - [ ] Dérouler la recette du cahier des charges (§ 12) ; tag `v1.0.0`.
@@ -216,15 +216,15 @@ Mesures : 158 Ko de JavaScript compressé sur la page questionnaire (budget : 20
 
 | Point | État |
 |---|---|
-| Exigences *Indispensable* validées | Oui, sauf la vérification des aperçus sur les 4 plateformes et les lecteurs d'écran |
-| Exigences *Important* non livrées listées | Vidéo du bunker (fournie par Lilian), ambiance sonore et analytics (souhaitables) |
-| CI verte sur `main` | À confirmer sur cette PR (Firefox n'y tourne que là) |
-| Lighthouse et Core Web Vitals | Lighthouse atteint ; Core Web Vitals réels à relever après le lancement |
+| Exigences *Indispensable* validées | Oui, sauf les lecteurs d'écran (NVDA, VoiceOver) |
+| Exigences *Important* non livrées listées | Ambiance sonore et analytics (souhaitables) |
+| CI verte sur `main` | Oui, Firefox compris |
+| Lighthouse et Core Web Vitals | Performance ≥ 90 sur les 3 pages. LCP de laboratoire de l'accueil : 3,0 s (l'image de la vidéo, mise en file d'attente par la 4G simulée) ; en conditions réelles, 0,3 s. Core Web Vitals de terrain à relever après le lancement |
 | Audit d'accessibilité | axe-core et clavier faits ; NVDA et VoiceOver à faire |
-| Aperçus de partage | À vérifier sur Discord, X, Facebook et LinkedIn |
-| Relectures | Traductions UK et RU à faire relire par des locuteurs natifs |
-| Mentions légales et crédits | Publiés |
-| README et tag `v1.0.0` | README publié ; tag après les points ci-dessus |
+| Aperçus de partage | Vérifiés |
+| Relectures | Traductions acceptées en l'état |
+| Mentions légales et crédits | Publiés, vidéo du jeu créditée |
+| README et tag `v1.0.0` | README publié ; tag après les lecteurs d'écran et les vrais appareils |
 
 **Fini quand :** tous les points de la recette sont cochés.
 

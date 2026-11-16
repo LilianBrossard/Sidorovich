@@ -20,12 +20,14 @@ try {
 }
 
 const base = process.argv[2] ?? "http://localhost:3300";
-const PAGES = {
+const ONLY = process.argv[3];
+const ALL_PAGES = {
   accueil: "/fr",
   questionnaire: "/fr/quiz",
   "résultat (dossier type)": "/fr/r/1Adv4hDuBfXq",
   "résultat ordinaire (non indexé)": "/fr/r/1C85I1jjhQcN",
 };
+const PAGES = ONLY ? { [ONLY]: ALL_PAGES[ONLY] } : ALL_PAGES;
 const PORT = 9333;
 
 const browser = await chromium.launch({ args: [`--remote-debugging-port=${PORT}`] });
@@ -50,6 +52,11 @@ try {
         ` | LCP ${value("largest-contentful-paint")} · CLS ${value("cumulative-layout-shift")}` +
         ` · TBT ${value("total-blocking-time")}`,
     );
+    // Élément retenu pour le LCP et répartition de son temps (premier octet, chargement, rendu).
+    const lcp = lhr.audits["largest-contentful-paint-element"]?.details?.items ?? [];
+    const node = lcp[0]?.items?.[0]?.node?.snippet;
+    const phases = (lcp[1]?.items ?? []).map((p) => `${p.phase} ${Math.round(p.timing)} ms`);
+    if (node) console.log(`  LCP : ${node.slice(0, 90)} | ${phases.join(" · ")}`);
   }
 } finally {
   await browser.close();

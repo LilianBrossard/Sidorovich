@@ -6,7 +6,7 @@
 
 ![Parcours : le bunker, le dossier, puis le verdict sur le PDA](docs/images/demo.gif)
 
-**Statut :** phase 7 du [plan de développement](docs/03-plan-de-developpement.md) (qualité et lancement). Le test est complet et habillé ; restent la vidéo de fond du bunker et la recette finale avant la `v1.0.0`.
+**Statut :** phase 7 du [plan de développement](docs/03-plan-de-developpement.md) (qualité et lancement). Le site est complet, en production ; restent les tests aux lecteurs d'écran et sur de vrais appareils avant la `v1.0.0`.
 
 ## Ce que montre le projet
 
@@ -23,7 +23,7 @@
   - parcours complet au clavier et prise en compte de la réduction des animations ;
   - tests de bout en bout sur 5 navigateurs ;
   - Lighthouse ≥ 92 en performance, 100 en accessibilité.
-- **Une direction artistique sans image** : béton, papier et écran dessinés en CSS, 12 emblèmes SVG originaux, animations en CSS uniquement.
+- **Une direction artistique sobre** : béton, papier et écran dessinés en CSS, 12 emblèmes SVG originaux, animations en CSS uniquement, et Sidorovich en vidéo dans son bunker (boucle muette, chargée seulement si les animations sont permises).
 
 ![Trois écrans sur mobile : accueil, dossier, verdict](docs/images/mobile.png)
 
@@ -80,8 +80,8 @@ Mesures du `npm run balance` (questionnaire v1) :
 
 | Mesure                                     | Résultat                                                                                                 |
 | ------------------------------------------ | -------------------------------------------------------------------------------------------------------- |
-| Lighthouse mobile (perf · a11y · BP · SEO) | Accueil 98 · 100 · 100 · 100 ; questionnaire 92 · 100 · 100 · 100 ; résultat 95 · 100 · 100 · 100        |
-| Core Web Vitals (laboratoire)              | LCP 2,1 à 2,6 s · CLS ≤ 0,06 · TBT ≤ 230 ms                                                              |
+| Lighthouse mobile (perf · a11y · BP · SEO) | Accueil 92 · 100 · 100 · 100 ; questionnaire 93 · 100 · 100 · 100 ; résultat 97 · 100 · 100 · 100        |
+| Core Web Vitals (laboratoire)              | LCP 2,3 à 3,0 s (accueil : l'image de la vidéo ; 0,3 s mesuré sans bridage) · CLS ≤ 0,06 · TBT ≤ 230 ms  |
 | JavaScript compressé                       | 161 à 164 Ko par page (budget : 200 Ko)                                                                  |
 | Accessibilité                              | 0 violation axe-core (WCAG 2.1 AA), parcours au clavier testé                                            |
 | Tests                                      | Vitest : unitaires, propriétés (fast-check), équilibrage ; couverture du moteur ≥ 97 %                   |
@@ -117,6 +117,7 @@ Puis ouvrir <http://localhost:3000>. Aucune variable d'environnement n'est néce
 | `npm run icons`              | Régénère les icônes PNG et le favicon depuis `src/app/icon.svg`       |
 | `npm run lighthouse`         | Mesure Lighthouse des pages clés (voir l'en-tête du script)           |
 | `npm run demo`               | Régénère la capture animée et les captures mobiles du README          |
+| `npm run video`              | Prépare la vidéo du bunker (sans son, MP4, WebM, image fixe)          |
 | `npm run check`              | Tout ce que la CI vérifie, sauf le build et les tests de bout en bout |
 
 Avant le premier `npm run test:e2e`, installer les navigateurs des tests : `npx playwright install chromium firefox webkit`.
@@ -133,6 +134,6 @@ Une surcharge (`overrides` dans `package.json`) impose `minimatch` ≥ 11.0.1 so
 
 ## Licence et mentions
 
-Code, textes et visuels originaux sous [licence MIT](LICENSE). Les polices PT Mono (ParaType) et IBM Plex Mono (IBM), embarquées dans `assets/fonts/` pour les images d'aperçu, sont sous licence SIL Open Font License 1.1 (textes joints).
+Code, textes et visuels originaux sous [licence MIT](LICENSE), à une exception près : la vidéo de l'accueil (`public/media/bunker/`) montre Sidorovich et son bunker tels qu'ils apparaissent dans le jeu ; ces images appartiennent à GSC Game World et ne sont pas couvertes par la licence MIT. Les polices PT Mono (ParaType) et IBM Plex Mono (IBM), embarquées dans `assets/fonts/` pour les images d'aperçu, sont sous licence SIL Open Font License 1.1 (textes joints).
 
 Projet de fan non officiel, non affilié à GSC Game World. _S.T.A.L.K.E.R._ et les noms de son univers sont des marques de GSC Game World et ne sont pas couverts par cette licence. Le projet suit les [conditions de GSC Game World pour les créations de fans](https://gsc-game.com/guidelines) (analyse dans le [cahier des charges, § 13.4](docs/01-cahier-des-charges.md)).

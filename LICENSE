@@ -19,3 +19,13 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+---
+
+Third-party content not covered by this license:
+
+- public/media/bunker/ (background video and still image of the home page) shows the
+  character Sidorovich and his bunker as they appear in S.T.A.L.K.E.R. These images are
+  the property of GSC Game World and are used here as non-commercial fan content.
+- assets/fonts/ contains PT Mono (ParaType) and IBM Plex Mono (IBM), licensed under the
+  SIL Open Font License 1.1 (license texts in the same folder).
